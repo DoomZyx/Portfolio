@@ -1,0 +1,74 @@
+.Background-1 {
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../../images/office.webp");
+  background-size: cover;
+  background-position: bottom;
+  object-fit: cover;
+  z-index: 1;
+  position: relative;
+}
+
+header {
+  z-index: 1;
+  .presentation {
+   padding-top: 10rem;
+   padding-left: 4rem;
+   width: 40%;
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   gap: 40px;
+   .welcome {
+    font-size: 8rem;
+    font-weight: 600;
+   }
+   .myName {
+    font-size: 4.5rem;
+   }
+   .iam {
+    font-size: 5.5rem;
+    font-weight: 100;
+   }
+  }
+  .layout-button {
+   display: flex;
+   flex-direction: row;
+   padding-top: 4em;
+   padding-left: 5rem;
+   gap: 80px;
+   & button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 0.5px solid #ffffff;
+   }
+   .github-butt {
+    width: 140px;
+    height: 50px;
+    .github-logo {
+     position: relative;
+     right: 18px;
+     width: 80px;
+     height: 34px;
+    }
+    p {
+    position: relative;
+    right: 18px;
+    font-size: 1.2em;
+   }
+   .download-butt {
+    gap: 10px;
+   }
+  }
+  .download-icon {
+    position: relative;
+    right: 6px;
+    bottom: 1px;
+   font-size: 1.4em;
+  }
+  }
+ }
+

@@ -1,0 +1,33 @@
+.skills {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+  .skills-title {
+   font-size: 3em;
+   padding-bottom: 2em;
+  }
+ .box_skills {
+ width: 80%;
+ height: 40vh;
+ border: 1px solid white;
+ border-radius: 90px;
+ display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+ align-items: center;
+ margin-bottom: 15em;
+ :nth-child(2) {
+  position: relative;
+  top: 15px;
+ }
+ :nth-child(3) {
+  position: relative;
+  top: 10px;
+ }
+ & img {
+  width: 200px;
+  height: 200px;
+  }
+ }
+}
