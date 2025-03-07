@@ -1,3 +1,5 @@
+@use "../../Utils/responsive" as *;
+
 nav {
  width: 100%;
  display: flex;
@@ -17,5 +19,11 @@ nav {
   position: relative;
   top: 14px;
   right: 10px;
+ }
+}
+
+@include mobile {
+ body nav {
+display: none;
  }
 }

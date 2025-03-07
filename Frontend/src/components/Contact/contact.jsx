@@ -12,31 +12,33 @@ function Contact() {
 
         <form>
           <div className="name-field">
-            <input type="text" name="nom" id="nom" placeholder="Nom" />
-            <input type="text" name="prenom" id="prenom" placeholder="Prénom" />
+            <input type="text" name="nom" id="nom" placeholder="Nom" required />
+            <input type="text" name="prenom" id="prenom" placeholder="Prénom" required />
           </div>
 
           <div className="com-field">
-            <input type="email" name="mail" id="mail" placeholder="E-mail" />
+            <input type="email" name="mail" id="mail" placeholder="E-mail" required />
             <input
               type="tel"
               name="number"
               id="number"
               placeholder="Téléphone"
+              required
             />
           </div>
 
-          <input type="text" name="objet" id="objet" placeholder="Objet" />
+          <input type="text" name="objet" id="objet" placeholder="Objet" required />
 
           <textarea
             name="message"
             id="message"
             rows={15}
             placeholder="Écrivez votre demande"
+            required
           ></textarea>
 
           <div className="checkbox">
-          <input type="checkbox" name="data" id="data" />
+          <input type="checkbox" name="data" id="data" required />
           <label htmlFor="data">
             En soumettant ce formulaire, j'accepte que mes données personnelles
             soient utilisées pour me recontacter. Aucun autre traitement ne sera

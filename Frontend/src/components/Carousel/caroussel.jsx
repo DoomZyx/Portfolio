@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import projectsData from "../../data/dataProjects";
 import "./_caroussel.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Carousel = () => {
   const [projectIndex, setProjectIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const imageFullScreen = useRef(null);
 
   if (
     !projectsData[projectIndex] ||
@@ -30,18 +37,64 @@ const Carousel = () => {
     setImageIndex(0);
   };
 
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const threshold = 50;
+
+    if (distance > threshold) {
+      nextProject();
+    } else if (distance < -threshold) {
+      prevProject();
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  const handleFullscreen = () => {
+    if (imageFullScreen.current) {
+      if (imageFullScreen.current.requestFullscreen) {
+        imageFullScreen.current.requestFullscreen().catch((err) => {
+          console.error("Erreur lors de l'ouverture en plein écran : ", err);
+          setIsFullScreen(true);
+        });
+      } else if (imageFullScreen.current.webkitRequestFullscreen) {
+        imageFullScreen.current.webkitRequestFullscreen();
+      } else {
+        setIsFullScreen(true);
+      }
+    }
+  };
+
+  const closeFullScreen = () => {
+    setIsFullScreen(false);
+  };
 
   return (
-    <div className="carousel-container">
+    <div
+      className="carousel-container"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <button className="carousel-btn prev" onClick={prevProject}>
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
       <div className="carousel">
         <div className="carousel-item">
-          <div className="sub-carousel">
+          <div className="sub-carousel" ref={imageFullScreen}>
             <img
               src={projectsData[projectIndex].images[imageIndex]}
               alt={`Image ${imageIndex + 1}`}
+              onClick={handleFullscreen}
             />
           </div>
           <div className="image-pagination">
@@ -53,17 +106,41 @@ const Carousel = () => {
               ></div>
             ))}
           </div>
-         <div className="carousel-text">
-          <h2 className="carousel-title">{projectsData[projectIndex].title}</h2>
-          <p className="carousel-description">
-            {projectsData[projectIndex].description}
-          </p>
-         </div>
+          <div className="carousel-text">
+            <h2 className="carousel-title">
+              {projectsData[projectIndex].title}
+            </h2>
+            <p className="carousel-description">
+              {projectsData[projectIndex].description}
+            </p>
+          </div>
         </div>
       </div>
       <button className="carousel-btn next" onClick={nextProject}>
         <FontAwesomeIcon icon={faChevronRight} />
       </button>
+
+      {isFullScreen && (
+        <div className="fullscreen-overlay" onClick={closeFullScreen}>
+          <img
+            src={projectsData[projectIndex].images[imageIndex]}
+            alt={`Image ${imageIndex + 1}`}
+          />
+          <div className="image-pagination-screen">
+            {projectsData[projectIndex].images.map((_, i) => (
+              <div
+                key={i}
+                className={`image-dot-screen ${i === imageIndex ? "active" : ""}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setImageIndex(i);
+                }}
+              >
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

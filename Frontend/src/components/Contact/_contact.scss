@@ -1,3 +1,5 @@
+@use "../../Utils/responsive" as *;
+
 .layout-contact {
  max-width: 100%;
  margin: auto;
@@ -94,5 +96,49 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
  background-color: #0088cc;
+}
+
+@include mobile {
+  .layout-contact {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    padding: 1em;
+    .contact-title {
+      font-size: 2rem;
+    }
+    .contact-text {
+      font-size: 1EM;
+      margin-bottom: 3em;
+      margin-top: 1em;
+      width: 80%;
+    }
+    .name-field, .com-field {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-direction: column;
+    }
+    .name-field input,
+    .com-field input {
+      width: 80%;
+    }
+    input[type="checkbox"] {
+      width: 10px;
+      height: 10px;
+      position: relative;
+      top: 0px;
+      left: 0px;
+    }
+    label {
+      width: 100%;
+    }
+    input[type="submit"] {
+      width: 180px;
+    }
+  }
 }
 

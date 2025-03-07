@@ -1,8 +1,10 @@
+@use "../../Utils/responsive" as *;
+
 .Background-1 {
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-image: url("../../images/office.webp");
   background-size: cover;
   background-position: bottom;
@@ -36,6 +38,7 @@ header {
   .layout-button {
    display: flex;
    flex-direction: row;
+   width: 100%;
    padding-top: 4em;
    padding-left: 5rem;
    gap: 80px;
@@ -44,6 +47,11 @@ header {
     flex-direction: row;
     align-items: center;
     border: 0.5px solid #ffffff;
+    height: 50px;
+   }
+   button:hover {
+    background-color: white;
+    color: black;
    }
    .github-butt {
     width: 140px;
@@ -69,6 +77,48 @@ header {
     bottom: 1px;
    font-size: 1.4em;
   }
+  }
+ }
+
+ @include mobile {
+  .Background-1 {
+    background-position: bottom 13em left 70%;
+    background-repeat: no-repeat;
+    height: 75vh;
+    position: relative;
+    top: 290px;
+  }
+  header {
+    .presentation {
+      padding: 0;
+      position: relative;
+      bottom: 230px;
+      margin-top: 0em;
+      margin-bottom: 0em;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      .welcome {
+        font-size: 3rem;
+      }
+      .myName {
+        font-size: 2rem;
+      }
+      .iam {
+        font-size: 2em;
+      }
+    }
+  }
+  header .layout-button {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-top: 5em;
+    width: 100%;
+    gap: 15px;
+    
   }
  }
 
