@@ -142,3 +142,47 @@ input[type="submit"]:hover {
   }
 }
 
+@include tablet {
+  .layout-contact {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+    padding: 1em;
+    .contact-title {
+      font-size: 4rem;
+    }
+    .contact-text {
+      font-size: 2em;
+      margin-bottom: 3em;
+      margin-top: 1em;
+      width: 80%;
+    }
+    .name-field, .com-field {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-direction: column;
+    }
+    .name-field input,
+    .com-field input {
+      width: 80%;
+    }
+    input[type="checkbox"] {
+      width: 10px;
+      height: 10px;
+      position: relative;
+      top: 0px;
+      left: 0px;
+    }
+    label {
+      width: 100%;
+    }
+    input[type="submit"] {
+      width: 180px;
+    }
+  }
+}
+

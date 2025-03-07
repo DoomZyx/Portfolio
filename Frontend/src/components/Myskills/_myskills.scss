@@ -51,3 +51,21 @@
   }
  }
 }
+
+@include tablet {
+  .skills {
+    .skills-title {
+      font-size: 4em;
+    }
+    .box_skills {
+      display: flex;
+      flex-direction: column-reverse;
+      width: 50%;
+      height: 150vh;
+      margin-bottom: 5em;
+      img {
+        width: 60%;
+      }
+    }
+   }
+}

@@ -47,3 +47,27 @@
   }
  }
 }
+
+@include tablet {
+ .aboutme-title {
+  font-size: 4em;
+  padding-bottom: 1.5em;
+  padding-top: 10em;
+ }
+ .layout-about {
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 3em;
+  .pictureAboutMe img {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 50%;
+  }
+  .text-aboutme {
+   width: 90%;
+   font-size: 2rem;
+   padding-bottom: 2em;
+  }
+ }
+}

@@ -27,3 +27,9 @@ nav {
 display: none;
  }
 }
+
+@include tablet {
+ body nav {
+  display: none;
+ }
+}
