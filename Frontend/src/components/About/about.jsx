@@ -4,7 +4,7 @@ import myself from "../../images/react.webp";
 function AboutMe() {
   return (
     <>
-      <section>
+      <section id="about">
         <h2 className="aboutme-title">A PROPOS DE MOI </h2>
         <div className="layout-about">
           <div className="pictureAboutMe">

@@ -16,15 +16,25 @@ function header() {
           <h4 className="iam">Développeur web</h4>
         </div>
         <div className="layout-button">
-          <button className="github-butt" href="">
+          <button
+            className="github-butt"
+            onClick={() =>
+              (window.location.href = "https://github.com/DoomZyx")
+            }
+          >
             <img className="github-logo" src={github} alt="github" />
             <p>GITHUB</p>
           </button>
-          <button className="contact-butt" href="">
+          <button className="contact-butt" onClick={() =>
+            (window.location.href = "#contact")
+          }>
             <h3>ME CONTACTER</h3>
           </button>
           <button className="download-butt" href="">
-            <FontAwesomeIcon icon={faCircleArrowDown}  className="download-icon" />
+            <FontAwesomeIcon
+              icon={faCircleArrowDown}
+              className="download-icon"
+            />
             <h3>Télécharger mon CV</h3>
           </button>
         </div>

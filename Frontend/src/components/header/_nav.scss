@@ -17,7 +17,7 @@ nav {
   height: 30px;
   object-fit: cover;
   position: relative;
-  top: 14px;
+  top: 2px;
   right: 10px;
  }
 }
@@ -31,5 +31,15 @@ display: none;
 @include tablet {
  body nav {
   display: none;
+ }
+}
+
+@include desktop {
+ body nav {
+  display: flex;
+  gap: 67px;
+  & a {
+   font-size: 1.5em;
+  }
  }
 }

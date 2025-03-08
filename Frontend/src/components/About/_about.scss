@@ -71,3 +71,9 @@
   }
  }
 }
+
+@include desktop {
+ .aboutme-title {
+  margin-top: 3em;
+ }
+}

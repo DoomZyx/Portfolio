@@ -149,7 +149,7 @@ input[type="submit"]:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 5em;
+    margin-top: 3em;
     padding: 1em;
     .contact-title {
       font-size: 4rem;
@@ -184,5 +184,9 @@ input[type="submit"]:hover {
       width: 180px;
     }
   }
+}
+
+@include desktop {
+  
 }
 
