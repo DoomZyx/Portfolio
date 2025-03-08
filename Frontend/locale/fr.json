@@ -1,0 +1,29 @@
+{
+ "nav-about": "A PROPOS",
+ "nav-projects": "MES PROJETS",
+ "nav-contact" : "CONTACT",
+
+ "welcome": "BIENVENUE !",
+ "Iam" : "JE SUIS AXEL",
+ "myprof": "Développeur web",
+
+ "contact-but" : "ME CONTACTER",
+ "my-cv": "Télécharger mon CV",
+
+ "about-me-title": "A PROPOS DE MOI",
+ "about-me-text": "Hello ! Je m’appelle Axel Cella, développeur web junior. Auparavant j’étais conseiller de pièces détachées automobile ce qui m’a permis d’acquérir de très bonne compétences comme l’organisation, l’écoute et des grandes qualités relationnel.\n\n Après une grande refléxion, j’ai envisagé de faire une reconversion professionnel dans le développement web, et ça m’intéressait depuis des années.\n\n J’ai donc commencé une formation en tant qu’intégrateur web chez OpenClassrooms \n\n Suite à l'obtention de ma certification, je souhaite me former sur les technologies back-end Et je continue à travailler et me former chaque jour sur mon PC avec motivation, avec envies et des idées plein la tête",
+ "my-skills-title" : "MES COMPETENCES",
+
+ "my-projects-title" : "MES PROJETS",
+
+ "contactme-title": "ME CONTACTER",
+ "contactme-text": "N’hésitez pas à me contacter, je vous répondrai dans les plus brefs délais.",
+ "placeholder-name": "Nom",
+ "placeholder-surname" : "Prénom",
+ "placeholder-mail": "E-mail",
+ "placeholder-phone": "Téléphone",
+ "placeholder-object": "Objet",
+ "placeholder-request": "Ecrivez votre demande",
+ "label-form": "En soumettant ce formulaire, j'accepte que mes données personnelles soient utilisées pour me recontacter. Aucun autre traitement ne sera effectué avec mes informations. Pour connaître et exercer vos droits, veuillez consulter la Politique de confidentialité.",
+ "send-but" : "Envoyer"
+}

@@ -10,7 +10,7 @@ exports.contactFormHandler = async (req, res) => {
   try {
     await sendEmail({ name, surname, email, phone, subject, message });
 
-    res.status(200).json({ message: "Email envoyé avec succès !" });
+    res.status(200).json({ message: "✅" });
   } catch (error) {
     res.status(500).json({ error: "Erreur lors de l'envoi de l'email." });
   }

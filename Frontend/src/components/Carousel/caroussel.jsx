@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import projectsData from "../../data/dataProjects";
 import "./_caroussel.scss";
 
+import { useTranslation } from "react-i18next";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -9,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Carousel = () => {
+  const { i18n } = useTranslation();
+
   const [projectIndex, setProjectIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
@@ -88,7 +92,7 @@ const Carousel = () => {
       <button className="carousel-btn prev" onClick={prevProject}>
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
-      <div className="carousel">
+      <div className="carousel" id="project">
         <div className="carousel-item">
           <div className="sub-carousel" ref={imageFullScreen}>
             <img
@@ -108,10 +112,10 @@ const Carousel = () => {
           </div>
           <div className="carousel-text">
             <h2 className="carousel-title">
-              {projectsData[projectIndex].title}
+              {projectsData[projectIndex].title[i18n.language]}
             </h2>
             <p className="carousel-description">
-              {projectsData[projectIndex].description}
+              {projectsData[projectIndex].description[i18n.language]}
             </p>
           </div>
         </div>
@@ -130,13 +134,14 @@ const Carousel = () => {
             {projectsData[projectIndex].images.map((_, i) => (
               <div
                 key={i}
-                className={`image-dot-screen ${i === imageIndex ? "active" : ""}`}
+                className={`image-dot-screen ${
+                  i === imageIndex ? "active" : ""
+                }`}
                 onClick={(e) => {
                   e.stopPropagation();
                   setImageIndex(i);
                 }}
-              >
-              </div>
+              ></div>
             ))}
           </div>
         </div>

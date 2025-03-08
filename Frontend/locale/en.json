@@ -1,0 +1,30 @@
+{
+ "nav-about": "ABOUT ME",
+ "nav-projects": "MY PROJECTS",
+ "nav-contact" : "CONTACT",
+
+ "welcome": "WELCOME !",
+ "Iam" : "I'M AXEL",
+ "myprof": "Web developer",
+
+ "contact-but" : "CONTACT ME",
+ "my-cv": "Download resume",
+
+ "about-me-title": "ABOUT ME",
+ "about-me-text": "Hello! My name is Axel Cella, a junior web developer. Previously, I worked as an automotive parts consultant, which allowed me to develop excellent skills in organization, active listening, and interpersonal relations. After much reflection, I decided to pursue a career change into web development—a field that had interested me for years. I began a training course as a web integrator at OpenClassrooms. After obtaining my certification, I now wish to further train in back-end technologies, and I continue to work and learn every day on my PC with motivation, enthusiasm, and plenty of ideas.",
+ "my-skills-title" : "MY SKILLS",
+
+ "my-projects-title" : "MY PROJECTS",
+
+ "contactme-title": "CONTACT ME",
+ "contactme-text": "Feel free to contact me, I'll get back to you as soon as possible.",
+ "placeholder-name": "Name",
+ "placeholder-surname" : "Surname",
+ "placeholder-mail": "Mail",
+ "placeholder-phone": "Phone-number",
+ "placeholder-object": "Object",
+ "placeholder-request": "Write your request",
+ "label-form": "By submitting this form, I agree that my personal data may be used to contact me. No other processing will be carried out with my information. To learn about and exercise your rights, please consult the Privacy Policy",
+ "send-but" : "Send"
+
+}

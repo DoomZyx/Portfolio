@@ -1,7 +1,11 @@
 import "./_contact.scss";
 import { useState } from "react";
 
+import { useTranslation } from "react-i18next";
+
 function Contact() {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -57,11 +61,8 @@ function Contact() {
   return (
     <>
       <section className="layout-contact" id="contact">
-        <h2 className="contact-title">ME CONTACTER</h2>
-        <h3 className="contact-text">
-          N’hésitez pas à me contacter, je vous répondrai dans les plus brefs
-          délais.
-        </h3>
+        <h2 className="contact-title"> {t("contactme-title")} </h2>
+        <h3 className="contact-text"> {t("contactme-text")} </h3>
 
         <form onSubmit={handleSubmit}>
           <div className="name-field">
@@ -69,7 +70,7 @@ function Contact() {
               type="text"
               name="name"
               id="nom"
-              placeholder="Nom"
+              placeholder={t("placeholder-name")}
               value={formData.name}
               onChange={handleChange}
               required
@@ -78,7 +79,7 @@ function Contact() {
               type="text"
               name="surname"
               id="prenom"
-              placeholder="Prénom"
+              placeholder={t("placeholder-surname")}
               value={formData.surname}
               onChange={handleChange}
               required
@@ -90,7 +91,7 @@ function Contact() {
               type="email"
               name="email"
               id="email"
-              placeholder="E-mail"
+              placeholder={t("placeholder-mail")}
               value={formData.email}
               onChange={handleChange}
               required
@@ -99,7 +100,7 @@ function Contact() {
               type="tel"
               name="phone"
               id="phone"
-              placeholder="Téléphone"
+              placeholder={t("placeholder-phone")}
               value={formData.phone}
               onChange={handleChange}
               required
@@ -110,7 +111,7 @@ function Contact() {
             type="text"
             name="subject"
             id="subject"
-            placeholder="Objet"
+            placeholder={t("placeholder-object")}
             value={formData.subject}
             onChange={handleChange}
             required
@@ -120,7 +121,7 @@ function Contact() {
             name="message"
             id="message"
             rows={15}
-            placeholder="Écrivez votre demande"
+            placeholder={t("placeholder-request")}
             value={formData.message}
             onChange={handleChange}
             required
@@ -128,17 +129,11 @@ function Contact() {
 
           <div className="checkbox">
             <input type="checkbox" name="data" id="data" required />
-            <label htmlFor="data">
-              En soumettant ce formulaire, j'accepte que mes données
-              personnelles soient utilisées pour me recontacter. Aucun autre
-              traitement ne sera effectué avec mes informations. Pour connaître
-              et exercer vos droits, veuillez consulter la Politique de
-              confidentialité.
-            </label>
+            <label htmlFor="data"> {t("label-form")} </label>
           </div>
 
-          <input type="submit" value="Envoyer" disabled={loading} />
-          {loading ? "Envoi en cours..." : ""}
+          <input type="submit" value={t("send-but")} disabled={loading} />
+          {loading ? "..." : ""}
         </form>
 
         {responseMessage && <p>{responseMessage}</p>}
