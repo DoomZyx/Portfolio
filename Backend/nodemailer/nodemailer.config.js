@@ -4,20 +4,31 @@ require("dotenv").config();
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, 
+    user: process.env.GMAIL_EMAIL,
+    pass: process.env.GMAIL_PASSWORD,
   },
 });
 
-const sendEmail = async (to, subject, text) => {
+const sendEmail = async ({ name, surname, email, phone, subject, message }) => {
   try {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to,
-      subject,
-      text,
+      from: process.env.GMAIL_EMAIL,
+      to: process.env.GMAIL_EMAIL,
+      subject: `📩 Nouveau message de : ${subject}`,
+      text: `
+       Nouveau message reçu :
+
+        Nom : ${name} ${surname}
+        Email : ${email}
+        Téléphone : ${phone}
+        Objet : ${subject}
+        
+        Message :
+        ${message}
+      `,
     });
-    console.log("📧 Email envoyé !");
+
+    console.log("Email envoyé avec succès !");
   } catch (error) {
     console.error("Erreur d'envoi d'email :", error);
   }
