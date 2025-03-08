@@ -16,10 +16,8 @@ app.use(cors({
   allowedHeaders: "Content-Type",
 }));
 
-// ✅ Activer le parsing JSON
 app.use(express.json());
 
-// ✅ Démarrer le serveur
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Serveur en écoute sur http://localhost:${PORT}`);
