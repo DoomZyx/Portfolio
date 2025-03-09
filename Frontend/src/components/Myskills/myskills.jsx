@@ -1,6 +1,6 @@
 import "./_myskills.scss";
 import { useTranslation } from "react-i18next";
-
+import Observer from "../animation/Observer";
 import html from "../../images/html.webp"
 import css from "../../images/css.webp"
 import sass from "../../images/sass.webp"
@@ -10,9 +10,10 @@ import react from "../../images/react.webp"
 
 function MySkills() {
   const { t } = useTranslation();
+  const [ref, isVisible] = Observer()
   return (
     <>
-      <section className="skills">
+      <section ref={ref} className={`skills ${isVisible ? 'active' : ""}`}>
         <h2 className="skills-title"> {t("my-skills-title")} </h2>
         <div className="box_skills">
           <img src={html} alt="html logo" />

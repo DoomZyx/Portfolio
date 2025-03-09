@@ -6,6 +6,14 @@
  position: relative;
  text-align: center;
  overflow: hidden;
+ opacity: 0;
+ transform: translateY(50px);
+}
+
+.carousel-container.active {
+ opacity: 1;
+ transform: translateY(0);
+ transition: opacity 1s ease-out, transform 0.5s ease-out;
 }
 
 .carousel {
@@ -86,6 +94,14 @@
  flex-direction: column;
  align-items: flex-start;
  margin-bottom: 10em;
+ opacity: 0;
+ transform: translateY(50px);
+}
+
+.carousel-text.active {
+ opacity: 1;
+ transform: translateY(0);
+ transition: opacity 1s ease-out, transform 0.5s ease-out;
 }
 
 .carousel-title {

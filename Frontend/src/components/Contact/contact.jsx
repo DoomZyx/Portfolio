@@ -2,9 +2,11 @@ import "./_contact.scss";
 import { useState } from "react";
 
 import { useTranslation } from "react-i18next";
+import Observer from "../animation/Observer"
 
 function Contact() {
   const { t } = useTranslation();
+  const [ref, isVisible] = Observer();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -60,7 +62,7 @@ function Contact() {
 
   return (
     <>
-      <section className="layout-contact" id="contact">
+      <section ref={ref} className={`layout-contact ${isVisible ? 'active' : ""}`} id="contact">
         <h2 className="contact-title"> {t("contactme-title")} </h2>
         <h3 className="contact-text"> {t("contactme-text")} </h3>
 

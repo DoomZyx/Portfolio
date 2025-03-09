@@ -3,6 +3,7 @@ import projectsData from "../../data/dataProjects";
 import "./_caroussel.scss";
 
 import { useTranslation } from "react-i18next";
+import Observer from "../animation/Observer"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,6 +13,7 @@ import {
 
 const Carousel = () => {
   const { i18n } = useTranslation();
+  const[ref, isVisible] = Observer({ threshold: 0.5});
 
   const [projectIndex, setProjectIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
@@ -84,7 +86,8 @@ const Carousel = () => {
 
   return (
     <div
-      className="carousel-container"
+      ref={ref}
+      className={`carousel-container ${isVisible ? 'active': ""}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -110,7 +113,7 @@ const Carousel = () => {
               ></div>
             ))}
           </div>
-          <div className="carousel-text">
+          <div className={`carousel-text ${isVisible ? 'active' : ""}`}>
             <h2 className="carousel-title">
               {projectsData[projectIndex].title[i18n.language]}
             </h2>

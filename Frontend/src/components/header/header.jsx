@@ -6,14 +6,18 @@ import { faCircleArrowDown } from "@fortawesome/free-solid-svg-icons";
 import github from "../../images/github.webp";
 
 import { useTranslation } from "react-i18next";
+import Observer from '../animation/Observer';
 
-function header() {
+
+function Header() {
   const { t } = useTranslation();
+  const [ref, isVisible] = Observer();
+
   return (
     <>
       <header>
         <Nav />
-        <div className="presentation">
+        <div ref={ref} className={`presentation ${isVisible ? 'active' : "" }`} >
           <h3 className="welcome"> {t("welcome")} </h3>
           <h3 className="myName"> {t("Iam")} </h3>
           <h4 className="iam"> {t("myprof")} </h4>
@@ -46,4 +50,4 @@ function header() {
   );
 }
 
-export default header;
+export default Header;

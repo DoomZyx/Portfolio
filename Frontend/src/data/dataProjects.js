@@ -1,15 +1,14 @@
-import skg from "../images/skg.png";
-import skg2 from "../images/skg2.png";
-import skg3 from "../images/skg3.png";
-import skg4 from "../images/skg4.png";
-import skg5 from "../images/skg5.png";
+import skg from "../images/skg.webp";
+import skg2 from "../images/skg2.webp";
+import skg3 from "../images/skg3.webp";
+import skg4 from "../images/skg4.webp";
+import skg5 from "../images/skg5.webp";
 
-import ohmyfood from "../images/ohmyfood.png";
-import ohmyfood2 from "../images/ohmyfood2.png";
-import ohmyfood3 from "../images/ohmyfood3.png";
-import ohmyfood4 from "../images/ohmyfood4.png";
-import ohmyfood5 from "../images/ohmyfood5.png";
-
+import ohmyfood from "../images/ohmyfood.webp";
+import ohmyfood2 from "../images/ohmyfood2.webp";
+import ohmyfood3 from "../images/ohmyfood3.webp";
+import ohmyfood4 from "../images/ohmyfood4.webp";
+import ohmyfood5 from "../images/ohmyfood5.webp";
 
 const projects = [
   {

@@ -1,7 +1,8 @@
 @use "../../Utils/responsive" as *;
 
+
 .layout-projects {
- display: flex;
+  display: flex;
  flex-direction: column;
  justify-content: center;
  align-items: center;
@@ -20,8 +21,16 @@
   width: 100%;
   height: 70vh;
   margin-bottom: 2em;
- }
+  opacity: 0;
+  transform: translateY(50px);
+  }
 }
+.projects-title.active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-out, transform 0.5s ease-out;
+}
+
 
 @include mobile {
  .layout-projects {

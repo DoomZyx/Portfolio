@@ -6,7 +6,16 @@
  padding: 40px;
  text-align: center;
  margin-top: 5em;
+ opacity: 0;
+ transform: translateY(50px);
 }
+
+.layout-contact.active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 1s ease-out, transform 0.5s ease-out;
+}
+
 
 .contact-title {
  font-size: 2.5rem;
