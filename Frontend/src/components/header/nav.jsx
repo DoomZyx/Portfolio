@@ -7,6 +7,7 @@ function Nav() {
   const { t, i18n } = useTranslation();
  return (
    <nav>
+    <div className="layout-nav">
      <a href="#about" className="nav-about">
        {t("nav-about")}
      </a>
@@ -17,10 +18,11 @@ function Nav() {
        {" "}
        {t("nav-contact")}{" "}
      </a>
+     </div>
      <button onClick={() => i18n.changeLanguage("fr")}>
        <img src={france} alt="Drapeau France" />
      </button>
-     <button onClick={() => i18n.changeLanguage("en")}>🇬🇧</button>
+     <button className="english-button" onClick={() => i18n.changeLanguage("en")}>🇬🇧</button>
    </nav>
  );
 }
