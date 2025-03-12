@@ -120,6 +120,9 @@ const Carousel = () => {
             <h2 className="carousel-title">
               {projectsData[projectIndex].title[i18n.language]}
             </h2>
+            <p className="carousel-progression">
+              {projectsData[projectIndex].progression[i18n.language]}
+            </p>
             <p className="carousel-description">
               {projectsData[projectIndex].description[i18n.language]}
             </p>
