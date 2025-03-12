@@ -87,7 +87,7 @@ input[type="checkbox"] {
  left: 10px;
 }
 label {
- width: 50%;
+ width: 70%;
 }
 
 input[type="submit"] {
@@ -136,14 +136,15 @@ input[type="submit"]:hover {
       width: 80%;
     }
     input[type="checkbox"] {
-      width: 10px;
-      height: 10px;
+      width: auto;
+      height: 20px;
       position: relative;
-      top: 0px;
-      left: 0px;
+      top: -6px;
+      left: -2px;
     }
     label {
       width: 100%;
+      font-size: 0.8rem;
     }
     input[type="submit"] {
       width: 180px;
@@ -196,6 +197,11 @@ input[type="submit"]:hover {
 }
 
 @include desktop {
-  
+  input[type="checkbox"] {
+    width: 30px;
+    position: relative;
+    top: -3px;
+    left: 20px;
+  }
 }
 

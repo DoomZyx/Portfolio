@@ -15,9 +15,9 @@ function Header() {
 
   return (
     <>
-      <header>
+      <header id="home">
         <Nav />
-        <div ref={ref} className={`presentation ${isVisible ? 'active' : "" }`} >
+        <div ref={ref} className={`presentation ${isVisible ? "active" : ""}`}>
           <h3 className="welcome"> {t("welcome")} </h3>
           <h3 className="myName"> {t("Iam")} </h3>
           <h4 className="iam"> {t("myprof")} </h4>
@@ -25,16 +25,15 @@ function Header() {
         <div className="layout-button">
           <button
             className="github-butt"
-            onClick={() =>
-              (window.location.href = "https://github.com/DoomZyx")
-            }
+            onClick={() => window.open("https://github.com/DoomZyx", "_blank")}
           >
             <img className="github-logo" src={github} alt="github" />
             <p>GITHUB</p>
           </button>
-          <button className="contact-butt" onClick={() =>
-            (window.location.href = "#contact")
-          }>
+          <button
+            className="contact-butt"
+            onClick={() => (window.location.href = "#contact")}
+          >
             <h3> {t("contact-but")} </h3>
           </button>
           <button className="download-butt" href="">

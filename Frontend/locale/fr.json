@@ -1,5 +1,7 @@
 {
+ "nav-home": "ACCEUIL",
  "nav-about": "A PROPOS",
+ "nav-skills": "COMPETENCES",
  "nav-projects": "MES PROJETS",
  "nav-contact" : "CONTACT",
 
@@ -11,7 +13,9 @@
  "my-cv": "Télécharger mon CV",
 
  "about-me-title": "A PROPOS DE MOI",
- "about-me-text": "Hello ! Je m’appelle Axel Cella, développeur web junior. Auparavant j’étais conseiller de pièces détachées automobile ce qui m’a permis d’acquérir de très bonne compétences comme l’organisation, l’écoute et des grandes qualités relationnel.\n\n Après une grande refléxion, j’ai envisagé de faire une reconversion professionnel dans le développement web, et ça m’intéressait depuis des années.\n\n J’ai donc commencé une formation en tant qu’intégrateur web chez OpenClassrooms \n\n Suite à l'obtention de ma certification, je souhaite me former sur les technologies back-end Et je continue à travailler et me former chaque jour sur mon PC avec motivation, avec envies et des idées plein la tête",
+ "about-me-text": "Hello ! Je m’appelle Axel Cella, développeur web junior. Auparavant j’étais conseiller de pièces détachées automobile ce qui m’a permis d’acquérir de très bonne compétences comme l’organisation, l’écoute et des grandes qualités relationnel. ",
+ "about-me-text2": "Après une grande refléxion, j’ai envisagé de faire une reconversion professionnel dans le développement web, et ça m’intéressait depuis des années. J’ai donc commencé une formation en tant qu’intégrateur web chez OpenClassrooms",
+ "about-me-text3": "Suite à l'obtention de ma certification, je souhaite me former sur les technologies back-end Et je continue à travailler et me former chaque jour sur mon PC avec motivation, avec envies et des idées plein la tête",
  "my-skills-title" : "MES COMPETENCES",
 
  "my-projects-title" : "MES PROJETS",

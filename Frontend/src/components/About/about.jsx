@@ -16,7 +16,9 @@ function AboutMe() {
             <img src={myself} alt="Axel Cella" />
           </div>
           <div className="text-aboutme">
-            <p> {t("about-me-text")} </p>
+            <p> {t("about-me-text")} </p> <br></br>
+            <p> {t("about-me-text2")} </p> <br></br>
+            <p> {t("about-me-text3")} </p> <br></br>
           </div>
         </div>
       </section>

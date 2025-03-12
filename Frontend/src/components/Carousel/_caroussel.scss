@@ -10,6 +10,10 @@
  transform: translateY(50px);
 }
 
+.carousel-container.no-transform {
+ transform: none !important;
+}
+
 .carousel-container.active {
  opacity: 1;
  transform: translateY(0);
@@ -122,6 +126,31 @@
  margin: auto;
  font-weight: 200;
 }
+.link-github  {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 160px;
+ padding: 0.5em;
+ cursor: pointer;
+ position: relative;
+ border: 2px solid white;
+ left: 1200px;
+ right: 0;
+ img {
+  transition: filter 0.3s ease-in-out;
+  position: relative;
+  right: 9px;
+  bottom: 1px;
+  width: 45px;
+  height: auto;
+ }
+}
+
+.link-github:hover {
+ filter: invert(1);
+}
+
 
 @include mobile {
  .carousel {

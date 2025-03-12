@@ -1,5 +1,7 @@
 {
+ "nav-home": "HOME",
  "nav-about": "ABOUT ME",
+ "nav-skills": "SKILLS",
  "nav-projects": "MY PROJECTS",
  "nav-contact" : "CONTACT",
 
@@ -11,7 +13,9 @@
  "my-cv": "Download resume",
 
  "about-me-title": "ABOUT ME",
- "about-me-text": "Hello! My name is Axel Cella, a junior web developer. Previously, I worked as an automotive parts consultant, which allowed me to develop excellent skills in organization, active listening, and interpersonal relations. \n\n\n After much reflection, I decided to pursue a career change into web development—a field that had interested me for years. I began a training course as a web integrator at OpenClassrooms. After obtaining my certification, I now wish to further train in back-end technologies, and I continue to work and learn every day on my PC with motivation, enthusiasm, and plenty of ideas.",
+ "about-me-text": "Hello! My name is Axel Cella, a junior web developer. Previously, I worked as an automotive parts consultant, which allowed me to develop excellent skills in organization, active listening, and interpersonal relations.",
+ "about-me-text2": "After much reflection, I decided to pursue a career change into web development—a field that had interested me for years. I began a training course as a web integrator at OpenClassrooms.",
+ "about-me-text3": "After obtaining my certification, I now wish to further train in back-end technologies, and I continue to work and learn every day on my PC with motivation, enthusiasm, and plenty of ideas.",
  "my-skills-title" : "MY SKILLS",
 
  "my-projects-title" : "MY PROJECTS",
