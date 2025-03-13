@@ -1,9 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@font-face {
+  font-family: 'Roboto';
+  src: url('../public/Fonts/Roboto-Bold.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   line-height: 1;
+  font-display: swap;
   display: flex;
   flex-direction: column;
   background-color: #000000;

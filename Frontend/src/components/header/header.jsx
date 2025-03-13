@@ -18,9 +18,9 @@ function Header() {
       <header id="home">
         <Nav />
         <div ref={ref} className={`presentation ${isVisible ? "active" : ""}`}>
-          <h3 className="welcome"> {t("welcome")} </h3>
-          <h3 className="myName"> {t("Iam")} </h3>
-          <h4 className="iam"> {t("myprof")} </h4>
+          <h1 className="welcome"> {t("welcome")} </h1>
+          <h2 className="myName"> {t("Iam")} </h2>
+          <h3 className="iam"> {t("myprof")} </h3>
         </div>
         <div className="layout-button">
           <button

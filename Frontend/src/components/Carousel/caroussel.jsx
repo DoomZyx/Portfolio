@@ -43,6 +43,7 @@ const Carousel = () => {
     }, 500);
   };
 
+
   const prevProject = () => {
     setAnimationClass("slide-out-right");
     setTimeout(() => {
@@ -120,10 +121,11 @@ const Carousel = () => {
       <button className="carousel-btn prev" onClick={prevProject}>
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
-      <div className="carousel">
+      <div className="carousel" id="project">
         <div className="carousel-item">
           <div className="sub-carousel" ref={imageFullScreen}>
             <img
+              loading="lazy"
               className={animationClass}
               src={projectsData[projectIndex].images[imageIndex]}
               alt={`Image ${imageIndex + 1}`}

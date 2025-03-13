@@ -1,11 +1,13 @@
-import Header from "../components/header/header";
+import { lazy } from "react";
+import "../base/_base.scss";
 import "../components/header/_header.scss";
 
-import "../base/_base.scss";
-import AboutMe from "../components/About/about";
-import MySkills from "../components/Myskills/myskills";
-import MyProjects from "../components/Projects/projects";
-import Contact from "../components/Contact/contact";
+const Header = lazy(() => import("../components/header/header"));
+const AboutMe = lazy(() => import("../components/About/about"));
+const MySkills = lazy(() => import("../components/Myskills/myskills"));
+const MyProjects = lazy(() => import("../components/Projects/projects"));
+const Contact = lazy(() => import("../components/Contact/contact"));
+
 
 function Homepage() {
   return (

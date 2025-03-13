@@ -4,13 +4,11 @@
  opacity: 0;
  transform: translateY(50px);
 }
-
 .about.active {
  opacity: 1;
  transform: translateY(0);
  transition: opacity 1s ease-out, transform 0.5s ease-out;
 }
-
 .aboutme-title {
  display: flex;
  justify-content: center;
@@ -18,7 +16,6 @@
  padding-top: 1em;
  padding-bottom: 10rem;
 }
-
 .layout-about {
  display: flex;
  flex-direction: row;
@@ -34,7 +31,6 @@
   font-size: 1.3rem;
  }
 }
-
 @include mobile {
  .aboutme-title {
   font-size: 2em;
@@ -58,7 +54,6 @@
   }
  }
 }
-
 @include tablet {
  .aboutme-title {
   font-size: 4em;
@@ -82,7 +77,6 @@
   }
  }
 }
-
 @include desktop {
  .aboutme-title {
   margin-top: 3em;

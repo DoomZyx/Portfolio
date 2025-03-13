@@ -9,34 +9,28 @@
  opacity: 0;
  transform: translateY(50px);
 }
-
 .layout-contact.active {
   opacity: 1;
   transform: translateY(0);
   transition: opacity 1s ease-out, transform 0.5s ease-out;
 }
-
-
 .contact-title {
  font-size: 2.5rem;
  font-weight: bold;
  color: white;
  margin-bottom: 1em;
 }
-
 .contact-text {
  font-size: 1.2rem;
  color: #ddd;
  margin-bottom: 5em;
 }
-
 form {
  display: flex;
  flex-direction: column;
  align-items: center;
   gap: 40px;
 }
-
 .name-field,
 .com-field {
  display: flex;
@@ -44,12 +38,10 @@ form {
  width: 100%;
  gap: 10px;
 }
-
 .name-field input,
 .com-field input {
  width: 30%;
 }
-
 input,
 textarea {
  width: 80%;
@@ -60,25 +52,21 @@ textarea {
  background-color: white;
  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
 input:focus,
 textarea:focus {
  border-color: #00aaff;
  outline: none;
  box-shadow: 0 0 10px rgba(0, 170, 255, 0.5);
 }
-
 textarea {
  height: 150px;
  resize: vertical;
 }
-
 .checkbox {
  display: flex;
  flex-direction: row;
  justify-content: center;
 }
-
 input[type="checkbox"] {
  width: auto;
  height: 20px;
@@ -89,7 +77,6 @@ input[type="checkbox"] {
 label {
  width: 70%;
 }
-
 input[type="submit"] {
  width: 20%;
  background-color: #00aaff;
@@ -102,11 +89,9 @@ input[type="submit"] {
  padding: 15px;
  transition: background 0.3s ease-in-out;
 }
-
 input[type="submit"]:hover {
  background-color: #0088cc;
 }
-
 @include mobile {
   .layout-contact {
     display: flex;
@@ -151,7 +136,6 @@ input[type="submit"]:hover {
     }
   }
 }
-
 @include tablet {
   .layout-contact {
     display: flex;
@@ -195,7 +179,6 @@ input[type="submit"]:hover {
     }
   }
 }
-
 @include desktop {
   input[type="checkbox"] {
     width: 30px;

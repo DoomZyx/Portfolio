@@ -14,7 +14,6 @@ function MyProjects() {
           {" "}
           {t("my-projects-title")}{" "}
         </h2>
-
         <div className="box-projects" id="project">
           <Carousel />
         </div>

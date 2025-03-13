@@ -56,16 +56,18 @@ function Contact() {
     } catch (error) {
       setResponseMessage("Une erreur est survenue, veuillez réessayer.");
     }
-
     setLoading(false);
   };
 
   return (
     <>
-      <section ref={ref} className={`layout-contact ${isVisible ? 'active' : ""}`} id="contact">
+      <section
+        ref={ref}
+        className={`layout-contact ${isVisible ? "active" : ""}`}
+        id="contact"
+      >
         <h2 className="contact-title"> {t("contactme-title")} </h2>
         <h3 className="contact-text"> {t("contactme-text")} </h3>
-
         <form onSubmit={handleSubmit}>
           <div className="name-field">
             <input
@@ -87,7 +89,6 @@ function Contact() {
               required
             />
           </div>
-
           <div className="com-field">
             <input
               type="email"
@@ -108,7 +109,6 @@ function Contact() {
               required
             />
           </div>
-
           <input
             type="text"
             name="subject"
@@ -118,7 +118,6 @@ function Contact() {
             onChange={handleChange}
             required
           />
-
           <textarea
             name="message"
             id="message"
@@ -128,12 +127,10 @@ function Contact() {
             onChange={handleChange}
             required
           ></textarea>
-
           <div className="checkbox">
             <input type="checkbox" name="data" id="data" required />
             <label htmlFor="data"> {t("label-form")} </label>
           </div>
-
           <input type="submit" value={t("send-but")} disabled={loading} />
           {loading ? "..." : ""}
         </form>

@@ -20,11 +20,11 @@ function MySkills() {
       >
         <h2 className="skills-title"> {t("my-skills-title")} </h2>
         <div className="box_skills">
-          <img src={html} alt="html logo" />
-          <img src={css} alt="css logo" />
-          <img src={sass} alt="sass" />
-          <img src={js} alt="js logo" />
-          <img src={react} alt="react" />
+          <img loading="lazy" src={html} alt="html logo" />
+          <img loading="lazy" src={css} alt="css logo" />
+          <img loading="lazy" src={sass} alt="sass" />
+          <img loading="lazy" src={js} alt="js logo" />
+          <img loading="lazy" src={react} alt="react" />
         </div>
       </section>
     </>
