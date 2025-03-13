@@ -27,7 +27,7 @@ function Nav() {
         </a>
       </div>
       <div className="langage-button">
-        <button onClick={() => i18n.changeLanguage("fr")}>
+        <button className="france-but" onClick={() => i18n.changeLanguage("fr")}>
           <img src={france} alt="Drapeau France" />
         </button>
         <button

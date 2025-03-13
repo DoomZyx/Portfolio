@@ -181,10 +181,10 @@ input[type="submit"]:hover {
 }
 @include desktop {
   input[type="checkbox"] {
-    width: 30px;
+    width: 15px;
     position: relative;
-    top: -3px;
-    left: 20px;
+    top: -5px;
+    left: 5px;
   }
 }
 
