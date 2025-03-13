@@ -59,13 +59,21 @@
 }
 
 .sub-carousel img {
- border: 3px solid white;
  width: 100%;
  max-height: 600px;
  border-radius: 30px;
  border-color: white;
  object-fit: cover;
  margin-bottom: 1em;
+}
+.slide-out-right {
+ -webkit-animation:slide-out-right 0.5s cubic-bezier(.55,.085,.68,.53) both; 
+         animation:slide-out-right 0.5s cubic-bezier(.55,.085,.68,.53) both;
+}
+
+.slide-out-left  {
+	-webkit-animation: slide-out-left 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: slide-out-left 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 .image-pagination {

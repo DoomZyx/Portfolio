@@ -13,8 +13,12 @@ function MySkills() {
   const [ref, isVisible] = Observer()
   return (
     <>
-      <section ref={ref} className={`skills ${isVisible ? "active" : ""}`}>
-        <h2 className="skills-title" id="skills"> {t("my-skills-title")} </h2>
+      <section
+        ref={ref}
+        id="skills"
+        className={`skills ${isVisible ? "active" : ""}`}
+      >
+        <h2 className="skills-title"> {t("my-skills-title")} </h2>
         <div className="box_skills">
           <img src={html} alt="html logo" />
           <img src={css} alt="css logo" />

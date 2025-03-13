@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import projectsData from "../../data/dataProjects";
 import "./_caroussel.scss";
+import "../animation/_1stsec.scss";
 import github from "../../images/github.webp";
 
 import { useTranslation } from "react-i18next";
@@ -21,6 +22,7 @@ const Carousel = () => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [animationClass, setAnimationClass] = useState("");
 
   const imageFullScreen = useRef(null);
 
@@ -33,15 +35,35 @@ const Carousel = () => {
   }
 
   const nextProject = () => {
-    setProjectIndex((prev) => (prev + 1) % projectsData.length);
-    setImageIndex(0);
+    setAnimationClass("slide-out-left");
+    setTimeout(() => {
+      setProjectIndex((prev) => (prev + 1) % projectsData.length);
+      setImageIndex(0);
+      setAnimationClass("");
+    }, 500);
   };
 
   const prevProject = () => {
-    setProjectIndex(
-      (prev) => (prev - 1 + projectsData.length) % projectsData.length
-    );
-    setImageIndex(0);
+    setAnimationClass("slide-out-right");
+    setTimeout(() => {
+      setProjectIndex(
+        (prev) => (prev - 1 + projectsData.length) % projectsData.length
+      );
+      setImageIndex(0);
+      setAnimationClass("");
+    }, 500);
+  };
+
+  const changeImage = (newIndex) => {
+    if (newIndex === imageIndex) return;
+
+    const direction = newIndex > imageIndex ? "slide-out-left" : "slide-out-right";
+    setAnimationClass(direction);
+
+    setTimeout(() => {
+      setImageIndex(newIndex);
+      setAnimationClass(""); 
+    }, 500);
   };
 
   const handleTouchStart = (e) => {
@@ -98,10 +120,11 @@ const Carousel = () => {
       <button className="carousel-btn prev" onClick={prevProject}>
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
-      <div className="carousel" id="project">
+      <div className="carousel">
         <div className="carousel-item">
           <div className="sub-carousel" ref={imageFullScreen}>
             <img
+              className={animationClass}
               src={projectsData[projectIndex].images[imageIndex]}
               alt={`Image ${imageIndex + 1}`}
               onClick={handleFullscreen}
@@ -112,7 +135,7 @@ const Carousel = () => {
               <div
                 key={i}
                 className={`image-dot ${i === imageIndex ? "active" : ""}`}
-                onClick={() => setImageIndex(i)}
+                onClick={() => changeImage(i)}
               ></div>
             ))}
           </div>

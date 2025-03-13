@@ -10,9 +10,12 @@ function MyProjects() {
   return (
     <>
       <section className="layout-projects">
-        <h2 ref={ref} className={`projects-title ${isVisible ? 'active' : ""}`}> {t("my-projects-title")} </h2>
+        <h2 ref={ref} className={`projects-title ${isVisible ? "active" : ""}`}>
+          {" "}
+          {t("my-projects-title")}{" "}
+        </h2>
 
-        <div className="box-projects">
+        <div className="box-projects" id="project">
           <Carousel />
         </div>
       </section>
