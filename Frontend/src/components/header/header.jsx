@@ -36,13 +36,15 @@ function Header() {
           >
             <h3> {t("contact-but")} </h3>
           </button>
-          <button className="download-butt" href="">
-            <FontAwesomeIcon
-              icon={faCircleArrowDown}
-              className="download-icon"
-            />
-            <h3> {t("my-cv")} </h3>
-          </button>
+          <a href="Free Resume Maker1.pdf" download>
+            <button className="download-butt">
+              <FontAwesomeIcon
+                icon={faCircleArrowDown}
+                className="download-icon"
+              />
+              <h3> {t("my-cv")} </h3>
+            </button>
+          </a>
         </div>
       </header>
     </>
