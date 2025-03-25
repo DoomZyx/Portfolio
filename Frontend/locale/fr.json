@@ -29,5 +29,6 @@
  "placeholder-object": "Objet",
  "placeholder-request": "Ecrivez votre demande",
  "label-form": "En soumettant ce formulaire, j'accepte que mes données personnelles soient utilisées pour me recontacter. Aucun autre traitement ne sera effectué avec mes informations. Pour connaître et exercer vos droits, veuillez consulter la Politique de confidentialité.",
- "send-but" : "Envoyer"
+ "send-but" : "Envoyer",
+ "form-success" : "Message envoyé avec succès !"
 }

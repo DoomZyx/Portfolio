@@ -1,63 +1,17 @@
 import "./_contact.scss";
-import { useState } from "react";
-
+import { useForm, ValidationError } from "@formspree/react";
 import { useTranslation } from "react-i18next";
-import Observer from "../animation/Observer"
+import Observer from "../animation/Observer";
 
 function Contact() {
   const { t } = useTranslation();
   const [ref, isVisible] = Observer();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    surname: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
+  const [state, handleSubmit] = useForm("mnnpvggb");
 
-  const [loading, setLoading] = useState(false);
-  const [responseMessage, setResponseMessage] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setResponseMessage("");
-
-    try {
-      const response = await fetch(
-        "http://localhost:5000/api/contact/send-email",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      const data = await response.json();
-      if (response.ok) {
-        setResponseMessage("Message envoyé avec succès !");
-        setFormData({
-          name: "",
-          surname: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
-      } else {
-        setResponseMessage("Erreur : " + data.error);
-      }
-    } catch (error) {
-      setResponseMessage("Une erreur est survenue, veuillez réessayer.");
-    }
-    setLoading(false);
-  };
+  if (state.succeeded) {
+    return <h2 className="msg-rtv">{t("form-success")}</h2>;
+  }
 
   return (
     <>
@@ -70,72 +24,111 @@ function Contact() {
         <h3 className="contact-text"> {t("contactme-text")} </h3>
         <form onSubmit={handleSubmit}>
           <div className="name-field">
+            <label className="sr-only" htmlFor="nom">
+              Nom
+            </label>
             <input
               type="text"
               name="name"
               id="nom"
               placeholder={t("placeholder-name")}
-              value={formData.name}
-              onChange={handleChange}
               required
             />
+            <ValidationError prefix="Name" field="name" errors={state.errors} />
+            <label className="sr-only" htmlFor="prenom">
+              Prénom
+            </label>
             <input
               type="text"
               name="surname"
               id="prenom"
               placeholder={t("placeholder-surname")}
-              value={formData.surname}
-              onChange={handleChange}
               required
+            />
+            <ValidationError
+              prefix="Surname"
+              field="surname"
+              errors={state.errors}
             />
           </div>
           <div className="com-field">
+            <label className="sr-only" htmlFor="email">
+              email
+            </label>
             <input
               type="email"
               name="email"
               id="email"
               placeholder={t("placeholder-mail")}
-              value={formData.email}
-              onChange={handleChange}
               required
             />
+            <ValidationError
+              prefix="Email"
+              field="email"
+              errors={state.errors}
+            />
+            <label className="sr-only" htmlFor="phone">
+              Téléphone
+            </label>
             <input
               type="tel"
               name="phone"
               id="phone"
               placeholder={t("placeholder-phone")}
-              value={formData.phone}
-              onChange={handleChange}
               required
             />
+            <ValidationError
+              prefix="Phone"
+              field="phone"
+              errors={state.errors}
+            />
           </div>
+          <label className="sr-only" htmlFor="subject">
+            Motif
+          </label>
           <input
             type="text"
             name="subject"
             id="subject"
             placeholder={t("placeholder-object")}
-            value={formData.subject}
-            onChange={handleChange}
             required
           />
+          <ValidationError
+            prefix="Subject"
+            field="subject"
+            errors={state.errors}
+          />
+          <label className="sr-only" htmlFor="message">
+            Message
+          </label>
           <textarea
             name="message"
             id="message"
             rows={15}
             placeholder={t("placeholder-request")}
-            value={formData.message}
-            onChange={handleChange}
             required
           ></textarea>
+          <ValidationError
+            prefix="Message"
+            field="message"
+            errors={state.errors}
+          />
           <div className="checkbox">
             <input type="checkbox" name="data" id="data" required />
             <label htmlFor="data"> {t("label-form")} </label>
+            <ValidationError
+              prefix="Consent"
+              field="data"
+              errors={state.errors}
+            />
           </div>
-          <input type="submit" value={t("send-but")} disabled={loading} />
-          {loading ? "..." : ""}
+          <input
+            aria-label="Envoyer"
+            type="submit"
+            value={t("send-but")}
+            disabled={state.submitting}
+          />
         </form>
-
-        {responseMessage && <p>{responseMessage}</p>}
       </section>
     </>
   );

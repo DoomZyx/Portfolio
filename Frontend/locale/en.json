@@ -29,6 +29,6 @@
  "placeholder-object": "Object",
  "placeholder-request": "Write your request",
  "label-form": "By submitting this form, I agree that my personal data may be used to contact me. No other processing will be carried out with my information. To learn about and exercise your rights, please consult the Privacy Policy",
- "send-but" : "Send"
-
+ "send-but" : "Send",
+ "form-success": "Meessage retrieve successfuly ! "
 }

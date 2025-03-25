@@ -118,7 +118,11 @@ const Carousel = () => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <button className="carousel-btn prev" onClick={prevProject}>
+      <button
+        aria-label="Bouton précédent"
+        className="carousel-btn prev"
+        onClick={prevProject}
+      >
         <FontAwesomeIcon icon={faChevronLeft} />
       </button>
       <div className="carousel" id="project">
@@ -151,6 +155,16 @@ const Carousel = () => {
             <p className="carousel-description">
               {projectsData[projectIndex].description[i18n.language]}
             </p>
+            <div className="techno-layout">
+              {projectsData[projectIndex].technos.map((tech, i) => (
+                <img
+                  key={i}
+                  src={tech}
+                  alt={`technologie ${i + 1}`}
+                  className="tech-icon"
+                />
+              ))}
+            </div>
             <button
               className="link-github"
               onClick={() =>
@@ -158,12 +172,16 @@ const Carousel = () => {
               }
             >
               <img src={github} alt="" />
-              <p>LIEN REPOS</p>
+              <p>LIEN REPO</p>
             </button>
           </div>
         </div>
       </div>
-      <button className="carousel-btn next" onClick={nextProject}>
+      <button
+        aria-label="Bouton suivant"
+        className="carousel-btn next"
+        onClick={nextProject}
+      >
         <FontAwesomeIcon icon={faChevronRight} />
       </button>
 

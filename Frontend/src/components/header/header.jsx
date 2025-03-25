@@ -27,7 +27,7 @@ function Header() {
             className="github-butt"
             onClick={() => window.open("https://github.com/DoomZyx", "_blank")}
           >
-            <img className="github-logo" src={github} alt="github" />
+            <img className="github-logo" src={github} alt="link Github" />
             <p>GITHUB</p>
           </button>
           <button

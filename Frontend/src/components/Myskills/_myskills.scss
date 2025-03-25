@@ -26,6 +26,11 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 15em;
+    :nth-child(1) {
+      position: relative;
+      top: 13px;
+      width: 150px;
+    }
     :nth-child(2) {
       position: relative;
       top: 15px;
