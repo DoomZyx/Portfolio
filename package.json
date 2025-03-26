@@ -1,6 +1,7 @@
 {
   "name": "init_vite",
   "private": true,
+  "homepage": "https://doomzyx.github.io/Portfolio",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
