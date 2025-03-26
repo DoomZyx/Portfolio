@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import projectsData from "../../data/dataProjects";
 import "./_caroussel.scss";
 import "../animation/_1stsec.scss";
@@ -15,16 +15,41 @@ import {
 
 const Carousel = () => {
   const { i18n } = useTranslation();
-  const [ref, isVisible] = Observer({ threshold: 0.5 });
+  const [ref, isVisible] = Observer({ threshold: 0.3 });
 
   const [projectIndex, setProjectIndex] = useState(0);
+
   const [imageIndex, setImageIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [animationClass, setAnimationClass] = useState("");
 
   const imageFullScreen = useRef(null);
+
+  // Ecouteur d'événement qui change l'index de l'image en fonction des flèches
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const images = projectsData[projectIndex].images;
+      const lastIndex = images.length - 1;
+
+      if (e.key === "ArrowRight") {
+        const nextIndex = imageIndex + 1 > lastIndex ? 0 : imageIndex + 1;
+        changeImage(nextIndex);
+      } else if (e.key === "ArrowLeft") {
+        const prevIndex = imageIndex - 1 < 0 ? lastIndex : imageIndex - 1;
+        changeImage(prevIndex);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [imageIndex, projectIndex]);
 
   if (
     !projectsData[projectIndex] ||
@@ -43,7 +68,6 @@ const Carousel = () => {
     }, 500);
   };
 
-
   const prevProject = () => {
     setAnimationClass("slide-out-right");
     setTimeout(() => {
@@ -58,12 +82,13 @@ const Carousel = () => {
   const changeImage = (newIndex) => {
     if (newIndex === imageIndex) return;
 
-    const direction = newIndex > imageIndex ? "slide-out-left" : "slide-out-right";
+    const direction =
+      newIndex > imageIndex ? "slide-out-left" : "slide-out-right";
     setAnimationClass(direction);
 
     setTimeout(() => {
       setImageIndex(newIndex);
-      setAnimationClass(""); 
+      setAnimationClass("");
     }, 500);
   };
 

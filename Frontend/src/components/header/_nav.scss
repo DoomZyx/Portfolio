@@ -1,18 +1,21 @@
 @use "../../Utils/responsive" as *;
 
+nav {
+  position: fixed;
+  top: -4.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
 .layout-nav {
- width: 68%;
- height: 5vh;
- z-index: 9999;
+ width: 1000px;
+ height: 7vh;
  display: flex;
  align-items: center;
  flex-direction: row;
  justify-content: space-around;
  gap: 40px;
- position: fixed;
  background-color: black;
- top: -3em;
- left: 300px;
  border: 2px solid white;
  border-radius: 50px;
  padding: 1em;
@@ -23,63 +26,25 @@
   color: #00aaff;
  }
 }
-nav {
-  .langage-button {
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: 10px;
-    padding: 1em;
-    .france-but {
-      position: relative;
-      top: 6px;
-     width: 30px;
-     height: 30px;
-     object-fit: cover;
-    }
-    .english-button img {
-      width: 30px;
-      height: 30px;
-    }
-  }
-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
- border: none;
- background: none;
- width: 40px;
- height: 35px;
-  }
-}
 .layout-nav {
  transition: transform 1.5s ease;
  transform: translateY(0);
 }
 .layout-nav:hover,
 .layout-nav.active {
- transform: translateY(60px);
+ transform: translateY(80px);
 }
 @keyframes translate {
  0% {
   transform: translateY(0px);
  }
   100% {
-   transform: translateY(60px);
+   transform: translateY(80px);
   }
 }
 @include mobile {
  .layout-nav {
-display: none;
- }
- .langage-button {
-  position: relative;
-  bottom: 280px;
-  .english-button {
-    position: relative;
-    top: 4px;
-    font-size: 2.3rem;
-  }
+  display: none;
  }
 }
 @include tablet {
@@ -95,4 +60,23 @@ display: none;
    font-size: 1.3em;
   }
  }
+}
+
+@include largeDesktop {
+
+  nav {
+    top: -5.5em;
+    .layout-nav {
+      border-radius: 50px;
+      width: 100%;
+      height: 6vh;
+      a {
+        font-size: 3em;
+      }
+    }
+    .layout-nav:hover,
+.layout-nav.active {
+ transform: translateY(100px);
+}
+  }
 }

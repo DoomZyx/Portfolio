@@ -1,26 +1,56 @@
 @use "../../Utils/responsive" as *;
 
 .Background-1 {
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100vh;
-  background-image: url("../../images/office.webp");
-  background-size: cover;
-  background-position: bottom;
-  object-fit: cover;
-  z-index: 1;
-  position: relative;
+  height: 25%;
+  .office-background {
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+  }
+}
+
+.langage-button {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+  padding: 1em;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   border: none;
+   background: none;
+   width: 40px;
+   height: 35px;
+    }
+  .france-but {
+    position: relative;
+    top: 6px;
+   width: 30px;
+   height: 30px;
+   object-fit: cover;
+  }
+  .english-button img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 header {
-  z-index: 1;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .presentation {
-   padding-top: 10rem;
-   padding-left: 4rem;
-   width: 40%;
-   display: flex;
-   flex-direction: column;
+    margin-top: 2em;
+    margin-left: 7rem;
+   width: 100%;
    text-align: center;
    gap: 40px;
    .welcome {
@@ -40,7 +70,7 @@ header {
    flex-direction: row;
    width: 100%;
    padding-top: 4em;
-   padding-left: 6rem;
+   padding-left: 4rem;
    gap: 80px;
    & button {
     display: flex;
@@ -82,24 +112,35 @@ header {
 
  @include mobile {
   .Background-1 {
-    background-position: bottom 15em left 70%;
-    background-repeat: no-repeat;
-    min-height: 75dvh;
-    position: relative;
-    top: 290px;
+    width: 100%;
+    height: auto;
   }
+  .Background-1 .office-background {
+    width: 100%;
+    object-fit: contain;
+    transform: scaleX(2);
+    transform: scaleY(2);
+    top: -10%;
+  }
+  .langage-button {
+    position: relative;
+    top: 0px;
+    .english-button {
+      position: relative;
+      top: 2px;
+      font-size: 2.3rem;
+    }
+   }
   header {
     .presentation {
-      padding: 0;
-      position: relative;
-      bottom: 250px;
-      margin-top: 0em;
-      margin-bottom: 0em;
+      padding-top: 2em;
+      display: flex;
+      flex-direction: column;
       display: flex;
       justify-content: center;
-      width: 100%;
+      width: 80%;
       .welcome {
-        font-size: 3rem;
+        font-size: 2.7rem;
       }
       .myName {
         font-size: 2rem;
@@ -112,31 +153,36 @@ header {
   header .layout-button {
     display: flex;
     flex-direction: column-reverse;
-    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    padding: 0;
-    margin-top: 10em;
+    padding-top: 13em;
+    padding-left: 0;
+    padding-bottom: 5em;
     width: 100%;
-    gap: 15px;
+    gap: 10px;
+
   }
  }
 
  @include tablet {
   .Background-1 {
-    background-position: bottom 13em left 70%;
-    background-repeat: no-repeat;
-    min-height: 75vh;
-    position: relative;
-    top: 290px;
+    width: 100%;
+    height: auto;
+  }
+  .Background-1 .office-background {
+    width: 100%;
+    object-fit: contain;
+    transform: scaleX(2);
+    transform: scaleY(2);
+    top: 5%;
   }
   header {
     .presentation {
       padding: 0;
-      position: relative;
-      bottom: 230px;
       margin-top: 0em;
       margin-bottom: 0em;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       width: 100%;
       .welcome {
@@ -156,11 +202,11 @@ header {
     justify-content: center;
     align-items: center;
     padding: 0;
-    margin-top: 12em;
+    margin-top: 18em;
     width: 100%;
-    gap: 35px;
+    gap: 15px;
     button {
-      font-size: 2rem;
+      font-size: 1.5rem;
       border: 2px solid white;
     }
     .github-butt {
@@ -177,16 +223,16 @@ header {
  }
 
  @include desktop {
-  .Background-1 {
-    background-position: bottom 40% left 2em;
+  .Background-1 .office-background {
+    left: 10em;
   }
   body .presentation {
-    padding-top: 10rem;
-    padding-left: 4rem;
-    width: 40%;
+    margin-left: 7em;
+    padding-top: 13rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     gap: 40px;
     .welcome {
      font-size: 5rem;
@@ -198,6 +244,110 @@ header {
     .iam {
      font-size: 4rem;
      font-weight: 100;
+    }
+  }
+}
+
+@include largeDesktop {
+  .langage-button {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 50px;
+    padding: 1em;
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+     border: none;
+     background: none;
+     width: 40px;
+     height: 35px;
+      }
+    .france-but {
+      position: relative;
+      top: 15px;
+     width: 100px;
+     height: 100px;
+     object-fit: cover;
+     img {
+      width: 110px;
+      height: 110px;
+     }
+    }
+    .english-button img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  
+  header {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .presentation {
+      margin-top: 30em;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     text-align: left;
+     gap: 40px;
+     .welcome {
+      font-size: 10rem;
+      font-weight: 600;
+     }
+     .myName {
+      font-size: 6.5rem;
+     }
+     .iam {
+      font-size: 7.5rem;
+      font-weight: 100;
+     }
+    }
+    .layout-button {
+     display: flex;
+     flex-direction: row;
+     width: 100%;
+     padding-top: 4em;
+     padding-left: 4rem;
+     gap: 80px;
+     & button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: 4px solid #ffffff;
+      height: 100px;
+      font-size: 1.8rem;
+     }
+     button:hover {
+      filter: invert(1)
+     }
+     .github-butt {
+      width: auto;
+      height: 100px;
+      .github-logo {
+      transition: filter 0.3s ease-in-out;
+       position: relative;
+       right: 18px;
+       width: 100px;
+       height: 54px;
+      }
+      p {
+      position: relative;
+      right: 18px;
+      font-size: 1.2em;
+     }
+     .download-butt {
+      gap: 10px;
+     }
+    }
+    .download-icon {
+      position: relative;
+      right: 6px;
+      bottom: 1px;
+     font-size: 1.4em;
+      }
     }
   }
 }

@@ -17,7 +17,7 @@
  margin: auto;
  padding: 40px;
  text-align: center;
- margin-top: 5em;
+ padding-top: 5em;
  opacity: 0;
  transform: translateY(50px);
 }
@@ -27,10 +27,10 @@
   transition: opacity 1s ease-out, transform 0.5s ease-out;
 }
 .contact-title {
+  padding-bottom: 2em;
  font-size: 2.5rem;
  font-weight: bold;
  color: white;
- margin-bottom: 1em;
 }
 .contact-text {
  font-size: 1.2rem;
@@ -204,6 +204,71 @@ input[type="submit"]:hover {
     position: relative;
     top: -5px;
     left: 5px;
+  }
+}
+
+@include largeDesktop {  
+  .layout-contact {
+   max-width: 100%;
+   padding: 40px;
+   text-align: center;
+   padding-top: 1em;
+   opacity: 0;
+   transform: translateY(50px);
+  }
+
+  .contact-title {
+    padding-bottom: 2em;
+   font-size: 7rem;
+  }
+  .contact-text {
+   font-size: 4rem;
+   margin-bottom: 5em;
+  }
+  form {
+    gap: 80px;
+  }
+  .name-field,
+  .com-field {
+   width: 100%;
+   height: 3vh;
+  }
+  .name-field input,
+  .com-field input {
+   width: 30%;
+   height: 3vh;
+  }
+  input,
+  textarea {
+   width: 80%;
+   height: 3vh;
+  }
+  textarea {
+   height: 190px;
+  }
+  ::placeholder {
+    font-size: 2.4rem;
+  }
+  input[type="checkbox"] {
+   width: 50px;
+   height: auto;
+   position: relative;
+   top: -25px;
+   left: 25px;
+  }
+  .checkbox label {
+   width: 70%;
+   font-size: 2.4rem;
+  }
+  input[type="submit"] {
+   width: 10%;
+   height: auto;
+   font-size: 2.4rem;
+  }
+  
+  .msg-rtv {
+    text-align: center;
+    padding-bottom: 3em;
   }
 }
 

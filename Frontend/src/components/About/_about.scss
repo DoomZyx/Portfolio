@@ -35,7 +35,6 @@
  .aboutme-title {
   font-size: 2em;
   padding-bottom: 1.5em;
-  padding-top: 12em;
  }
  .layout-about {
   display: flex;
@@ -58,7 +57,6 @@
  .aboutme-title {
   font-size: 4em;
   padding-bottom: 1.5em;
-  padding-top: 10em;
  }
  .layout-about {
   display: flex;
@@ -80,5 +78,22 @@
 @include desktop {
  .aboutme-title {
   margin-top: 3em;
+ }
+}
+
+@include largeDesktop {
+ .aboutme-title {
+  font-size: 7em;
+  padding-top: 5em;
+  padding-bottom: 15rem;
+ }
+ .layout-about {
+  padding-bottom: 25em;
+  .pictureAboutMe {
+   width: 40%;
+  }
+  .text-aboutme {
+   font-size: 2.5rem;
+  }
  }
 }

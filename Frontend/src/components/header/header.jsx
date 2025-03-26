@@ -5,18 +5,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowDown } from "@fortawesome/free-solid-svg-icons";
 import github from "../../images/github.webp";
 
+import france from "../../images/french.webp"
+import uk from "../../images/uk.webp";
+
 import { useTranslation } from "react-i18next";
+import "../../../i18n";
 import Observer from '../animation/Observer';
 
 
 function Header() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [ref, isVisible] = Observer();
 
   return (
     <>
+          <div className="langage-button">
+        <button className="france-but" onClick={() => i18n.changeLanguage("fr")}>
+          <img src={france} alt="Drapeau France" />
+        </button>
+        <button
+          className="english-button"
+          onClick={() => i18n.changeLanguage("en")}
+        >
+          <img src={uk} alt="Drapeau Royame-Uni" />
+        </button>
+      </div>
       <header id="home">
-        <Nav />
         <div ref={ref} className={`presentation ${isVisible ? "active" : ""}`}>
           <h1 className="welcome"> {t("welcome")} </h1>
           <h2 className="myName"> {t("Iam")} </h2>

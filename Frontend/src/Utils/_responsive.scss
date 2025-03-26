@@ -1,13 +1,19 @@
 $breakpoints :
 (
+ "largeScreen": 2801px,
  "desktop": 1025px,
  "tablet": 1025px,
  "mobile": 490px
 );
 
+@mixin largeDesktop {
+    @media screen and (min-width: map-get($breakpoints, "largeScreen")) and (max-width: 3300px) {
+        @content;
+    }
+}
 
 @mixin desktop {
- @media screen and (min-width: map-get($breakpoints,"desktop")) and (max-width: 2440px) {
+ @media screen and (min-width: map-get($breakpoints,"desktop")) and (max-width: 2800px) {
      @content;
  }
 };

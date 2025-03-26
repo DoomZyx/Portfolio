@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 
-export default function Observer(options = { threshold: 0.5 }) {
+export default function Observer(options = { threshold: 0.4 }) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
