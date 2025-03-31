@@ -164,7 +164,7 @@
 @include mobile {
  .carousel-container {
   padding-top: 0;
-  padding-bottom: 5em;
+  margin-bottom: -5rem;
  }
  .carousel {
   display: flex;
@@ -286,13 +286,14 @@
   display: flex;
   justify-content: center;
   position: relative;
-  top: 40px;
+  top: 0;
   left: 0;
  }
  .techno-layout {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 1rem;
   img {
    width: 100px;
    height: auto;

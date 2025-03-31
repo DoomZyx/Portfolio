@@ -183,18 +183,20 @@ input[type="submit"]:hover {
     .com-field input {
       width: 80%;
     }
-    input[type="checkbox"] {
-      width: 10px;
-      height: 10px;
+    form input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
       position: relative;
-      top: 0px;
-      left: 0px;
+      top: 10px;
+      left: -2%;
     }
     label {
-      width: 100%;
+      text-align: left;
+      width: 80%;
     }
     input[type="submit"] {
       width: 180px;
+      margin-bottom: 2rem;
     }
   }
 }

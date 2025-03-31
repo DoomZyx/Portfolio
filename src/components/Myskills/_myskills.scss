@@ -54,28 +54,34 @@
   .box_skills {
     display: flex;
     flex-direction: column-reverse;
-    width: 50%;
+    width: 40%;
     height: 100vh;
     margin-bottom: 1em;
     img {
       width: 60%;
+    }
+    :nth-child(1) {
+      width: 100px;
     }
   }
  }
 }
 @include tablet {
   .skills {
-    margin-bottom: 3em;
+    margin-bottom: 0em;
     .skills-title {
       font-size: 4em;
     }
     .box_skills {
       display: flex;
       flex-direction: column-reverse;
-      width: 50%;
+      width: 40%;
       height: 160vh;
       img {
         width: 60%;
+      }
+      :nth-child(1) {
+        width: 250px;
       }
     }
    }
