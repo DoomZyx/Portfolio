@@ -113,18 +113,20 @@ input[type="submit"]:hover {
 
 @include mobile {
   .layout-contact {
+    width: 90%;
     display: flex;
     text-align: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 0;
-    padding: 1em;
+    padding: 0em;
     .contact-title {
+      margin-top: 3rem;
       font-size: 2rem;
     }
     .contact-text {
-      font-size: 1EM;
+      font-size: 1em;
       margin-bottom: 3em;
       margin-top: 1em;
       width: 80%;
@@ -152,6 +154,7 @@ input[type="submit"]:hover {
     }
     input[type="submit"] {
       width: 180px;
+      margin-bottom: 40px;
     }
   }
 }
@@ -196,7 +199,7 @@ input[type="submit"]:hover {
     }
     input[type="submit"] {
       width: 180px;
-      margin-bottom: 2rem;
+      margin-bottom: -10rem;
     }
   }
 }

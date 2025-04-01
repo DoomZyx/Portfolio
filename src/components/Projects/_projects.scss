@@ -31,6 +31,7 @@
 
 @include mobile {
  .layout-projects {
+  width: 100%;
   .projects-title {
    font-size: 2em;
    height: 30vh;
@@ -64,10 +65,11 @@
 
 @include tablet {
   .layout-projects {
+    width: 100%;
     .projects-title {
       font-size: 4rem;
      height: 30vh;
-     margin-bottom: 1.5em;
+     margin-bottom: 0;
      margin-top: -10.5rem;
     }
    }

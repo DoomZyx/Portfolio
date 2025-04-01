@@ -1,406 +1,357 @@
 @use "../../Utils/responsive" as *;
 
 .carousel-container {
- width: 100%;
- max-height: 1200px;
- position: relative;
- display: flex;
- justify-content: center;
- overflow: hidden;
- opacity: 0;
- transform: translateY(50px);
- padding-top: 8em;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  overflow: hidden;
 }
-.carousel-container.no-transform {
- transform: none !important;
-}
-.carousel-container.active {
- opacity: 1;
- transform: translateY(0);
- transition: opacity 1s ease-out, transform 0.5s ease-out;
-}
-.carousel {
- display: flex;
- justify-content: center;
- align-items: center;
-}
-.carousel-btn {
- padding-top: 1.5em;
- font-size: 8rem;
- color: white;
- background: none;
- cursor: pointer;
- border: none;
-}
-.carousel-btn:hover {
- transform: scale(1.2);
-}
-.carousel-btn.prev {
- left: -120px; 
-}
-.carousel-btn.next {
- right: -120px; 
-}
-.sub-carousel {
- display: flex;
- align-items: center;
- justify-content: center;
- margin-top: 10px;
- min-height: 400px;
-}
-.sub-carousel img {
- width: 100%;
- max-height: 600px;
- border-radius: 30px;
- border-color: white;
- object-fit: cover;
- margin-bottom: 1em;
-}
-.slide-out-left {
- animation: slide-out-left 0.5s ease-out;
-}
-.slide-out-right {
- animation: slide-out-right 0.5s ease-out;
-}
-.slide-in-left {
- animation: slide-in-left 0.5s ease-out;
-}
-.slide-in-right {
- animation: slide-in-right 0.5s ease-out;
-}
-.image-pagination {
- display: flex;
- justify-content: center;
- margin-top: 10px;
-}
-.image-dot {
- width: 20px;
- height: 20px;
- margin: 10px;
- background: #555;
- border-radius: 50%;
- cursor: pointer;
- transition: background 0.3s ease-in-out;
-}
-.image-dot:hover {
- background: #00aaff;
-}
-.image-dot.active {
- background: #00aaff;
- box-shadow: 0px 0px 8px rgba(0, 170, 255, 0.6);
-}
-.carousel-text {
- display: flex;
- flex-direction: column;
- align-items: flex-start;
- margin-bottom: 10em;
- opacity: 0;
- transform: translateY(50px);
-}
-.carousel-text.active {
- opacity: 1;
- transform: translateY(0);
- transition: opacity 1s ease-out, transform 0.5s ease-out;
-}
-.carousel-title {
- font-size: 3em;
- font-weight: bold;
- color: white;
- margin-top: 2em;
-}
-.carousel-progression {
- margin-bottom: 2em;
-}
-.carousel-description {
- font-size: 1.3em;
- color: white;
- margin-top: 10px;
- text-align: left;
- line-height: 1.5;
- max-width: 100%;
- margin: auto;
- font-weight: 200;
-}
-.techno-layout {
- display: flex;
- padding-top: 2em;
- flex-direction: row;
- align-items: center;
- gap: 25px;
- :nth-child(4) {
-  position: relative;
-  bottom: 7px;
- }
- img {
-  width: 100px;
-  height: 100px;
- }
-}
-.link-github  {
- display: flex;
- justify-content: center;
- align-items: center;
- width: 180px;
- padding: 0.8em;
- cursor: pointer;
- position: relative;
- border: 2px solid white;
- left: 1200px;
- bottom: 100px;
- margin: 3em;
- right: 0;
- img {
-  transition: filter 0.3s ease-in-out;
-  position: relative;
-  right: 8px;
-  bottom: 1px;
-  width: 60px;
-  height: auto;
- }
-}
-.link-github:hover {
- filter: invert(1);
-}
-@include mobile {
- .carousel-container {
-  padding-top: 0;
-  margin-bottom: -5rem;
- }
- .carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
- }
- .sub-carousel {
-  width: 99%;
-  min-height: 0;
-  & img {
-   border: none;
-   border-radius: 10px;
-  }
- }
- .carousel-btn {
-  display: none;
- }
- .image-pagination-screen {
-  display: flex;
-  justify-content: center;
-  margin-top: 0px;
- }
 
- .image-dot-screen {
-  width: 30px;
-  height: 30px;
-  margin: 10px;
-  background: #555;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
- }
- .image-dot-screen.active {
-  background: #00aaff;
-  box-shadow: 0px 0px 8px rgba(0, 170, 255, 0.6);
- }
- .carousel-text {
-  text-align: left;
-  margin-bottom: 10em;
- }
- .carousel-title {
-  text-align: left;
-  font-size: 2em;
- }
- .carousel-description {
-  font-size: 1em;
-  margin: 1em;
- }
- .link-github {
+.main-swiper {
+  width: 100%;
+  height: 1000px; 
+  position: relative;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-swiper {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 20px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+.swiper-pagination {
   display: flex;
   justify-content: center;
-  position: relative;
-  top: 40px;
-  left: 15%;
- }
- .techno-layout {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  img {
-   width: 70px;
-   height: auto;
+  gap: 10px;
+}
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: 28%;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 4rem;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #f4f4f4f4 !important;
+}
+
+.project-info {
+  text-align: left;
+  padding: 10px 20px;
+
+  h2 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+
+    span {
+      font-size: 1rem;
+      margin-left: 10px;
+    }
   }
- }
+
+  .caroussel-description {
+    width: 100%;
+    font-weight: 100;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .technos {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+
+    img {
+      width: 100px;
+      height: 95px;
+    }
+  }
+
+  .repo-layout {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+
+    .link-github {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: black;
+      color: #fff;
+      border: 1px solid white;
+      border-radius: 50px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        filter: invert(1)
+      }
+
+      img {
+        width: 50px;
+        height: 30px;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@include mobile {
+
+  .carousel-container {
+    max-width: clamp(280px,90vw,600px);
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+  }
+  .main-swiper {
+    width: 100%;
+    height: 890px; 
+    position: relative;
+  }
+  .image-swiper {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 20px;
+
+  }
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+  
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    color: #f4f4f4f4 !important;
+  }
+  
+  .project-info {
+    text-align: left;
+    padding: 0;
+  
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 3rem;
+  
+      span {
+        font-size: 1rem;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  
+    .caroussel-description {
+      width: 100%;
+      font-weight: 100;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+  
+    .technos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+  
+      img {
+        width: 50px;
+        height: 45px;
+      }
+    }
+  
+    .repo-layout {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+  
+      .link-github {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: black;
+        color: #fff;
+        border: 1px solid white;
+        border-radius: 50px;
+        padding: 10px 15px;
+        cursor: pointer;
+        transition: background 0.3s;
+  
+        &:hover {
+          filter: invert(1)
+        }
+  
+        img {
+          width: 50px;
+          height: 30px;
+        }
+  
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
 }
 
 @include tablet {
- .carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
- }
- .sub-carousel {
-  width: 99%;
-  min-height: 0;
-  & img {
-   border: none;
-   border-radius: 10px;
+  .carousel-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
   }
- }
- .carousel-btn {
-  display: none;
- }
- .image-pagination-screen {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
- }
- .image-dot {
-  width: 30px;
-  height: 30px;
- }
- .image-dot-screen {
-  width: 30px;
-  height: 30px;
-  margin: 10px;
-  background: #555;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
- }
- .image-dot-screen.active {
-  background: #00aaff;
-  box-shadow: 0px 0px 8px rgba(0, 170, 255, 0.6);
- }
- .carousel-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
- }
- .carousel-title {
-  font-size: 3em;
- }
- .carousel-description {
-  font-size: 1.5em;
-  margin: 1em;
- }
- .link-github {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  top: 0;
-  left: 0;
- }
- .techno-layout {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 1rem;
-  img {
-   width: 100px;
-   height: auto;
+  
+  .main-swiper {
+    width: 100%;
+    height: 1200px; 
+    position: relative;
   }
- }
-}
-@include desktop {
- .sub-carousel img {
-  width: 80%;
- }
- .carousel-btn {
-  position: absolute;
-  top: 3%;
-  padding-inline: 1.2em;
- }
- .carousel-text {
-  padding: 1.5em;
- }
- 
-}
-
-@include largeDesktop {
- .carousel-container {
-  width: 100%;
-  max-height: 80%;
-  text-align: justify;
-  .carousel-btn {
-   position: absolute;
-   top: 11%;
-   padding-top: 1.5em;
-   font-size: 12rem;
+  
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-
-  .sub-carousel img {
-   width: 80%;
-   max-height: 80%;
- }
- .image-pagination {
-  margin-top: 50px;
- }
- .image-dot {
-  width: 60px;
-  height: 60px;
-  margin: 30px;
- }
- .carousel-text { 
-  margin-bottom: 10em;
-  opacity: 0;
-  transform: translateY(50px);
- }
- .carousel-text.active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 1s ease-out, transform 0.5s ease-out;
- }
- .carousel-title {
-  font-size: 6em;
-  color: white;
-  margin-top: 1em;
- }
- .carousel-progression {
-  font-size: 4rem;
-  margin-bottom: 1em;
- }
- .carousel-description {
-  font-size: 3em;
-  color: white;
-  margin-top: 10px;
-  text-align: left;
-  line-height: 1.5;
- }
- .techno-layout {
-  display: flex;
-  padding-top: 2em;
-  flex-direction: row;
-  align-items: center;
-  gap: 25px;
-  :nth-child(4) {
-   position: relative;
-   bottom: 10px;
+  
+  .image-swiper {
+    width: 100%;
+    height: 350px;
+    margin-bottom: 20px;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
   }
-  img {
-   width: 160px;
-   height: 150px;
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
   }
- }
-}
- .link-github  {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  padding: 0.8em;
-  cursor: pointer;
-  position: relative;
-  border: 4px solid white;
-  left: 2200px;
-  bottom: 150px;
-  margin: 3em;
-  font-size: 3rem;
-  img {
-   transition: filter 0.3s ease-in-out;
-   width: 140px;
-   height: auto;
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
   }
- }
- .link-github:hover {
-  filter: invert(1);
- }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+  
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    color: #f4f4f4f4 !important;
+  }
+  
+  .project-info {
+    text-align: left;
+    padding: 10px 20px;
+  
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+  
+      span {
+        font-size: 1.5rem;
+        margin-left: 10px;
+      }
+    }
+  
+    .caroussel-description {
+      width: 100%;
+      line-height: 1.5;
+      font-weight: 100;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+  
+    .technos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+  
+      img {
+        width: 80px;
+        height: 75px;
+      }
+    }
+  
+    .repo-layout {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+  
+      .link-github {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: black;
+        color: #fff;
+        border: 1px solid white;
+        border-radius: 50px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+  
+        &:hover {
+          filter: invert(1)
+        }
+  
+        img {
+          width: 70px;
+          height: 40px;
+        }
+  
+        p {
+          font-size: 1.2rem;
+          margin: 0;
+        }
+      }
+    }
+  }
 }
