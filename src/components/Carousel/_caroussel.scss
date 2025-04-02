@@ -235,7 +235,7 @@
 
 @include tablet {
   .carousel-container {
-    max-width: 760px;
+    max-width: clamp(768px,99vw,1024px);
     margin: 0 auto;
     padding: 0;
     overflow: hidden;
@@ -256,6 +256,129 @@
   .image-swiper {
     width: 100%;
     height: 350px;
+    margin-bottom: 20px;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+  
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    color: #f4f4f4f4 !important;
+  }
+  
+  .project-info {
+    text-align: left;
+    padding: 10px 20px;
+  
+    h2 {
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+  
+      span {
+        font-size: 1.5rem;
+        margin-left: 10px;
+      }
+    }
+  
+    .caroussel-description {
+      width: 100%;
+      line-height: 1.5;
+      font-weight: 100;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+  
+    .technos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 3rem;
+      margin-bottom: 2rem;
+  
+      img {
+        width: 80px;
+        height: 75px;
+      }
+    }
+  
+    .repo-layout {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+  
+      .link-github {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: black;
+        color: #fff;
+        border: 1px solid white;
+        border-radius: 50px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background 0.3s;
+  
+        &:hover {
+          filter: invert(1)
+        }
+  
+        img {
+          width: 70px;
+          height: 40px;
+        }
+  
+        p {
+          font-size: 1.2rem;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@include desktop {
+  .carousel-container {
+    max-width: clamp(1024px,90vw,2800px);
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  .main-swiper {
+    width: 100%;
+    height: 1200px; 
+    position: relative;
+  }
+  
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .image-swiper {
+    width: 100%;
+    height: 550px;
     margin-bottom: 20px;
   
     img {
