@@ -25,6 +25,12 @@ import mongodb from "../images/mongodb.webp";
 import node from "../images/node.webp";
 import sql from "../images/sqlite.webp";
 
+import lemas1 from "../images/lemas1.webp";
+import lemas2 from "../images/lemas2.webp";
+import lemas3 from "../images/lemas3.webp";
+import lemas4 from "../images/lemas4.webp";
+import lemas5 from "../images/lemas5.webp";
+
 
 const projects = [
   {
@@ -79,6 +85,23 @@ const projects = [
     },
     technos: [html, css, scss, js, react],
     link: "https://github.com/DoomZyx/Kasa",
+  },
+  {
+    title: {
+      fr: "Le Mas Du Paradis Bleu",
+      en: "Le Mas Du Paradis Bleu",
+    },
+    progression: {
+      fr: "(Terminé)",
+      en: "(completed)",
+    },
+    images: [lemas1, lemas2, lemas3, lemas4, lemas5],
+    description: {
+      fr: "Pour ce projet, j'ai eu l'opportunité de mettre mes compétences au service d'un proche souhaitant valoriser son gîte à travers un site vitrine moderne et épuré. J'ai pris en charge l'intégralité du développement web, de la maquette jusqu'à la mise en ligne, avec un objectif clair : offrir aux visiteurs une expérience fluide, visuelle et rassurante. À travers ce projet, j'ai consolidé plusieurs compétences essentielles : Création d'une interface responsive adaptée à tous les supports (ordinateur, tablette, mobile). Optimisation de l'expérience utilisateur en travaillant la navigation et la clarté des informations. Mise en avant du contenu visuel pour valoriser le cadre unique du gîte. Déploiement et gestion de l’hébergement pour un site accessible rapidement et gratuitement via Vercel. Ce projet m’a également permis de renforcer mes capacités en communication client, en comprenant les attentes d’un propriétaire non initié au digital, et en les traduisant en solutions concrètes.",
+      en: "For this project, I had the opportunity to put my skills to use by helping someone close to me who wanted to promote their vacation rental through a modern and clean showcase website. I handled the entire web development process, from design to deployment, with a clear goal: to provide visitors with a smooth, visual, and reassuring experience. Through this project, I strengthened several key skills: Building a fully responsive interface adapted to all devices (desktop, tablet, mobile). Enhancing the user experience by improving navigation and information clarity. Highlighting visual content to showcase the unique environment of the rental. Deploying and managing hosting to ensure fast and free access via Vercel. This project also allowed me to improve my client communication skills by understanding the needs of someone unfamiliar with the digital world and turning them into concrete solutions.",
+    },
+    technos: [html, css, scss, js, react],
+    link: "https://github.com/DoomZyx/Le-Mas-Du-Paradis",
   },
 ];
 
