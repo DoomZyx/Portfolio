@@ -113,7 +113,7 @@ input[type="submit"]:hover {
 
 @include mobile {
   .layout-contact {
-    width: 90%;
+    width: 100%;
     display: flex;
     text-align: center;
     flex-direction: column;

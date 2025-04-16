@@ -134,9 +134,14 @@
   }
   .main-swiper {
     width: 100%;
-    height: 890px; 
+    height: auto; 
     position: relative;
   }
+
+  .swiper-wrapper {
+    height: auto;
+  }
+
   .image-swiper {
     width: 100%;
     height: 200px;
@@ -244,8 +249,12 @@
   
   .main-swiper {
     width: 100%;
-    height: 1400px; 
+    height: auto; 
     position: relative;
+  }
+
+  .swiper-wrapper {
+    height: auto;
   }
   
   .project-card {
