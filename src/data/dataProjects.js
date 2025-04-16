@@ -14,7 +14,6 @@ import kasa from "../images/kasa.webp";
 import kasa2 from "../images/kasa2.webp";
 import kasa3 from "../images/kasa3.webp";
 import kasa4 from "../images/kasa4.webp";
-import kasa5 from "../images/kasa5.webp";
 
 import html from "../images/html.webp";
 import css from "../images/css.webp";
@@ -78,7 +77,7 @@ const projects = [
       fr: "(Terminé)",
       en: "(Completed)",
     },
-    images: [kasa, kasa2, kasa3, kasa4, kasa5],
+    images: [kasa, kasa2, kasa3, kasa4,],
     description: {
       fr: "Dans le cadre de ma formation, j’ai développé un site de location de logements entre particuliers en utilisant React. Ce projet m’a permis de me confronter à plusieurs défis techniques, notamment la gestion du routage dynamique avec React Router pour afficher les détails d’un logement en fonction de son ID. J’ai également travaillé sur l’implémentation d’un système de collapse permettant d’afficher ou de masquer des informations supplémentaires, c'est deux points m’ont aidés à mieux comprendre la gestion du state, des props et des événements en React. Ce projet m’a permis de renforcer mes compétences en Front-end et d’améliorer mes compétences sur React.",
       en: "As part of my training, I developed a rental housing website for individuals using React. This project allowed me to face several technical challenges, including managing dynamic routing with React Router to display housing details based on their ID. I also worked on implementing a collapse system to show or hide additional information. These two aspects helped me better understand state management, props, and event handling in React. This project strengthened my front-end skills and improved my proficiency in React.",

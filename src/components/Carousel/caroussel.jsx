@@ -31,6 +31,7 @@ const Carousel = () => {
         loop
         spaceBetween={50}
         slidesPerView={1}
+        autoHeight={true}
         className="main-swiper"
         onSlideChange={(swiper) => setCurrentProjectIndex(swiper.realIndex)}
       >
@@ -42,6 +43,7 @@ const Carousel = () => {
                 pagination={{ clickable: true }}
                 loop
                 spaceBetween={10}
+                autoHeight={true}
                 slidesPerView={1}
                 className="image-swiper"
               >
