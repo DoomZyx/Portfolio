@@ -32,23 +32,6 @@ import lemas5 from "../images/lemas5.webp";
 
 
 const projects = [
-  {
-    title: {
-      fr: "SKG AUTOPARTS",
-      en: "SKG AUTOPARTS",
-    },
-    progression: {
-      fr: "(En cours)",
-      en: "(In progress)",
-    },
-    images: [skg, skg2, skg3, skg4, skg5],
-    description: {
-      fr: "Ce projet est un prototype de site e-commerce spécialisé dans les pièces automobiles. Il permet aux utilisateurs d’entrer un numéro de plaque d’immatriculation pour trouver les pièces compatibles avec le modèle et la motorisation de leur véhicule. Ce projet consiste à améliorer mes compétences sur React et à me familiariser avec node.js",
-      en: "This project is a prototype of an e-commerce website specialized in automotive parts. It allows users to enter a license plate number to find compatible parts for their vehicle's model and engine type. This project aims to improve my skills in React and familiarize myself with Node.js",
-    },
-    technos: [html, css, scss, js, react, node, sql],
-    link: "https://github.com/DoomZyx/SKG-AUTOPARTS",
-  },
 
   {
     title: {

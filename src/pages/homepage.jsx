@@ -4,7 +4,7 @@ import "../components/header/_header.scss";
 
 import office from "../images/office.webp"
 
-import Nav from "../components/header/nav";
+import Nav from "../components/Nav/nav";
 const Header = lazy(() => import("../components/header/header"));
 const AboutMe = lazy(() => import("../components/About/about"));
 const MySkills = lazy(() => import("../components/Myskills/myskills"));

@@ -1,17 +1,16 @@
-import Nav from "./nav";
+import Nav from "../Nav/nav";
 import "./_header.scss";
-import "../animation/_1stsec.scss"
+import "../animation/_1stsec.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowDown } from "@fortawesome/free-solid-svg-icons";
 import github from "../../images/github.webp";
 
-import france from "../../images/french.webp"
+import france from "../../images/french.webp";
 import uk from "../../images/uk.webp";
 
 import { useTranslation } from "react-i18next";
 import "../../../i18n";
-import Observer from '../animation/Observer';
-
+import Observer from "../animation/Observer";
 
 function Header() {
   const { t, i18n } = useTranslation();
@@ -19,8 +18,11 @@ function Header() {
 
   return (
     <>
-          <div className="langage-button">
-        <button className="france-but" onClick={() => i18n.changeLanguage("fr")}>
+      <div className="langage-button" id="home">
+        <button
+          className="france-but"
+          onClick={() => i18n.changeLanguage("fr")}
+        >
           <img src={france} alt="Drapeau France" />
         </button>
         <button
@@ -30,7 +32,7 @@ function Header() {
           <img src={uk} alt="Drapeau Royame-Uni" />
         </button>
       </div>
-      <header id="home">
+      <header>
         <div ref={ref} className={`presentation ${isVisible ? "active" : ""}`}>
           <h1 className="welcome"> {t("welcome")} </h1>
           <h2 className="myName"> {t("Iam")} </h2>
