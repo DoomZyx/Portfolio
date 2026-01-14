@@ -17,6 +17,19 @@ import lemas3 from "/public/lemas/lemas3.webp";
 import lemas4 from "/public/lemas/lemas4.webp";
 import lemas5 from "/public/lemas/lemas5.webp";
 
+import AI1 from "/public/AIVoiceAssistant/AI1.webp";
+import AI2 from "/public/AIVoiceAssistant/AI2.webp";
+import AI3 from "/public/AIVoiceAssistant/AI3.webp";
+import AI4 from "/public/AIVoiceAssistant/AI4.webp";
+import AI5 from "/public/AIVoiceAssistant/AI5.webp";
+import AI6 from "/public/AIVoiceAssistant/AI6.webp";
+import AI7 from "/public/AIVoiceAssistant/AI7.webp";
+import AI8 from "/public/AIVoiceAssistant/AI8.webp";
+
+import MAFRA1 from "/public/MAFRA/MAFRA1.webp";
+import MAFRA2 from "/public/MAFRA/MAFRA2.webp";
+import MAFRA3 from "/public/MAFRA/MAFRA3.webp";
+
 import js from "/public/stack/js.webp";
 import node from "/public/stack/node.webp";
 import mongodb from "/public/stack/mongodb.webp";
@@ -37,7 +50,7 @@ const projects = [
       fr: "J'ai décidé de faire une refonte d'un projet que j'ai effectué en formation. Le projet de base consistait à développer une application en mobile-first en se concentrant sur la gestion des composants sass et créer des animations. <br> Quelques mois après, lorsque j'ai su mieux maitriser React je me suis décidé de refaire ce projet mais avec des fonctionnalités complètes et en utlisant Redux. (Créer un compte et se connecter au site, la gestion du panier, ajouter des restaurants). <br> Et j'ai décidé de créer un backend pour me familiariser avec node.js et MangoDB",
       en: "I decided to redesign a project I worked on during my training. The original project involved developing a mobile-first application, focusing on managing Sass components and creating animations. A few months later, when I had a better grasp of React, I decided to redo this project with full features and using Redux. (Creating an account and logging into the site, managing the cart, adding restaurants). I also decided to build a backend to familiarize myself with Node.js and MongoDB",
     },
-    technos: [js, react, mongodb, node, sass],
+    technos: [js, react, mongodb,sass, node],
     link: "https://github.com/DoomZyx/OhMyFood",
     url: "https://oh-my-food-three.vercel.app/",
   },
@@ -73,6 +86,38 @@ const projects = [
     technos: [sass, js, react, figma],
     link: "https://github.com/DoomZyx/Le-Mas-Du-Paradis",
     url: "https://le-mas-du-paradis.vercel.app",
+  },
+  {
+    id: 4,
+    title: {
+      fr: "SmartOrder",
+      en: "SmartOrder",
+    },
+    progression: "in-progress",
+    images: [AI1, AI2, AI3, AI4, AI5, AI6, AI7, AI8],
+    description: {
+      fr: "Ce projet propose un assistant vocal basé sur l’intelligence artificielle destiné aux restaurateurs, snacks et restaurants rapides. L’assistant gère automatiquement les appels entrants : il prend les commandes, enregistre les réservations, et répond aux questions des clients concernant les menus, les horaires et les coordonnées de l’établissement Les menus et informations du restaurant sont configurables par le restaurateur via une interface web Toutes les commandes et réservations traitées par l’assistant sont centralisées et affichées en temps réel sur un dashboard web, permettant une gestion simple et efficace sans mobiliser le personnel au téléphone",
+      en: "This project provides an AI-powered voice assistant designed for restaurants, snack bars, and fast-food establishments. The assistant automatically handles incoming calls: it takes orders, records reservations, and answers customer questions regarding menus, opening hours, and the restaurant’s contact details. Menus and restaurant information can be configured by the restaurateur through a web interface. All orders and reservations handled by the assistant are centralized and displayed in real time on a web dashboard, enabling simple and efficient management without requiring staff to handle phone calls",
+    },
+    technos: [sass, js, react, mongodb, node],
+    link: "https://github.com/DoomZyx/RestaurantApp",
+    url: null,
+  },
+  {
+    id: 5,
+    title: {
+      fr: "MAFRASHOP",
+      en: "MAFRASHOP",
+    },
+    progression: "in-progress",
+    images: [MAFRA1, MAFRA2, MAFRA3],
+    description: {
+      fr: "Mafra est une plateforme e-commerce spécialisée dans les produits d’entretien automobile, destinée aussi bien aux particuliers qu’aux professionnels. Le site propose un catalogue de produits sélectionnés pour l’entretien et la maintenance des véhicules, avec une expérience d’achat simple, sécurisée et efficace. Pour les professionnels, Mafra offre un espace dédié avec des tarifs adaptés, une livraison rapide en 24 heures maximum et un système de vérification des entreprises basé sur les données officielles de l’INSEE (SIRET, raison sociale et code NAF). L’accès au compte professionnel est sécurisé grâce à une authentification OAuth, garantissant un environnement fiable et conforme aux usages B2B. Mafra a été conçue pour répondre aux exigences des particuliers comme des professionnels du secteur automobile, en combinant rapidité, fiabilité et simplicité de gestion des commandes",
+      en: "Mafra is an e-commerce platform specialized in automotive care products, designed for both individual customers and professionals. The website offers a curated catalog of products for vehicle care and maintenance, providing a simple, secure, and efficient shopping experience. For professionals, Mafra provides a dedicated space with tailored pricing, fast delivery within a maximum of 24 hours, and a company verification system based on official INSEE data (SIRET number, registered company name, and NAF code). Access to professional accounts is secured through OAuth authentication, ensuring a reliable environment aligned with B2B standards. Mafra was designed to meet the needs of both individual customers and automotive professionals by combining speed, reliability, and streamlined order management",
+    },
+    technos: [sass, react, mongodb, node],
+    link: "https://github.com/DoomZyx/MAFRASHOP-Frontend",
+    url: "https://mafrashop-frontend.vercel.app/shop",
   },
 ];
 

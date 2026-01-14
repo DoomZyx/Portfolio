@@ -11,6 +11,8 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import kasaimg from "/public/kasa.webp";
 import LeMasimg from "/public/LeMasDuParadis1.webp";
 import space from "/public/space.jpg";
+import ai1 from "/public/AIVoiceAssistant/AI1.webp";
+import MAFRA1 from "/public/MAFRA/MAFRA1.webp";
 
 import node from "/public/stack/node.webp";
 import sql from "/public/stack/sqlite.webp";
@@ -44,6 +46,8 @@ function MyPortfolio() {
   const ohmyfood = projects.find((p) => p.title.fr === "Ohmyfood");
   const kasa = projects.find((p) => p.title.fr === "Kasa");
   const leMas = projects.find((p) => p.title.fr === "Le Mas Du Paradis Bleu");
+  const aivoice = projects.find((p) => p.title.fr === "SmartOrder");
+  const mafrashop = projects.find((p) => p.title.fr === "MAFRASHOP");
 
   return (
     <>
@@ -181,6 +185,38 @@ function MyPortfolio() {
                 height={150}
                 loading="lazy"
               />
+            </div>
+
+            <div className="smartorder">
+              <Link smooth={true} to={`/project/${aivoice.id}`}>
+                <img
+                  src={ai1}
+                  alt="Homepage de smartOrder"
+                  width={150}
+                  height={150}
+                  loading="lazy"
+                />
+                <div className="info-project">
+                  <h4>SmartOrder</h4>
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </div>
+              </Link>
+            </div>
+
+            <div className="mafrashop">
+              <Link smooth={true} to={`/project/${mafrashop.id}`}>
+                <img
+                  src={MAFRA1}
+                  alt="Homepage de MAFRASHOP"
+                  width={150}
+                  height={150}
+                  loading="lazy"
+                />
+                <div className="info-project">
+                  <h4>MAFRASHOP</h4>
+                  <FontAwesomeIcon icon={faArrowRight} />
+                </div>
+              </Link>
             </div>
           </div>
         </div>

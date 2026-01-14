@@ -60,13 +60,15 @@ function Projects() {
           />
         ))}
       </div>
-      <div className="container-links">
-        <button className="url-website">
-          <a href={project.url} target="_blank" rel="noopener noreferrer">
-            <span>Visiter</span>
-          </a>
-        </button>
-      </div>
+      {project.url && (
+        <div className="container-links">
+          <button className="url-website">
+            <a href={project.url} target="_blank" rel="noopener noreferrer">
+              <span>Visiter</span>
+            </a>
+          </button>
+        </div>
+      )}
       <Footer />
     </>
   );
