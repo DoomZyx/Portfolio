@@ -117,7 +117,7 @@ const projects = [
     },
     technos: [sass, react, mongodb, node],
     link: "https://github.com/DoomZyx/MAFRASHOP-Frontend",
-    url: "https://mafrashop-frontend.vercel.app/shop",
+    url: "https://mafrashop-frontend.vercel.app",
   },
 ];
 
