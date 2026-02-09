@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend API pour le portfolio d'Axel Cella",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "pm2:start": "pm2 start ../ecosystem.config.js",
+    "pm2:stop": "pm2 stop portfolio-backend",
+    "pm2:restart": "pm2 restart portfolio-backend",
+    "pm2:logs": "pm2 logs portfolio-backend"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.1",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.1.0"
+  }
+}
+

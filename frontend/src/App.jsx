@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
-const Homepage = lazy(() => import("../src/pages/homepage"));
-const Projects = lazy(() => import("../src/components/Projects/projects"));
+const Homepage = lazy(() => import("./pages/homepage"));
+const Projects = lazy(() => import("./components/Projects/projects"));
 
 import ScrollToTop from "./hooks/ScrollToTop/scroll";
 import "./Custom/Scrollbar/_scrollbar.scss";

@@ -16,6 +16,7 @@ const MyPortfolio = lazy(() => import("../components/MyPortfolio/myPortfolio"));
 const MyServices = lazy(() => import("../components/Services/services"));
 const ContactMe = lazy(() => import("../components/Contact/contact"));
 const Footer = lazy(() => import("../components/footer/footer.jsx"));
+const ChatBot = lazy(() => import("../components/ChatBot/ChatBot"));
 
 function homepage() {
   return (
@@ -32,6 +33,7 @@ function homepage() {
         <ContactMe />
       </main>
       <Footer />
+      <ChatBot />
     </>
   );
 }

@@ -9,7 +9,7 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 import github from "../../../public/github.webp";
-import Footer from "../../components/footer/footer.jsx";
+import Footer from "../footer/footer.jsx";
 
 function Projects() {
   const { id } = useParams();
