@@ -16,8 +16,14 @@ await fastify.register(cors, {
 
 await fastify.register(chatRoutes);
 
+// Health check endpoint
 fastify.get("/api/health", async (request, reply) => {
   return { status: "ok", service: "portfolio-backend" };
+});
+
+// Root endpoint for Render health checks
+fastify.get("/", async (request, reply) => {
+  return { status: "ok", service: "portfolio-backend", message: "API is running" };
 });
 
 const start = async () => {
