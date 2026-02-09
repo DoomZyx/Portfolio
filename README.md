@@ -78,3 +78,30 @@ PORT=3001
 
 Le frontend communique avec le backend via le proxy Vite configuré dans `vite.config.js`.
 
+Créez un fichier `frontend/.env.production` pour la production :
+```env
+VITE_API_URL=https://votre-backend.railway.app/api/chat
+```
+
+## Déploiement
+
+### Backend
+
+Voir `backend/DEPLOYMENT.md` pour les instructions complètes.
+
+**Railway (Recommandé)** :
+1. Créez un projet Railway
+2. Connectez votre repo GitHub
+3. **Root Directory** : `backend`
+4. **Start Command** : `cd backend && pnpm install && pnpm start`
+5. Ajoutez les variables d'environnement
+
+### Frontend
+
+**Vercel (Recommandé)** :
+1. Créez un projet Vercel
+2. Connectez votre repo GitHub
+3. **Root Directory** : `frontend`
+4. Vercel détectera automatiquement `vercel.json`
+5. Ajoutez la variable `VITE_API_URL` avec l'URL de votre backend déployé
+
