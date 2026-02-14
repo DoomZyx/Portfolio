@@ -1,58 +1,70 @@
 @use "../../Utils/Responsive" as *;
 
+// Mobile first
 footer {
- border-top: 1px solid #484646;
- padding: 2rem 2rem 0.5rem 2rem;
+  border-top: 1px solid #484646;
+  padding: 2rem 1rem 0.5rem;
 }
 
 .footer-content {
- display: flex;
- flex-direction: column;
- align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-links {
- display: flex;
- flex-direction: row;
- justify-content: space-around;
- gap: 10rem;
- margin-bottom: 2rem;
- a {
-  width: 50px;
- }
- .gmail {
-  width: 150%;
-  height: 90%;
- }
- .linkedin {
-  width: 110%;
-  height: auto;
- }
- .github {
-  width: 100%;
-  height: auto;
- }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 25px;
+  margin-bottom: 2rem;
+
+  a {
+    width: 50px;
+  }
+
+  .gmail {
+    position: relative;
+    top: 5px;
+    width: 100% !important;
+    height: 70% !important;
+  }
+
+  .linkedin {
+    width: 110%;
+    height: auto;
+  }
+
+  .github {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .copyright {
- font-size: 0.8rem;
+  font-size: 0.8rem;
 }
+
 .footer-links img {
   transition: all 0.3s ease-in-out;
-}
-.footer-links img:hover {
- transform: scale(1.2);
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
-@include mobile {
- footer .footer-content .footer-links {
-  gap: 25px;
- }
- .gmail {
-  position: relative;
-  top: 5px;
-  width: 100% !important;
-  height: 70% !important;
- }
+@include tablet-up {
+  footer {
+    padding: 2rem 2rem 0.5rem;
+  }
 
+  .footer-links {
+    gap: 3rem;
+  }
+}
+
+@include desktop-up {
+  .footer-links {
+    gap: 6rem;
+  }
 }

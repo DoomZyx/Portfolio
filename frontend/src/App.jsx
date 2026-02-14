@@ -16,7 +16,6 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 function App() {
   return (
     <Router>
-      <ScrollToTop />
       <Suspense
         fallback={
           <div className="loader">
@@ -24,6 +23,7 @@ function App() {
           </div>
         }
       >
+      <ScrollToTop />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/project/:id" element={<Projects />} />

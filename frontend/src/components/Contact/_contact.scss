@@ -1,32 +1,52 @@
-@use "../../Utils//Responsive" as *;
+@use "../../Utils/Responsive" as *;
 
+// Mobile first
 .layout-contact {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 2rem;
-  padding: 2rem;
-  margin-top: 10em;
-  margin-bottom: 5em;
+  padding: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 4em;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.layout-contact .row {
+  flex-direction: column;
 }
 
 .contact-form {
-  padding: 1.6rem;
+  box-sizing: border-box;
+  padding: 1.2rem;
   border-radius: 10px;
   width: 100%;
-  max-width: 500px;
+  max-width: 100%;
+  min-width: 0;
   color: #fff;
   border: 1px solid #484646;
   transition: all 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
+
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #f5f5f5;
   }
 }
 
-.contact-form h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #f5f5f5;
+.layout-contact input,
+.layout-contact textarea {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+.input-group,
+.input-group-full {
+  min-width: 0;
 }
 
 form .row {
@@ -82,6 +102,7 @@ textarea {
   border-radius: 25px;
   cursor: pointer;
   transition: background 0.3s ease;
+  margin-top: 2em;
 }
 
 input::placeholder,
@@ -92,8 +113,6 @@ textarea::placeholder {
 .submit-btn:hover {
   background: #ecbd00;
   color: white;
-  transition: background 0.3s ease;
-  transition: color 0.3s ease;
 }
 
 .porsche {
@@ -103,83 +122,103 @@ textarea::placeholder {
   border: 1px solid #484646;
   border-radius: 10px;
   padding: 1rem;
-  width: 500px;
-  canvas {
-    width: 500px;
-    height: 500px;
-  }
-}
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 250px;
+  min-height: 250px;
+  box-sizing: border-box;
+  overflow: hidden;
 
-/* Responsive */
-@media (max-width: 768px) {
-  .layout-contact {
-    flex-direction: column;
+  > div {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
 
-  .row {
-    flex-direction: column;
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0;
+    min-height: 0;
+    max-width: 100%;
+    max-height: 100%;
   }
 }
 
-@include mobile {
+@include tablet-up {
   .layout-contact {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
+
   .contact-form {
     width: 90%;
-  }
-  .submit-btn {
-    margin-top: 2em;
-  }
+    max-width: 500px;
+    padding: 2rem;
 
-  .porsche {
-    padding: 1.6rem;
-    width: 90%;
-    height: 250px;
-    canvas {
-      width: 100% !important;
-      height: 100% !important;
+    h3 {
+      font-size: 1.2rem;
     }
   }
-}
-@include tablet {
-    .layout-contact {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  .contact-form {
-    padding: 2rem
-  }
+
   .submit-btn {
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
+
   .porsche {
     width: 74%;
-  }
-}
+    max-width: 100%;
+    min-width: 0;
+    min-height: 300px;
+    height: 300px;
 
-@media screen and (min-width: 1024px) and (max-width: 1150px) {
-  .contact-form {
-    width: 400px !important;
-  }
-  .porsche {
-    width: 400px !important;
-    height: 400px !important;
-  }
-}
-
-@include desktop {
-  .contact-form {
-    width: 500px;
-    input {
-      font-size: 0.7rem;
+    > div {
+      min-height: 280px;
     }
   }
+}
+
+@include desktop-up {
+  .layout-contact {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 2rem;
+    margin-top: 10em;
+    margin-bottom: 5em;
+  }
+
+  .layout-contact .row {
+    flex-direction: row;
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 500px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    input {
+      font-size: 0.95rem;
+    }
+  }
+
+  .submit-btn {
+    margin-top: 0;
+  }
+
   .porsche {
-    width: 500px !important;
-    height: 488px !important;
+    width: 500px;
+    max-width: 100%;
+    min-height: 450px;
+    height: auto;
   }
 }

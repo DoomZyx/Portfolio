@@ -1,81 +1,147 @@
 @use "../../../Utils/Responsive" as *;
 
-.layout-catchprase2 {
- padding: 5rem;
- display: flex;
- flex-direction: row;
- gap: 15px;
- img {
-  border: 1px solid #464848;
-  border-radius: 25px;
-  width: 600px;
-  height: 400px;
-  object-fit: cover;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-   transform: scale(1.01);
-  }
- }
- h4 {
-  border: 1px solid #464848;
-  border-radius: 25px;
-  font-size: 1.5rem;
-  font-weight: 200;
-  display: flex;
-  align-items: center;
-  height: 305px;
-  margin: 0;
-  padding: 2em;
-  transition: all 0.3s ease-in-out;
-  &:hover {
-   transform: scale(1.01);
-  }
- }
-}
+$accent: #ecbd00;
+$border: #484646;
+$bg-card: rgba(30, 30, 30, 0.6);
 
-@include mobile {
- .layout-catchprase2 {
+// Mobile first
+.layout-catchphrase2 {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0;
-  img {
-   width: 95%;
-   height: 50%;
-  }
-  h4 {
-   height: 50%;
-   width: 78%;
-   padding: 2em;
-   font-size: 1rem;
-  }
- }
-}
-@include tablet {
-  .layout-catchprase2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0;
-  img {
-   width: 95%;
-   height: 50%;
-  }
-  h4 {
-   height: 50%;
-   width: 78%;
-   padding: 2em;
-   font-size: 2rem;
-  }
- }
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-@include desktop {
-  .layout-catchprase2 {
-    margin-bottom: -8rem;
- img {
-  width: 50%;
-  height: 400px;
- }
+.catchphrase2-iphone {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid $border;
+  border-radius: 15px;
+  background: $bg-card;
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+  user-select: none;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 10px 30px rgba($accent, 0.15);
+  }
+
+  > div {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  canvas {
+    height: 280px !important;
+    width: auto !important;
+    max-width: 100%;
+  }
 }
+
+.catchphrase2-iphone-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 280px;
+  width: 100%;
+  color: $accent;
+  font-size: 2rem;
+}
+
+.catchphrase2-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid $border;
+  border-radius: 15px;
+  background: $bg-card;
+  backdrop-filter: blur(8px);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 10px 30px rgba($accent, 0.15);
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+@include tablet-up {
+  .layout-catchphrase2 {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .catchphrase2-iphone {
+    min-height: 320px;
+
+    > div {
+      min-height: 320px;
+    }
+
+    canvas {
+      height: 320px !important;
+    }
+  }
+
+  .catchphrase2-iphone-loader {
+    min-height: 320px;
+  }
+
+  .catchphrase2-text {
+    padding: 2rem;
+
+    h4 {
+      font-size: 1.05rem;
+    }
+  }
+}
+
+@include desktop-up {
+  .layout-catchphrase2 {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .catchphrase2-iphone {
+    min-height: 360px;
+
+    > div {
+      min-height: 360px;
+    }
+
+    canvas {
+      height: 360px !important;
+    }
+  }
+
+  .catchphrase2-iphone-loader {
+    min-height: 360px;
+  }
+
+  .catchphrase2-text h4 {
+    font-size: 1.15rem;
+  }
 }

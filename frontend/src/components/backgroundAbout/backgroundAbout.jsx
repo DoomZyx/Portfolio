@@ -1,4 +1,5 @@
 import "./_backgroundabout.scss";
+import "../AboutMe/_aboutMe.scss";
 
 import image1 from "/background/image1.webp";
 import image2 from "/background/image2.webp";
@@ -13,7 +14,7 @@ import image10 from "/background/image10.webp";
 
 function BackgroundABout() {
   return (
-    <>
+    <section className="about-section">
       <div className="background">
         <div className="thirstrange">
           <img className="img1" src={image1} alt="PC Portable" width={500} height={320} loading="lazy" />
@@ -30,7 +31,24 @@ function BackgroundABout() {
           <img className="img10" src={image10} alt="Code Javascript" width={500} height={300} loading="lazy" />
         </div>
       </div>
-    </>
+      <div className="aboutMeContainer">
+        <div className="aboutMeSec" id="about">
+          <h2>A propos de moi</h2>
+          <h4>
+            Développeur d'architecture de produits digitaux,
+            je combine expertise technique et vision stratégique pour concevoir des
+            solutions durables et performantes. <br /> Mon approche allie l'expérience
+            du développement à la réflexion stratégique : je ne me contente pas de
+            coder, j'architecte. Chaque décision technique est pensée en fonction des
+            enjeux business, de la scalabilité, de la maintenabilité et de l'expérience
+            utilisateur. <br /> Aujourd'hui, j'accompagne les entreprises dans la
+            conception, l'audit et la refonte de leurs produits digitaux, en apportant
+            une vision globale qui transforme les défis techniques en opportunités
+            stratégiques.
+          </h4>
+        </div>
+      </div>
+    </section>
   );
 }
 

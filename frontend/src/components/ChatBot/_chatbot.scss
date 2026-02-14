@@ -1,16 +1,17 @@
 @use "../../Utils/Responsive" as *;
 
+// Mobile first
 .chatbot-toggle {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 60px;
-  height: 60px;
+  bottom: 1rem;
+  right: 1rem;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   z-index: 1000;
@@ -18,7 +19,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
@@ -27,24 +28,16 @@
   &:active {
     transform: scale(0.95);
   }
-
-  @include mobile {
-    bottom: 1rem;
-    right: 1rem;
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
 }
 
 .chatbot-container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 400px;
+  bottom: 1rem;
+  right: 1rem;
+  width: calc(100vw - 2rem);
+  height: calc(100vh - 2rem);
   max-width: calc(100vw - 2rem);
-  height: 600px;
-  max-height: calc(100vh - 4rem);
+  max-height: calc(100vh - 2rem);
   background: #1a1a1a;
   border: 1px solid #484646;
   border-radius: 15px;
@@ -53,13 +46,24 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   z-index: 1001;
   overflow: hidden;
+}
 
-  @include mobile {
-    width: calc(100vw - 2rem);
-    height: calc(100vh - 2rem);
-    bottom: 1rem;
-    right: 1rem;
-    max-height: calc(100vh - 2rem);
+@include tablet-up {
+  .chatbot-toggle {
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .chatbot-container {
+    bottom: 2rem;
+    right: 2rem;
+    width: 400px;
+    height: 600px;
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 4rem);
   }
 }
 

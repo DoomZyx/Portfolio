@@ -1,8 +1,7 @@
-import Typewriter from "../../hooks/Typewriter/Typewriter";
 import logoPortfolio from "../../../public/Portfolio.webp";
 import "./_header.scss";
 
-function header() {
+function Header() {
   return (
     <>
       <header>
@@ -14,15 +13,12 @@ function header() {
             height={400}
           />
         </div>
-          </header>
-        <div className="thphr">
-          <Typewriter
-            text={`Tout problème a sa solution \nChaque ligne de code y contribue`}
-            speed={50}
-          ></Typewriter>
-        </div>
+      </header>
+      <div className="thphr">
+        <h1>Je conçois l'architecture de produits digitaux <br /> Qui allient performance technique et vision stratégique</h1>
+      </div>
     </>
   );
 }
 
-export default header;
+export default Header;

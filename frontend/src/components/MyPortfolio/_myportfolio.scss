@@ -1,9 +1,10 @@
 @use "../../Utils/Responsive" as *;
 
+// Mobile first
 .title-portfolio {
   color: #ecbd00;
   text-align: center;
-  margin-top: 10em;
+  margin-top: 5rem;
 }
 
 .container {
@@ -11,334 +12,49 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-inline: 21rem;
-  margin-top: 4em;
+  padding-inline: 1rem;
+  margin-top: 2em;
+  margin-bottom: 4em;
 }
 
-
-.containerThirst {
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  align-items: flex-start;
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.kasa,
-.leMas {
+.project-card {
   border: 1px solid #484646;
   border-radius: 15px;
-  max-width: 300px;
-  width: 100%;
-  min-height: 200px; /* hauteur minimum */
-  height: auto; 
-
-  img {
-    padding: 0.5em;
-    border-radius: 15px;
-    width: 95%;
-    height: auto; 
-  }
-}
-
-.Iphone3d {
-  canvas {
-    height: 250px !important;
-  }
-  border: 1px solid #484646;
-  border-radius: 20px;
-  max-width: 568px;
-  width: 100%;
-  height: 250px;
-  justify-self: center;
-}
-
-.secondlayout {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 auto;
-}
-.space {
-  border: 1px solid #484646;
-  border-radius: 20px;
-  max-width: 606px;
-  margin-top: 0.3em;
-  width: 100%;
-  height: 260px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    border-radius: 20px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-.layout-stack {
-  margin-top: 0.3em;
-  border-radius: 15px;
-  height: 203px;
-
-  .thirstrangest {
-    width: 100%;
-    height: 130px;
-
-    :nth-child(1) {
-      border-top-left-radius: 15px;
-    }
-    :nth-child(3) {
-      border-top-right-radius: 15px;
-    }
-  }
-
-  .secondrangest {
-    width: 100%;
-    height: 100px;
-
-    :nth-child(1) {
-      border-bottom-left-radius: 15px;
-    }
-    :nth-child(3) {
-      border-bottom-right-radius: 15px;
-    }
-  }
-
-  img {
-    border: 1px solid #484646;
-    width: 186px;
-    height: 130px;
-    object-fit: contain;
-  }
-}
-
-
-.ohmyfood, .smartorder, .mafrashop {
-  border: 1px solid #484646;
-  border-radius: 15px;
-  max-width: 607px;
-  width: 100%;
-  height: 430px;
-
-  img {
-    margin: 0.5em;
-    border-radius: 10px;
-    width: 97%;
-    height: auto;
-    object-fit: cover;
-  }
-}
-
-.smartorder img,
-.mafrashop img {
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   height: 100%;
-  max-height: 333px;
-}
-
-.mafrashop {
-  border: 1px solid #484646;
-  border-radius: 15px;
-  max-width: 562px;
-  width: 100%;
-  height: 430px;
-
-  img {
-    margin: 0.5em;
-    border-radius: 10px;
-    width: 97%;
-    object-fit: cover;
-  }
-}
-
-.myself {
-  border: 1px solid #484646;
-  border-radius: 15px;
-  width: 560px;
-  height: 430px;
-  text-align: center;
-  img {
-    width: 80%;
-    height: 90%;
-  }
-}
-
-.info-project {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: 1em;
-  svg {
-    font-size: 1.3em;
-  }
-}
-
-.kasa img,
-.ohmyfood img,
-.leMas img,
-.smartorder img,
-.mafrashop img,
-.layout-stack img {
-  transition: all 0.3s ease-in-out;
-
-}
-
-.kasa:hover img,
-.ohmyfood:hover img,
-.leMas:hover img,
-.smartorder:hover img,
-.mafrashop:hover img,
-.layout-stack img:hover {
-  transform: scale(1.01);
-}
-
-@include mobile {
-  .title-portfolio {
-    margin-top: 5rem;
-  }
-  .container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-    a:hover {
-      color: #ffffff
-    }
-  }
-
-  .containerThirst {
-    width: 99%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5px;
-  justify-content: center;
-  align-items: center;
-}
-
-.kasa,
-.leMas {
-  width: 45%;
-  min-height: 150px; /* hauteur minimum */
-  height: auto; 
-
-  img {
-    padding: 0.5em;
-    border-radius: 15px;
-    width: 90%;
-    height: auto; 
-  }
-}
-
-.Iphone3d {
-  position: relative;
-  z-index: 2;
-  min-width: 85%;
-  max-width: 92%;
-  width: 100%;
-  height: 200px;
-  -webkit-user-select: none; /* Safari iOS */
-  -moz-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-    transition: transform 0.2s ease-out;
-canvas {
-  width: auto;
-  height: 200px !important;
-}
-}
-
-.secondlayout {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin: 0 auto;
-  width: 100%;
-}
-.space {
-  max-width: 90%;
-  margin-top: 0.5rem;
-  height: 200px;
-  display: flex;
-  justify-content: center;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(236, 189, 0, 0.2);
+  }
 
   img {
-    border-radius: 20px;
     width: 100%;
     height: 200px;
     object-fit: cover;
+    display: block;
   }
 }
 
-.layout-stack {
-  margin-top: 0em;
-  border: 1px solid #484646;
-  border-radius: 15px;
-  height: 200px;
-  width: 90%;
-
-  .thirstrangest {
-    width: 100%;
-    height: 100px;
-
-    :nth-child(1) {
-      border-top-left-radius: 15px;
-    }
-    :nth-child(3) {
-      border-top-right-radius: 15px;
-    }
-  }
-
-  .secondrangest {
-    width: 100%;
-    height: 100px;
-
-    :nth-child(1) {
-      border-bottom-left-radius: 15px;
-    }
-    :nth-child(3) {
-      border-bottom-right-radius: 15px;
-    }
-  }
+.character-image {
+  width: 100%;
+  flex: 1;
 
   img {
-    border: 1px solid #484646;
-    width: 32.6%;
-    height: 100px;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
-  }
-}
-
-
-.ohmyfood, .smartorder, .mafrashop {
-  border: 1px solid #484646;
-  border-radius: 15px;
-  width: 90%;
-  height: auto;
-
-  img {
-    margin: 0.5em;
-    border-radius: 15px;
-    width: 95%;
-    height: auto;
-    object-fit: cover;
-  }
-}
-
-.myself {
-  border: 1px solid #484646;
-  border-radius: 15px;
-  width: 90%;
-  height: 40%;
-  text-align: center;
-  img {
-    width: 90%;
   }
 }
 
@@ -347,329 +63,62 @@ canvas {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-inline: 1em;
+  padding: 1em;
+
   h4 {
-    font-size: 0.69em;
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.9em;
   }
+
   svg {
-    display: none;
+    font-size: 1.1em;
+    color: #ecbd00;
   }
-}
 }
 
-@include tablet {
-   .title-portfolio {
+@include tablet-up {
+  .title-portfolio {
     margin-top: 5rem;
     margin-bottom: 2rem;
   }
+
   .container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-    a:hover {
-      color: #ffffff
-    }
+    padding-inline: 1.5rem;
   }
 
-  .containerThirst {
-    width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5px;
-  justify-content: center;
-  align-items: center;
-}
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-.kasa,
-.leMas {
-  min-width: 360px;
-  width: 45%;
-  min-height: 150px; /* hauteur minimum */
-  height: auto; 
+  .project-card img {
+    height: 220px;
+  }
 
-  img {
-    padding: 0.5em;
-    border-radius: 15px;
-    width: 95%;
-    height: auto; 
+  .info-project h4 {
+    font-size: 1em;
   }
 }
 
-.Iphone3d {
-  position: relative;
-  z-index: 2;
-  min-width: 85%;
-  max-width: 90%;
-  width: 100%;
-  height: 350px;
-  -webkit-user-select: none; /* Safari iOS */
-  -moz-user-select: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-    transition: transform 0.2s ease-out;
-canvas {
-  width: auto;
-  height: 350px !important;
-}
-}
-
-
-.secondlayout {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  margin: 0 auto;
-  width: 100%;
-}
-.space {
-  max-width: 90%;
-  margin-top: 0.5rem;
-  height: 350px;
-  display: flex;
-  justify-content: center;
-
-  img {
-    border-radius: 20px;
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-  }
-}
-
-.layout-stack {
-  margin-top: 0em;
-  border: 1px solid #484646;
-  border-radius: 15px;
-  height: 200px;
-  width: 90%;
-
-  .thirstrangest {
-    width: 100%;
-    height: 100px;
-
-    :nth-child(1) {
-      border-top-left-radius: 15px;
-    }
-    :nth-child(3) {
-      border-top-right-radius: 15px;
-    }
-  }
-
-  .secondrangest {
-    width: 100%;
-    height: 100px;
-
-    :nth-child(1) {
-      border-bottom-left-radius: 15px;
-    }
-    :nth-child(3) {
-      border-bottom-right-radius: 15px;
-    }
-  }
-
-  img {
-    border: 1px solid #484646;
-    width: 33.04%;
-    height: 100px;
-    object-fit: contain;
-  }
-}
-
-
-.mafrashop {
-  border: 1px solid #484646;
-  border-radius: 15px;
-  max-width: 730px;
-  width: 100%;
-  height: auto;
-
-  img {
-    margin: 0.5em;
-    border-radius: 15px;
-    width: 97%;
-    height: auto;
-    object-fit: cover;
-  }
-}
-
-.myself {
-  border: 1px solid #484646;
-  border-radius: 15px;
-  width: 90%;
-  height: 350px;
-  text-align: center;
-  img {
-    width: 50%;
-    height: auto;
-  }
-}
-
-.info-project {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: 1em;
-  h4 {
-    font-size: 1.2em;
-  }
-  svg {
-    display: none;
-  }
-}
-}
-
-@include desktop {
+@include desktop-up {
   .title-portfolio {
-  color: #ecbd00;
-  text-align: center;
-  margin-top: 10em;
-}
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.base-container {
-  width: 737px;
-}
-.containerThirst {
-  width: 100%;
-}
-.kasa,
-.leMas {
-  max-width: 160px;
-  width: 100%;
-  min-height: 190px; /* hauteur minimum */
-  height: auto; 
-  border: 1px solid #484646;
-
-  img {
-    padding: 0.5em;
-    border-radius: 15px;
-    width: 95%;
-    height: auto; 
-  }
-}
-
-.kasa .info-project {
-  margin-top: 0.7em;
-}
-
-.Iphone3d {
-  canvas {
-    height: 300px !important;
-  }
-  min-width: 368px;
-  width: 100%;
-  min-height: 200px;
-  height: auto;
-  justify-self: center;
-}
-
- .secondlayout {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 737px;
-    gap: 10px;
-  }
-.space {
-  margin-top: -6.5em;
-  width: 325px;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  img {
-    border-radius: 20px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-.layout-stack {
-  margin-top: 0.3em;
-  border-radius: 15px;
-  height: auto;
-
-  .thirstrangest {
-    width: 100%;
-    height: 89px;
-
-    :nth-child(1) {
-      border-top-left-radius: 15px;
-    }
-    :nth-child(3) {
-      border-top-right-radius: 15px;
-    }
+    margin-top: 10em;
   }
 
-  .secondrangest {
-    width: 100%;
-    height: 85px;
-
-    :nth-child(1) {
-      border-bottom-left-radius: 15px;
-    }
-    :nth-child(3) {
-      border-bottom-right-radius: 15px;
-    }
+  .container {
+    padding-inline: 4rem;
   }
 
-  img {
-    width: 131px;
-    height: 87px;
-    object-fit: contain;
+  .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
-}
 
-
-.ohmyfood, .smartorder, .mafrashop {
-  border: 1px solid #484646;
-  border-radius: 15px;
-  max-width: 324px;
-  width: 100%;
-  height: auto;
-
-  img {
-    margin: 0.5em;
-    border-radius: 15px;
-    width: 95%;
-    height: auto;
-    object-fit: cover;
+  .project-card img {
+    height: 250px;
   }
-}
 
-.myself {
-  width: 395px;
-  height: 260px;
-  text-align: center;
-  position: relative;  
-  img {
-    width: auto;
-    height: 100%;
-  }
-}
-
-.info-project {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: 1em;
-  h4 {
-    font-size: 0.9rem;
-  }
-  svg {
+  .info-project svg {
     font-size: 1.3em;
   }
- }
 }

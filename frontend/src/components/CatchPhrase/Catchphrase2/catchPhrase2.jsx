@@ -1,17 +1,35 @@
-import "./_catchphrase2.scss"
+import "./_catchphrase2.scss";
+import { Suspense, lazy } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-import image11 from "/image11.webp";
+const IphoneViewer = lazy(() => import("../../../animation/models/iphone"));
 
 function Catchphrase2() {
   return (
-    <div className="layout-catchprase2">
-      <img src={image11} alt="MacBook" width={200} height={200} loading="lazy" />
-      <h4>
-        Je développe, je design, je structure. Tout est fait sur mesure, avec
-        les bons outils pour chaque mission <br />
-        Je conçois chaque projet de A à Z. Aucun outil n’est choisi au hasard :
-        chacun répond à un besoin précis, fonctionnel et stratégique
-      </h4>
+    <div className="layout-catchphrase2">
+      <div className="catchphrase2-iphone">
+        <Suspense
+          fallback={
+            <div className="catchphrase2-iphone-loader">
+              <FontAwesomeIcon icon={faSpinner} spin />
+            </div>
+          }
+        >
+          <IphoneViewer />
+        </Suspense>
+      </div>
+      <div className="catchphrase2-text">
+        <h4>
+          J'architecte, j'audite, je conseille. Chaque décision technique est
+          réfléchie, alignée avec vos objectifs business.
+        </h4>
+        <h4>
+          Je conçois l'architecture de vos produits digitaux en pensant scalabilité,
+          performance et maintenabilité. Chaque choix technologique répond à un besoin
+          stratégique et s'inscrit dans une vision long terme.
+        </h4>
+      </div>
     </div>
   );
 }

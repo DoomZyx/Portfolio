@@ -25,7 +25,7 @@ function ContactMe() {
     <>
       <div className="layout-contact" id="contact">
         <div className="contact-form">
-          <h3>Connectons-nous</h3>
+          <h3>Chaque message est une opportunité de créer votre solution digitale sur mesure</h3>
           <form onSubmit={handleSubmit} action="">
             <div className="row">
               <div className="input-group">
@@ -35,12 +35,12 @@ function ContactMe() {
                   name="firstname"
                   id="firstname"
                   placeholder="Votre prénom"
-                />
+                  />
                 <ValidationError
                   prefix="Email"
                   field="email"
                   errors={state.errors}
-                />
+                  />
               </div>
               <div className="input-group">
                 <label htmlFor="name">Nom</label>

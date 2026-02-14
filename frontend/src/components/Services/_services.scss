@@ -1,148 +1,140 @@
 @use "../../Utils/Responsive" as *;
 
+$accent: #ecbd00;
+$border: #484646;
+$bg-card: rgba(30, 30, 30, 0.6);
+
+// Mobile first
+.services-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
 .title-services {
-  color: #ecbd00;
+  color: $accent;
   text-align: center;
-  margin-top: 8em;
-  margin-bottom: 2em;
+  font-size: 1.35rem;
+  margin: 4rem 0 2rem;
 }
 
-.box-services {
-  transform: translateX(50%);
-  width: 50%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  border: 1px solid #484646;
-  border-radius: 15px;
-  padding: 1em;
-  canvas {
-    width: 100% !important;
-  }
-}
-
-.layout-services {
+.services-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.services-visual {
+  width: 100%;
+  max-width: 280px;
+  aspect-ratio: 1;
+  min-height: 280px;
+  overflow: hidden;
+  display: flex;
   justify-content: center;
-  gap: 25px;
-  .services {
-    h4 {
-      color: #ffffff;
-      font-weight: 300;
-      font-size: 0.8em;
-    }
-    width: 250px;
-    background-color: #000000;
-    border: 1px solid #484646;
-    border-radius: 25px;
-    padding-inline: 1em;
-  }
-  .services:hover {
-      filter: invert(1);
-      transition: all 0.3s ease-in-out;
-    }
-}
+  align-items: center;
+  transition: box-shadow 0.3s ease;
 
-@include mobile {
-  .title-services {
-    font-size: 1rem;
-  }
-
-  .services-container {
-    position: relative;
-    z-index: -1;
+  > div {
     width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 
-  .box-services {
-    transform: translateX(0); 
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    padding: 1em 1em 3em 1em;
-    .layout-services {
-      margin-top: 1rem;
-    }
-    .services {
-      width: 80%;
-      padding-inline: 0;
-      padding-left: 0.5rem;
-      margin-left: clamp(1.3em, 4vw, 6em);
-      h4 {
-        font-size: 0.8rem;
-        margin: 0.5em;
-        font-weight: 400;
-      }
-    }
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
   }
 }
 
-@include tablet {
-    .title-services {
-    font-size: 1.3rem;
+.services-3d-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  color: $accent;
+  font-size: 2rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+.service-card {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid $border;
+  border-radius: 12px;
+  background: $bg-card;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+  h4 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 400;
   }
 
-  .services-container {
-    position: relative;
-    z-index: 1;
-    width: 96%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .box-services canvas {
-    transform:  translateX(1%);
-      max-width: 800px;
-      width: 100%;
-      min-height: 300px;
-    }
-
-  .box-services {
-    transform: translateX(2.5%); 
-    width: 67%;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
-    padding: 1em 1em 3em 1em;
-    .layout-services {
-      margin-top: 1rem;
-    }
-    .services {
-      width: 90%;
-      padding-inline: 0;
-      padding-left: 0.5rem;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-      margin-left: clamp(1.3em, 4vw, 6em);
-      h4 {
-        font-size: 0.8rem;
-        margin: 0.5em;
-        font-weight: 400;
-      }
-    }
+  &:hover {
+    border-color: rgba($accent, 0.5);
+    box-shadow: 0 6px 20px rgba($accent, 0.1);
   }
 }
 
-@include desktop {
+@include tablet-up {
+  .services-section {
+    padding: 0 1.5rem 3.5rem;
+  }
+
+  .title-services {
+    margin-top: 5rem;
+    font-size: 1.5rem;
+  }
+
+  .services-visual {
+    max-width: 320px;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@include desktop-up {
+  .services-section {
+    padding: 0 2rem 4rem;
+  }
+
+  .title-services {
+    margin-top: 6rem;
+    font-size: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+
   .services-container {
-    display: flex;
-    justify-content: center;
+    gap: 2.5rem;
   }
-  .box-services {
-    transform: translateX(0);
-    width: 70%;
+
+  .services-visual {
+    max-width: 360px;
   }
-  .box-services canvas {
-    min-height: 200px;
+
+  .services-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-card h4 {
+    font-size: 1.05rem;
   }
 }

@@ -16,7 +16,15 @@ function Projects() {
   const project = data.find((proj) => proj.id === parseInt(id));
 
   if (!project) {
-    return <div>Project not found</div>;
+    return (
+      <>
+        <Nav />
+        <main className="project-page">
+          <p className="project-not-found">Projet introuvable</p>
+        </main>
+        <Footer />
+      </>
+    );
   }
 
   const descriptionWithBreaks = project.description.fr.replace(/\n/g, "<br />"); //dangerouslySetInnerHTML permet de rendre br dans les descriptions comme un élément HTML
@@ -24,51 +32,42 @@ function Projects() {
   return (
     <>
       <Nav />
-      <div className="layout-title">
-        <h1 className="project-title">{project.title.fr}</h1>
-        {project.progression === "in-progress" ? (
-          <FontAwesomeIcon icon={faSpinner} spin />
-        ) : project.progression === "completed" ? (
-          <FontAwesomeIcon icon={faCheck} />
-        ) : null}
-      </div>
-      <div className="project-layout">
-        <div className="description">
-          <p dangerouslySetInnerHTML={{ __html: descriptionWithBreaks }} />
-          <div className="layout-git">
-            <a
-              className="github-link"
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={github} alt="" width={40} height={40} />
-            </a>
+      <main className="project-page">
+        <header className="project-header">
+          <h1 className="project-title">{project.title.fr}</h1>
+          <span className="project-status">
+            {project.progression === "in-progress" ? (
+              <FontAwesomeIcon icon={faSpinner} spin />
+            ) : project.progression === "completed" ? (
+              <FontAwesomeIcon icon={faCheck} />
+            ) : null}
+          </span>
+        </header>
+
+        <section className="project-content">
+          <div className="project-carousel">
+            <Carousel images={project.images} />
           </div>
-        </div>
-        <div className="carousel">
-          <Carousel images={project.images} />
-        </div>
-      </div>
-      <div className="stacks-layout">
-        {project.technos.map((techno, index) => (
-          <img
-            key={index}
-            src={techno}
-            alt={`Technology ${index}`}
-            loading="lazy"
-          />
-        ))}
-      </div>
-      {project.url && (
-        <div className="container-links">
-          <button className="url-website">
-            <a href={project.url} target="_blank" rel="noopener noreferrer">
-              <span>Visiter</span>
-            </a>
-          </button>
-        </div>
-      )}
+          <div className="project-info">
+            <div className="project-description">
+              <h2 className="project-description-title">Description</h2>
+              <div className="project-description-text" dangerouslySetInnerHTML={{ __html: descriptionWithBreaks }} />
+            </div>
+            <div className="project-actions">
+              {project.url && (
+                <a
+                  className="project-link project-link-website"
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visiter le site
+                </a>
+              )}
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
     </>
   );

@@ -1,14 +1,12 @@
-import Typewriter2 from "../../../hooks/Typewriter/Typewriter2";
 import "./catchphrase1.scss";
 
 function Catchphrase1() {
   return (
     <>
       <div className="catchphrase1">
-        <Typewriter2
-          speed={50}
-          text={`Je construis des sites comme on conçoit une maison \nAvec une base solide, des fondations bien pensées \nEt un design qui donne envie d’y rester`}
-        ></Typewriter2>
+        <h2>Je conçois l'architecture comme un architecte conçoit un bâtiment <br />
+        Avec des fondations solides, une structure évolutive <br />
+        Et une vision qui anticipe les besoins de demain</h2>
       </div>
     </>
   );

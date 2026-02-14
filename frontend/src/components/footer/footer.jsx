@@ -33,20 +33,6 @@ function Footer() {
                 height={55}
               />
             </a>
-            <a
-              href="https://github.com/DoomZyx"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className="github"
-                src={github}
-                alt="Logo Github"
-                loading="lazy"
-                width={55}
-                height={55}
-              />
-            </a>
           </div>
           <span className="copyright">
             © 2025 Axel Cella. Tous droits réservés.

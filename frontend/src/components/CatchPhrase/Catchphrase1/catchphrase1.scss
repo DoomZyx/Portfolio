@@ -1,44 +1,43 @@
 @use "../../../Utils/Responsive" as *;
 
+// Mobile first
 .catchphrase1 {
   display: flex;
   flex-direction: column;
-  padding: 2em;
-  margin-top: 5em;
-  margin-bottom: 5em;
-  h3 {
+  padding: 2em 1em;
+  margin-top: 2rem;
+  margin-bottom: 4em;
+  width: 90%;
+  line-height: 1.5;
+
+  h2 {
     margin: 0;
-   font-size: 2.7em;
-   font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 500;
+  }
+  h3 {
+    font-size: 1.3rem;
   }
 }
 
-@include mobile {
+@include tablet-up {
   .catchphrase1 {
-    margin-top: 2rem;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.5;
-    h3 {
-      font-size: 1.3rem;
-    }
-  }
-}
+    padding: 2em;
 
-@include tablet {
-  .catchphrase1 {
     h3 {
       font-size: 2.5rem;
     }
   }
 }
 
-@include desktop {
+@include desktop-up {
   .catchphrase1 {
-  display: flex;
-  padding: 2em;
-  margin-top: -20em;
-  margin-bottom: 5em;       
- }
+    padding: 2em;
+    margin-top: 3rem;
+    margin-bottom: 5em;
+
+    h2 {
+      font-size: 2.7em;
+    }
+  }
 }
