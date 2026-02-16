@@ -69,21 +69,6 @@ const projects = [
     url: "https://mafraest.com",
   },
 
-{
-  id: 3,
-  title: {
-    fr: "Le Mas Du Paradis Bleu",
-    en: "Le Mas Du Paradis Bleu",
-  },
-  progression: "completed",
-  images: [lemas1, lemas2, lemas3, lemas4, lemas5],
-  description: {
-    fr: "Pour ce premier projet, j’ai mis mes compétences au service d’un client souhaitant valoriser son gîte à travers un site vitrine moderne et épuré. J’ai pris en charge l’intégralité du développement web, de la conception des maquettes jusqu’au déploiement d’une version fonctionnelle, avec pour objectif : <br><br> • Offrir aux visiteurs une expérience fluide, visuelle et rassurante.<br>• Créer une interface responsive adaptée à tous les supports (ordinateur, tablette, mobile).<br>• Optimiser l’expérience utilisateur grâce à une navigation claire et un contenu visuel attractif. <br><br> Ce projet m’a également permis d’affiner mes capacités en communication, en traduisant des besoins clients en solutions concrètes et en gérant l’ensemble des aspects techniques jusqu’à la mise en ligne d’une version démo.",
-    en: "For this project, I had the opportunity to put my skills to use by helping someone close to me who wanted to promote their vacation rental through a modern and clean showcase website. I handled the entire web development process, from design to deployment, with a clear goal: \n\n• To provide visitors with a smooth, visual, and reassuring experience. \n\nThrough this project, I strengthened several key skills :\n\n • Building a fully responsive interface adapted to all devices (desktop, tablet, mobile). \n• Enhancing the user experience by improving navigation and information clarity. \n • Highlighting visual content to showcase the unique environment of the rental. \n • Deploying and managing hosting to ensure fast and free access via Vercel.\n This project also allowed me to improve my client communication skills by understanding the needs of someone unfamiliar with the digital world and turning them into concrete solutions.",
-  },
-  technos: [sass, js, react, figma],
-  url: "https://le-mas-du-paradis.vercel.app",
-},
 ];
 
 export default projects;
