@@ -51,7 +51,6 @@ const projects = [
       en: "This project provides an AI-powered voice assistant designed for restaurants, snack bars, and fast-food establishments. The assistant automatically handles incoming calls: it takes orders, records reservations, and answers customer questions regarding menus, opening hours, and the restaurant’s contact details. Menus and restaurant information can be configured by the restaurateur through a web interface. All orders and reservations handled by the assistant are centralized and displayed in real time on a web dashboard, enabling simple and efficient management without requiring staff to handle phone calls",
     },
     technos: [sass, js, react, mongodb, node],
-    url: "https://restaurant-app-lilac-five.vercel.app/"
   },
   {
     id: 2,
