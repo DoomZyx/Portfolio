@@ -5,7 +5,7 @@ Ce projet présente mes compétences, mes projets et mon évolution en tant que 
 
 ## 📸 Aperçu
 
-👉 [axelcella.com]
+👉 axelcella.com
 
 
 ## 🧑‍💻 À propos
