@@ -41,8 +41,8 @@ const projects = [
   {
     id: 1,
     title: {
-      fr: "SmartCRM",
-      en: "SmartCRM",
+      fr: "MySmartFood",
+      en: "MySmartFood",
     },
     progression: "in-progress",
     images: [AI1, AI2, AI3, AI4, AI5, AI6, AI7, AI8],
