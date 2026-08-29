@@ -1,15 +1,9 @@
 import { Suspense, lazy } from "react";
 const ShapeshifterViewer = lazy(() => import("../../animation/models/shapeshifter"))
 import "./_services.scss";
+import { SERVICES } from "../../data/services";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-
-const SERVICES = [
-  "Architecture Technique",
-  "Architecture Produit",
-  "Conseil & Stratégie",
-  "Audit & Refactoring",
-];
 
 function MyServices() {
   return (
@@ -28,10 +22,10 @@ function MyServices() {
           </Suspense>
         </div>
         <div className="services-grid">
-          {SERVICES.map((label) => (
-            <article key={label} className="service-card">
-              <h4>{label}</h4>
-            </article>
+          {SERVICES.map(({ id, name}) => (
+              <article key={id} className="service-card">
+                <h4>{name}</h4>
+              </article>
           ))}
         </div>
       </div>

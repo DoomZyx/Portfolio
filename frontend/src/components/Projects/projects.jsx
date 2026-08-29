@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
-import github from "../../../public/github.webp";
+
 import Footer from "../footer/footer.jsx";
 
 function Projects() {
