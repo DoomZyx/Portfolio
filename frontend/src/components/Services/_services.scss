@@ -1,4 +1,5 @@
 @use "../../Utils/Responsive" as *;
+@import "./stepModal.scss";
 
 $accent: #ecbd00;
 $border: #484646;
@@ -69,19 +70,43 @@ $bg-card: rgba(30, 30, 30, 0.6);
   width: 100%;
 }
 
-.service-card {
+
+.step-card {
   padding: 1.25rem 1.5rem;
   border: 1px solid $border;
   border-radius: 12px;
   background: $bg-card;
   backdrop-filter: blur(8px);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  color: #ffffff;
+
+  .step-number {
+    font-size: 1rem;
+    font-weight: bold;
+  }
 
   h4 {
+    color: #ecbd00;
     margin: 0;
-    color: #ffffff;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 400;
+  }
+
+  p {
+    margin: 2em;
+    font-size: 1em;
+  }
+
+  .step-action {
+    font-size: smaller;
+    border: #484646 1px solid;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+  }
+  .step-action:hover {
+    border-color: rgba($accent, 0.5);
+    box-shadow: 0 6px 20px rgba($accent, 0.1);
+    font-weight: bold;
   }
 
   &:hover {
@@ -112,8 +137,10 @@ $bg-card: rgba(30, 30, 30, 0.6);
 
 @include desktop-up {
   .services-section {
-    padding: 0 2rem 4rem;
-  }
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
 
   .title-services {
     margin-top: 6rem;
@@ -130,7 +157,7 @@ $bg-card: rgba(30, 30, 30, 0.6);
   }
 
   .services-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 1.5rem;
   }
 

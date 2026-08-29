@@ -1,0 +1,125 @@
+
+
+// Variables locales (à adapter selon ta charte)
+$color-bg-card: #18181b;
+$color-border: rgba(255, 255, 255, 0.1);
+$color-text-main: #f4f4f5;
+$color-text-muted: #a1a1aa;
+$color-accent: #eab308; // Ton jaune d'accent
+$color-accent-hover: #ca8a04;
+
+.step-modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  padding-top: 0.5rem;
+
+  // Blocs de contenu
+  .modal-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: $color-bg-card;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    padding: 1rem;
+
+    h5 {
+      color: $color-accent;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0;
+    }
+
+    p {
+      color: $color-text-main;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.375rem;
+
+      li {
+        color: $color-text-main;
+        font-size: 0.9375rem;
+        line-height: 1.4;
+
+        &::marker {
+          color: $color-accent;
+        }
+      }
+    }
+  }
+
+  // Zone d'action (Bouton CTA)
+  .modal-actions {
+    margin-top: 0.5rem;
+    width: 94%;
+
+    .btn-modal-contact {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      padding: 0.875rem 1.25rem;
+      background: $color-accent;
+      color: #000;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      transition:
+        background-color 0.2s ease,
+        transform 0.1s ease;
+
+      &:hover {
+        background: $color-accent-hover;
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+}
+
+// Breakpoint Desktop (à partir de 640px)
+@media (min-width: 640px) {
+  .step-modal-details {
+    gap: 1.5rem;
+
+    .modal-block {
+      padding: 1.25rem;
+
+      h5 {
+        font-size: 0.9375rem;
+      }
+
+      p,
+      ul li {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+
+      .btn-modal-contact {
+        width: auto; // Le bouton reprend sa taille naturelle en desktop
+        padding: 0.75rem 1.5rem;
+      }
+    }
+  }
+}
