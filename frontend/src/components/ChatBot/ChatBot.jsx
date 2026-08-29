@@ -42,10 +42,33 @@ function ChatBot() {
   }, [isOpen]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     if (inputValue.trim() && !isLoading) {
       sendMessage(inputValue);
       setInputValue("");
+      
+      // Réinitialise la hauteur du textarea après l'envoi
+      if (inputRef.current) {
+        inputRef.current.style.height = "auto";
+      }
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+
+    // Auto-resize dynamique du textarea
+    if (inputRef.current) {
+      inputRef.current.style.height = "auto";
+      inputRef.current.style.height = `${Math.min(inputRef.current.scrollHeight, 120)}px`;
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    // Entrée = Envoi du message (sans Shift)
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit();
     }
   };
 
@@ -125,13 +148,14 @@ function ChatBot() {
           )}
 
           <form className="chatbot-input-form" onSubmit={handleSubmit}>
-            <input
+            <textarea
               ref={inputRef}
-              type="text"
+              rows={1}
               value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
               placeholder="Tapez votre message..."
-              className="chatbot-input"
+              className="chat-textarea"
               disabled={isLoading}
             />
             <button
@@ -150,4 +174,3 @@ function ChatBot() {
 }
 
 export default ChatBot;
-

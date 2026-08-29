@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { sendMessageToGPT } from "../../services/chatbotApi";
 
 const INITIAL_MESSAGE = {
@@ -12,10 +12,21 @@ export const useChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const conversationHistoryRef = useRef([INITIAL_MESSAGE]);
+  const messagesEndRef = useRef(null);
+
+  // Fonction pour scroller en bas
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Se déclenche à chaque fois que le tableau 'messages' change (ou quand le bot commence à écrire)
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const identifyUserIntent = (message) => {
     const lowerMessage = message.toLowerCase();
-    
+
     if (
       lowerMessage.includes("créer") ||
       lowerMessage.includes("nouveau") ||
@@ -27,7 +38,7 @@ export const useChatBot = () => {
     ) {
       return "create";
     }
-    
+
     if (
       lowerMessage.includes("améliorer") ||
       lowerMessage.includes("refonte") ||
@@ -37,7 +48,7 @@ export const useChatBot = () => {
     ) {
       return "improve";
     }
-    
+
     if (
       lowerMessage.includes("service") ||
       lowerMessage.includes("propose") ||
@@ -48,7 +59,7 @@ export const useChatBot = () => {
     ) {
       return "services";
     }
-    
+
     return "general";
   };
 
@@ -85,7 +96,7 @@ export const useChatBot = () => {
 
     try {
       const response = await sendMessageToGPT(conversationHistoryRef.current);
-      
+
       const botMsg = {
         id: Date.now() + 1,
         sender: "bot",
@@ -96,16 +107,22 @@ export const useChatBot = () => {
       conversationHistoryRef.current.push(botMsg);
 
       const intent = identifyUserIntent(userMessage);
-      const showCTA = shouldShowContactCTA(intent, conversationHistoryRef.current.length);
+      const showCTA = shouldShowContactCTA(
+        intent,
+        conversationHistoryRef.current.length,
+      );
 
-      if (showCTA && !conversationHistoryRef.current.some((msg) => msg.action === "contact")) {
+      if (
+        showCTA &&
+        !conversationHistoryRef.current.some((msg) => msg.action === "contact")
+      ) {
         const ctaMsg = {
           id: Date.now() + 2,
           sender: "bot",
           text: "Souhaitez-vous que nous discutions de votre projet plus en détail ?",
           action: "contact",
         };
-        
+
         setTimeout(() => {
           setMessages((prev) => [...prev, ctaMsg]);
           conversationHistoryRef.current.push(ctaMsg);
@@ -138,8 +155,7 @@ export const useChatBot = () => {
     scrollToPortfolio,
     shouldShowContactCTA: shouldShowContactCTA(
       identifyUserIntent(messages[messages.length - 1]?.text || ""),
-      messages.length
+      messages.length,
     ),
   };
 };
-

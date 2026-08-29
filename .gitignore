@@ -1,9 +1,9 @@
-# Backend et Frontend sont des dépôts Git séparés
-backend/
-frontend/
+nodes_modules
+.env
 
 # Fichiers de configuration monorepo
 ecosystem.config.js
+
 
 # Logs
 logs
