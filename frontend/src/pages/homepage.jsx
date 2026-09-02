@@ -27,9 +27,9 @@ function homepage() {
       <Header />
       <main>
         <CatchPhrasesCards />
-        <BackgroundABout />
         <Catchphrase1 />
         <Catchphrase2 />
+        <BackgroundABout />
         <MyPortfolio />
         <MyServices />
         <ContactMe />
