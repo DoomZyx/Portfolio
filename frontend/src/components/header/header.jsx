@@ -14,9 +14,6 @@ function Header() {
           />
         </div>
       </header>
-      <div className="thphr">
-        <h1>Je conçois l'architecture de produits digitaux <br /> Qui allient performance technique et vision stratégique</h1>
-      </div>
     </>
   );
 }

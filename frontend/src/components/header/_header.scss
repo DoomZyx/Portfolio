@@ -15,28 +15,9 @@
   }
 }
 
-.thphr {
-  display: block;
-  padding: 2em;
-  line-height: 1.25;
-  margin-top: 5rem;
-  margin-bottom: 5em;
-  color: #ffffff;
-
-  h1 {
-    font-size: 1.1em;
-    color: #ffffff;
-    margin: 0;
-  }
-}
-
 @include tablet-up {
   .header-layout {
     margin-bottom: clamp(5em, 12vw, 10em);
-  }
-
-  .thphr h1 {
-    font-size: 2.5em;
   }
 }
 
@@ -49,13 +30,5 @@
 
   .header-layout img {
     width: 70%;
-  }
-
-  .thphr {
-    margin-bottom: 15em;
-
-    h1 {
-      font-size: 3em;
-    }
   }
 }

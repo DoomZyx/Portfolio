@@ -5,6 +5,9 @@ const Header = lazy(() => import("../components/header/header"));
 const BackgroundABout = lazy(() =>
   import("../components/backgroundAbout/backgroundAbout")
 );
+const CatchPhrasesCards = lazy(
+  () => import("../components/catchPhrasesCards/catchPhrasesCards"),
+); 
 const Catchphrase1 = lazy(() =>
   import("../components/CatchPhrase/Catchphrase1/catchPhrase1")
 );
@@ -23,6 +26,7 @@ function homepage() {
       <Nav />
       <Header />
       <main>
+        <CatchPhrasesCards />
         <BackgroundABout />
         <Catchphrase1 />
         <Catchphrase2 />
