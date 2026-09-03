@@ -33,11 +33,12 @@
 @include desktop-up {
   .catchphrase1 {
     padding: 2em;
-    margin-top: 3rem;
+    margin-top: 5rem;
     margin-bottom: 5em;
 
     h2 {
-      font-size: 2.7em;
+      font-size: 2.5em;
+      font-weight: 400;
     }
   }
 }
