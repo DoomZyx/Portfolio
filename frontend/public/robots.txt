@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://axelcella.io.com/sitemap.xml
+Sitemap: https://axelcella.com/sitemap.xml
