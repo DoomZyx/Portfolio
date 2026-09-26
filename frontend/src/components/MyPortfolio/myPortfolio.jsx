@@ -19,8 +19,8 @@ function ProjectCard({ project }) {
         <img
           src={previewImage}
           alt={`Homepage de ${project.title.fr}`}
-          width={150}
-          height={150}
+          width={1916}
+          height={912}
           loading="lazy"
         />
         <div className="info-project">

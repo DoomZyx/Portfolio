@@ -1,13 +1,15 @@
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 
-const Nav = lazy(() => import("../components/nav/nav"));
-const Header = lazy(() => import("../components/header/header"));
+// Above-the-fold : chargement synchrone pour éviter le CLS du premier viewport
+import Nav from "../components/nav/nav";
+import Header from "../components/header/header";
+
 const BackgroundABout = lazy(() =>
   import("../components/backgroundAbout/backgroundAbout")
 );
 const CatchPhrasesCards = lazy(
   () => import("../components/catchPhrasesCards/catchPhrasesCards"),
-); 
+);
 const Catchphrase1 = lazy(() =>
   import("../components/CatchPhrase/Catchphrase1/catchPhrase1")
 );
@@ -20,22 +22,49 @@ const ContactMe = lazy(() => import("../components/Contact/contact"));
 const Footer = lazy(() => import("../components/footer/footer.jsx"));
 const ChatBot = lazy(() => import("../components/ChatBot/ChatBot"));
 
+function SectionFallback({ minHeight }) {
+  return (
+    <div
+      aria-hidden="true"
+      style={{ minHeight, width: "100%" }}
+    />
+  );
+}
+
 function homepage() {
   return (
     <>
       <Nav />
       <Header />
       <main>
-        <CatchPhrasesCards />
-        <Catchphrase1 />
-        <Catchphrase2 />
-        <BackgroundABout />
-        <MyPortfolio />
-        <MyServices />
-        <ContactMe />
+        <Suspense fallback={<SectionFallback minHeight="120px" />}>
+          <CatchPhrasesCards />
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="160px" />}>
+          <Catchphrase1 />
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="280px" />}>
+          <Catchphrase2 />
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="320px" />}>
+          <BackgroundABout />
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="400px" />}>
+          <MyPortfolio />
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="400px" />}>
+          <MyServices />
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="450px" />}>
+          <ContactMe />
+        </Suspense>
       </main>
-      <Footer />
-      <ChatBot />
+      <Suspense fallback={<SectionFallback minHeight="100px" />}>
+        <Footer />
+      </Suspense>
+      <Suspense fallback={null}>
+        <ChatBot />
+      </Suspense>
     </>
   );
 }

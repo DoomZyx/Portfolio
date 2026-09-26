@@ -1,4 +1,3 @@
-import logoPortfolio from "../../../public/Portfolio.webp";
 import "./_header.scss";
 
 function Header() {
@@ -7,10 +6,11 @@ function Header() {
       <header>
         <div className="header-layout">
           <img
-            src={logoPortfolio}
+            src="/Portfolio.webp"
             alt="Logo Portfolio Axel Cella"
-            width={400}
-            height={400}
+            width={1900}
+            height={900}
+            fetchPriority="high"
           />
         </div>
       </header>

@@ -2,6 +2,8 @@
 
 > Conception et développement de produits digitaux pour entrepreneurs et entreprises.
 
+Axel Cella est architecte de produits digitaux. Il accompagne les TPE et PME dans leurs décisions stratégiques et techniques, de la conception à la réalisation.
+
 ## Services
 
 - Sites vitrines professionnels
@@ -12,10 +14,13 @@
 
 ## Projects
 
-- [Portfolio](https://axelcella.com/)
-- [Projects](https://axelcella.com/projects)
+- [Portfolio](https://axelcella.com/): présentation et services
+- [MySmartFood](https://axelcella.com/project/1): assistant vocal IA pour restaurants
+- [MAFRA](https://axelcella.com/project/2): plateforme e-commerce B2C/B2B entretien automobile
+- [WM Performance](https://axelcella.com/project/3): site premium reprogrammation moteur
 
-## Contact
+## Optional
 
-Pour discuter d'un projet :
-- [Contact](https://axelcella.com/contact)
+- [Contact](https://axelcella.com/#contact): formulaire de prise de contact
+- LinkedIn: https://www.linkedin.com/in/axel-cella-8bb55a19b/
+- GitHub: https://github.com/DoomZyx

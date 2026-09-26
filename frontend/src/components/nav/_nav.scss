@@ -13,6 +13,8 @@ nav {
 }
 
 .layout-burger {
+  position: relative;
+  z-index: 10001;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,7 +40,7 @@ nav {
 }
 
 .burger-menu {
-  z-index: 9999;
+  z-index: 10002;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,6 +50,7 @@ nav {
   border: none;
   padding: 0.25rem;
   padding-left: 15px;
+  cursor: pointer;
 
   button:focus {
     border: none;
@@ -56,28 +59,36 @@ nav {
 
 .mobile-menu {
   position: fixed;
-  top: 0;
-  z-index: 9999;
-  right: 100%;
-  width: min(85%, 320px);
+  inset: 0;
+  z-index: 10000;
+  width: 100%;
   height: 100dvh;
-  border-left: 1px solid #484646;
-  border-bottom: 1px solid #484646;
   background-color: #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  transition: right 0.3s ease-in-out;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
   &.open {
-    right: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 }
 
 .burger-title {
-  padding-top: 2em;
-  padding-bottom: 3rem;
+  padding-top: 0;
+  padding-bottom: 2rem;
+
+  h2 {
+    margin: 0;
+    letter-spacing: 0.08em;
+  }
 }
 
 .burger-links {
@@ -89,8 +100,8 @@ nav {
 
 .mobile-menu a {
   color: #ffffff;
-  font-size: 1em;
-  margin: 1em 0;
+  font-size: 1.25em;
+  margin: 0.75em 0;
   text-decoration: none;
 
   &:hover {
@@ -101,19 +112,55 @@ nav {
 
 .connectButton-menu {
   width: 100%;
-  margin-top: 2em;
+  margin-top: 1.5em;
+  display: flex;
+  justify-content: center;
 
   button {
     background: none;
     border: 1px solid #484646;
     color: #ffffff;
-    padding: 1em;
+    padding: 1em 1.5em;
     border-radius: 50px;
     font-weight: 400;
-    font-size: 0.8em;
+    font-size: 0.9em;
+    cursor: pointer;
 
     &:hover {
-      filter: invert(1);
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+  }
+}
+
+.burger-socials {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+
+  a {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: translateY(-2px);
+      color: inherit;
+    }
+
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      display: block;
     }
   }
 }
@@ -130,6 +177,7 @@ nav {
 
   .burger-title {
     font-size: 1.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .mobile-menu a {
@@ -139,6 +187,11 @@ nav {
   .connectButton-menu button {
     font-size: 1em;
   }
+
+  .burger-socials a img {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 @include desktop-up {
@@ -146,7 +199,6 @@ nav {
     position: relative;
     margin: 1em auto;
     width: 55%;
-  
     height: 50px;
     border: 1px solid #484646;
     border-radius: 50px;

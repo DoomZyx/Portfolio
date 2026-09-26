@@ -2,3 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://axelcella.com/sitemap.xml
+
+# Fichier pour agents LLM / navigation agentique
+# https://llmstxt.org/
+# Disponible à : https://axelcella.com/llms.txt

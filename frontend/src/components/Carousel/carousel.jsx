@@ -16,7 +16,9 @@ function Carousel({ images }) {
             <img
               src={img}
               alt={`Slide ${index}`}
-              loading="lazy"
+              width={1916}
+              height={912}
+              loading={index === 0 ? "eager" : "lazy"}
               onClick={() => {
                 setPhotoIndex(index);
                 setIsOpen(true);

@@ -64,7 +64,7 @@ $bg-card: rgba(30, 30, 30, 0.6);
   img {
     width: 100%;
     height: auto;
-    min-height: 220px;
+    aspect-ratio: 1916 / 912;
     object-fit: cover;
     display: block;
     cursor: pointer;
@@ -169,10 +169,6 @@ $bg-card: rgba(30, 30, 30, 0.6);
     .project-status {
       font-size: 1.5rem;
     }
-  }
-
-  .project-carousel img {
-    min-height: 300px;
   }
 
   .project-description {
