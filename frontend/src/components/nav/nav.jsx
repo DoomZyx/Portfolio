@@ -67,7 +67,7 @@ function Nav() {
 
         <div className={`mobile-menu ${isOpen ? "open" : ""}`}>
           <div className="burger-title">
-            <h2>PORTFOLIO</h2>
+            <h2>AC</h2>
           </div>
           <div className="burger-links">
             <HashLink smooth={true} to="/" onClick={closeMenu}>
