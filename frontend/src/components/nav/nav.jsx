@@ -1,6 +1,8 @@
 import "./_nav.scss";
 import { HashLink } from "react-router-hash-link";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -88,6 +90,12 @@ function Nav() {
           </HashLink>
           <div className="burger-socials">
             <a
+              href="tel:+33672886255"
+              aria-label="Appeler le 06 72 88 62 55"
+            >
+              <FontAwesomeIcon icon={faPhone} />
+            </a>
+            <a
               href="mailto:axelcella.ac@gmail.com"
               aria-label="Envoyer un email"
             >
@@ -128,6 +136,9 @@ function Nav() {
               />
             </a>
           </div>
+          <a className="burger-phone" href="tel:+33672886255">
+            06 72 88 62 55
+          </a>
         </div>
       </nav>
     </>

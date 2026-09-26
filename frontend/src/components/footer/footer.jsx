@@ -1,7 +1,8 @@
 import "./footer.scss";
-import github from "../../../public/github.webp";
 import linkedin from "../../../public/linkedin.webp";
 import gmail from "../../../public/gmail.webp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
@@ -9,6 +10,9 @@ function Footer() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-links">
+            <a href="tel:+33672886255" aria-label="Appeler le 06 72 88 62 55">
+              <FontAwesomeIcon className="phone" icon={faPhone} />
+            </a>
             <a href="mailto:axelcella.ac@gmail.com">
               <img
                 className="gmail"

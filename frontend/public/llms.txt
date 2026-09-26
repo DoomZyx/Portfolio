@@ -22,5 +22,7 @@ Axel Cella est architecte de produits digitaux. Il accompagne les TPE et PME dan
 ## Optional
 
 - [Contact](https://axelcella.com/#contact): formulaire de prise de contact
+- Téléphone: +33 6 72 88 62 55
+- Email: axelcella.ac@gmail.com
 - LinkedIn: https://www.linkedin.com/in/axel-cella-8bb55a19b/
 - GitHub: https://github.com/DoomZyx

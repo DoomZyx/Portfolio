@@ -162,6 +162,23 @@ nav {
       object-fit: contain;
       display: block;
     }
+
+    svg {
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+  }
+}
+
+.burger-phone {
+  margin-top: 1rem;
+  color: #ecbd00;
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+
+  &:hover {
+    color: #ffffff;
   }
 }
 
