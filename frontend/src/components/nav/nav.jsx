@@ -136,9 +136,6 @@ function Nav() {
               />
             </a>
           </div>
-          <a className="burger-phone" href="tel:+33672886255">
-            06 72 88 62 55
-          </a>
         </div>
       </nav>
     </>
