@@ -135,3 +135,47 @@ Le backend suit une architecture MVC propre :
 - **Services** : Gèrent l'accès aux APIs externes (OpenAI)
 - **Config** : Contient les constantes et configurations
 
+
+
+## Leads & Admin (MVP)
+
+### Prérequis
+- PostgreSQL 16+
+- Variables dans `backend/.env` (voir `.env.example`)
+
+### Démarrage local BDD
+
+Si Docker Compose plugin est disponible :
+
+```bash
+docker compose up -d db
+```
+
+Sinon, équivalent :
+
+```bash
+docker run -d --name portfolio-pg \
+  -e POSTGRES_USER=portfolio \
+  -e POSTGRES_PASSWORD=portfolio \
+  -e POSTGRES_DB=portfolio \
+  -p 5432:5432 postgres:16-alpine
+```
+
+### Migrations & admin
+
+```bash
+cd backend
+pnpm migrate
+pnpm seed:admin
+pnpm test:recommendation
+pnpm dev
+```
+
+### Endpoints principaux
+- `POST /api/leads` (public)
+- `POST /api/admin/login`
+- `GET /api/admin/dashboard` (auth)
+- `GET /api/admin/leads` (auth)
+- `GET /api/admin/leads/:id` (auth)
+- `PATCH /api/admin/leads/:id` (auth)
+- `POST /api/admin/leads/:id/notes` (auth)

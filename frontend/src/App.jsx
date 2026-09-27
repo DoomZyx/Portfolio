@@ -1,8 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
 const Homepage = lazy(() => import("./pages/homepage"));
 const Projects = lazy(() => import("./components/Projects/projects"));
+const DiagnosticEcommercePage = lazy(
+  () => import("./pages/diagnosticEcommerce"),
+);
+const AdminLoginPage = lazy(() => import("./pages/admin/adminLogin"));
+const AdminDashboardPage = lazy(() => import("./pages/admin/adminDashboard"));
+const AdminLeadsPage = lazy(() => import("./pages/admin/adminLeads"));
+const AdminLeadDetailPage = lazy(() => import("./pages/admin/adminLeadDetail"));
+const AdminDocumentsPage = lazy(() => import("./pages/admin/adminDocuments"));
+const AdminDocumentNewPage = lazy(
+  () => import("./pages/admin/adminDocumentNew"),
+);
+const AdminDocumentDetailPage = lazy(
+  () => import("./pages/admin/adminDocumentDetail"),
+);
 
 import ScrollToTop from "./hooks/ScrollToTop/scroll";
 import "./Custom/Scrollbar/_scrollbar.scss";
@@ -27,6 +41,28 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/project/:id" element={<Projects />} />
+          <Route
+            path="/diagnostic/ecommerce"
+            element={<DiagnosticEcommercePage />}
+          />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin" element={<AdminDashboardPage />} />
+          <Route path="/admin/leads" element={<AdminLeadsPage />} />
+          <Route path="/admin/leads/:id" element={<AdminLeadDetailPage />} />
+          <Route path="/admin/devis" element={<AdminDocumentsPage />} />
+          <Route path="/admin/factures" element={<AdminDocumentsPage />} />
+          <Route
+            path="/admin/documents"
+            element={<Navigate to="/admin/devis" replace />}
+          />
+          <Route
+            path="/admin/documents/new"
+            element={<AdminDocumentNewPage />}
+          />
+          <Route
+            path="/admin/documents/:id"
+            element={<AdminDocumentDetailPage />}
+          />
         </Routes>
       </Suspense>
     </Router>

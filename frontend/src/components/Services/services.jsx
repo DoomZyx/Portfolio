@@ -1,8 +1,10 @@
 import { Suspense, lazy, useState } from "react";
+import { Link } from "react-router-dom";
 const ShapeshifterViewer = lazy(
   () => import("../../animation/models/shapeshifter"),
 );
 import "./_services.scss";
+import "../Diagnostic/_diagnostic.scss";
 import Modal from "../Modal/modal";
 import { SERVICES } from "../../data/services";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,11 +44,27 @@ function MyServices() {
           ))}
         </div>
 
+        <div className="diagnostic-cta-wrap">
+          <article className="diagnostic-cta-services">
+            <div className="diagnostic-cta-content">
+              <h3>Projet e-commerce ?</h3>
+              <p>
+                Obtenez une première orientation : SaaS adapté, accompagnement
+                stratégique, ou étude d&apos;architecture, selon votre besoin
+                business.
+              </p>
+            </div>
+            <Link className="diagnostic-cta-link" to="/diagnostic/ecommerce">
+              Lancer le diagnostic
+            </Link>
+          </article>
+        </div>
+
         {/* Modale partagée pour chaque étape */}
         <Modal
           isOpen={Boolean(selectedStep)}
           onClose={() => setSelectedStep(null)}
-          title={`Étape ${selectedStep?.step} — ${selectedStep?.title}`}
+          title={`Étape ${selectedStep?.step} : ${selectedStep?.title}`}
         >
           {selectedStep && (
             <div className="step-modal-details">

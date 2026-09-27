@@ -9,7 +9,10 @@
     "dev:all": "concurrently \"pnpm dev:backend\" \"pnpm dev\"",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:recommendation": "node --test src/domain/ecommerce/recommendation.test.js",
+    "test:admin": "node --test src/utils/adminLeads.test.js src/utils/adminDocuments.test.js",
+    "test": "node --test src/domain/ecommerce/recommendation.test.js src/utils/adminLeads.test.js src/utils/adminDocuments.test.js"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.1",
@@ -24,7 +27,7 @@
     "@splinetool/react-spline": "^4.0.0",
     "fastify": "^5.1.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0",  
+    "react-dom": "18.2.0",
     "react-router-dom": "^7.6.2",
     "react-router-hash-link": "^2.4.3",
     "sass": "^1.89.2",

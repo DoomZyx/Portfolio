@@ -1,4 +1,5 @@
 import "./_nav.scss";
+import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -57,10 +58,11 @@ function Nav() {
             <HashLink smooth={true} to="/#about">
               A propos
             </HashLink>
+            <Link to="/diagnostic/ecommerce">Diagnostic</Link>
           </div>
           <HashLink smooth={true} to="/#contact">
             <div className="connectButton">
-              <button>Connectons-nous</button>
+              <button type="button">Connectons-nous</button>
             </div>
           </HashLink>
         </div>
@@ -79,6 +81,9 @@ function Nav() {
             <HashLink smooth={true} to="/#about" onClick={closeMenu}>
               A propos
             </HashLink>
+            <Link to="/diagnostic/ecommerce" onClick={closeMenu}>
+              Diagnostic
+            </Link>
           </div>
           <HashLink smooth={true} to="/#contact" onClick={closeMenu}>
             <div className="connectButton-menu">

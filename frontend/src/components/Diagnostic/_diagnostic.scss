@@ -1,0 +1,579 @@
+@use "../../Utils/Responsive" as *;
+
+// Aligné sur le design system portfolio (nav / services / contact)
+$accent: #ecbd00;
+$border: #484646;
+$bg-card: rgba(30, 30, 30, 0.6);
+
+.diagnostic-page {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  padding: 5.5rem 1rem 3rem;
+  box-sizing: border-box;
+  background-color: #000000;
+  overflow-x: clip;
+}
+
+.diagnostic-shell {
+  width: 100%;
+  max-width: min(36rem, 100%);
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.diagnostic-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.diagnostic-back-home {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 300;
+  transition: color 0.3s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: $accent;
+    outline: none;
+  }
+}
+
+.diagnostic-kicker {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $accent;
+}
+
+.diagnostic-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid $border;
+  border-radius: 12px;
+  background: $bg-card;
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.diagnostic-card form {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.diagnostic-title {
+  margin: 0 0 0.65rem;
+  font-size: clamp(1.15rem, 4vw, 1.35rem);
+  font-weight: 400;
+  color: $accent;
+  text-align: center;
+}
+
+.diagnostic-lead {
+  margin: 0 0 1.5rem;
+  font-size: clamp(0.88rem, 3.2vw, 0.95rem);
+  font-weight: 300;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+}
+
+.diagnostic-progress {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border;
+}
+
+.diagnostic-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.diagnostic-progress-track {
+  width: 100%;
+  height: 0.3rem;
+  border-radius: 50px;
+  background: #1a1a1a;
+  border: 1px solid $border;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.diagnostic-progress-bar {
+  height: 100%;
+  max-width: 100%;
+  border-radius: inherit;
+  background: $accent;
+  transition: width 0.3s ease;
+}
+
+.diagnostic-step-title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1rem, 3.5vw, 1.05rem);
+  font-weight: 400;
+  color: $accent;
+}
+
+.diagnostic-step-description {
+  margin: 0 0 1.1rem;
+  font-size: clamp(0.88rem, 3.2vw, 0.95rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.diagnostic-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-inline-size: 0;
+  box-sizing: border-box;
+}
+
+.diagnostic-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid $border;
+  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.55);
+  color: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.5);
+    box-shadow: 0 6px 20px rgba($accent, 0.1);
+  }
+
+  &:focus-within {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+
+  &.is-selected {
+    border-color: rgba($accent, 0.75);
+    background: rgba($accent, 0.08);
+    box-shadow: 0 6px 20px rgba($accent, 0.12);
+  }
+}
+
+.diagnostic-option input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  min-width: 1.05rem;
+  margin: 0.15rem 0 0;
+  flex-shrink: 0;
+  border: 1px solid $border;
+  border-radius: 50%;
+  background: #111;
+  display: grid;
+  place-content: center;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  &::before {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 0.15s ease;
+    background: $accent;
+  }
+
+  &:checked {
+    border-color: $accent;
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+
+  &[type="checkbox"] {
+    border-radius: 4px;
+
+    &::before {
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 2px;
+    }
+  }
+}
+
+.diagnostic-option-label {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: clamp(0.88rem, 3.2vw, 0.95rem);
+  font-weight: 300;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.diagnostic-error {
+  margin: 1rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid $border;
+  background: rgba(80, 20, 20, 0.35);
+  color: #ffd7d7;
+  font-size: 0.9rem;
+  font-weight: 300;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.diagnostic-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.diagnostic-btn {
+  appearance: none;
+  font-family: inherit;
+  width: 100%;
+  border: 1px solid $border;
+  border-radius: 50px;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+.diagnostic-btn-primary {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+
+  &:hover:not(:disabled) {
+    background: $accent;
+    border-color: $accent;
+    color: #000000;
+  }
+}
+
+.diagnostic-btn-secondary {
+  background: none;
+  color: #ffffff;
+
+  &:hover:not(:disabled) {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+  }
+}
+
+a.diagnostic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.diagnostic-result-tag {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 0 0.85rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 50px;
+  border: 1px solid $border;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: $accent;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+}
+
+.diagnostic-result-body {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.diagnostic-result-note {
+  margin: 0 0 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.diagnostic-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    box-sizing: border-box;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: none;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 2px solid $accent;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+.diagnostic-cta-wrap {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 1.5rem 0 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.diagnostic-cta-services {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 1.75rem 1.75rem 1.5rem;
+  border: 1px solid $border;
+  border-radius: 12px;
+  background: $bg-card;
+  backdrop-filter: blur(8px);
+  box-sizing: border-box;
+  color: #ffffff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    border-color: rgba($accent, 0.5);
+    box-shadow: 0 6px 20px rgba($accent, 0.1);
+  }
+}
+
+.diagnostic-cta-content {
+  width: 100%;
+  min-width: 0;
+
+  h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: $accent;
+  }
+
+  p {
+    margin: 1.35rem 0 1.75rem;
+    font-size: 1.05em;
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.55;
+  }
+}
+
+.diagnostic-cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  border: 1px solid $border;
+  border-radius: 1rem;
+  background: transparent;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.9rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, font-weight 0.25s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgba($accent, 0.5);
+    box-shadow: 0 6px 20px rgba($accent, 0.1);
+    font-weight: bold;
+    color: #ffffff;
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@include tablet-up {
+  .diagnostic-page {
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .diagnostic-shell {
+    max-width: min(42rem, 100%);
+  }
+
+  .diagnostic-card {
+    padding: 1.75rem;
+  }
+
+  .diagnostic-title {
+    font-size: 1.5rem;
+  }
+
+  .diagnostic-kicker {
+    font-size: 0.75rem;
+  }
+
+  .diagnostic-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .diagnostic-option {
+    padding: 1rem 1.1rem;
+    align-items: center;
+  }
+
+  .diagnostic-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .diagnostic-btn {
+    width: auto;
+    min-width: 9rem;
+  }
+
+  .diagnostic-cta-wrap {
+    padding: 2.5rem 0 1rem;
+    margin-top: 1rem;
+  }
+
+  .diagnostic-cta-services {
+    max-width: 38rem;
+    padding: 2rem 2.25rem 1.75rem;
+  }
+
+  .diagnostic-cta-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .diagnostic-cta-content p {
+    margin: 1.5rem 0 1.85rem;
+    font-size: 1.08em;
+  }
+}
+
+@include desktop-up {
+  .diagnostic-page {
+    padding: 2rem 2rem 5rem;
+  }
+
+  .diagnostic-card:hover {
+    border-color: rgba($accent, 0.45);
+    box-shadow: 0 8px 28px rgba($accent, 0.08);
+  }
+
+  .diagnostic-options {
+    gap: 0.85rem;
+  }
+
+  .diagnostic-cta-wrap {
+    padding: 3rem 0 1.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .diagnostic-cta-services {
+    max-width: 42rem;
+    padding: 2.25rem 2.5rem 2rem;
+  }
+}

@@ -2,12 +2,11 @@
 FROM node:20-alpine AS base
 WORKDIR /app
 
-RUN apk add --no-cache wget \
-  && corepack enable && corepack prepare pnpm@9.15.4 --activate
+RUN apk add --no-cache wget
 
 FROM base AS deps
-COPY backend/package.json backend/pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile --prod
+COPY backend/package.json backend/package-lock.json ./
+RUN npm ci --omit=dev
 
 FROM base AS runtime
 ENV NODE_ENV=production
