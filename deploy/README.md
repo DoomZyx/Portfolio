@@ -57,34 +57,41 @@ CI commune : `.github/workflows/ci.yml` sur PR/`push` vers `dev`, `preprod` et `
 ## Setup VPS (une fois)
 
 1. Docker + Docker Compose plugin + nginx + certbot.
-2. Clone du monorepo (chemin = secret `VPS_APP_PATH`).
-3. Branches `dev`, `preprod` et `prod` présentes.
-4. Secrets locaux (ne pas committer) :
+2. Clones du monorepo sous `apps/` (convention VPS) :
+   - preprod → `/home/deploy/apps/portfolio-preprod` (branche `preprod`)
+   - prod → `/home/deploy/apps/portfolio-prod` (branche `prod`)
+   Ces chemins = secrets `VPS_APP_PATH` (un par Environment GitHub).
+3. Secrets locaux dans chaque clone (ne pas committer) :
    ```bash
+   # dans portfolio-preprod
    cp deploy/.env.preprod.example deploy/.env.preprod
+   # dans portfolio-prod
    cp deploy/.env.prod.example deploy/.env.prod
    # Éditer mots de passe, JWT, SMTP, images OWNER…
    ```
-5. Installer les vhosts hôte :
+4. Installer les vhosts hôte :
    ```bash
-   sudo cp deploy/host-nginx/preprod.conf /etc/nginx/sites-available/
-   sudo cp deploy/host-nginx/prod.conf /etc/nginx/sites-available/
-   sudo ln -s /etc/nginx/sites-available/preprod.conf /etc/nginx/sites-enabled/
-   sudo ln -s /etc/nginx/sites-available/prod.conf /etc/nginx/sites-enabled/
+   sudo cp deploy/host-nginx/preprod.conf /etc/nginx/sites-available/portfolio-preprod.conf
+   sudo cp deploy/host-nginx/prod.conf /etc/nginx/sites-available/portfolio-prod.conf
+   sudo ln -s /etc/nginx/sites-available/portfolio-preprod.conf /etc/nginx/sites-enabled/
+   sudo ln -s /etc/nginx/sites-available/portfolio-prod.conf /etc/nginx/sites-enabled/
    sudo nginx -t && sudo systemctl reload nginx
    sudo certbot --nginx -d preprod.axelcella.com
    sudo certbot --nginx -d axelcella.com -d www.axelcella.com
    ```
-6. Premier démarrage manuel (après build/push ou images locales) :
+5. Premier démarrage manuel (après build/push ou images locales), **depuis le bon clone** :
    ```bash
+   cd /home/deploy/apps/portfolio-preprod
    ./deploy/scripts/deploy.sh preprod ghcr.io/<owner>/portfolio-backend:preprod ghcr.io/<owner>/portfolio-web:preprod
+   cd /home/deploy/apps/portfolio-prod
    ./deploy/scripts/deploy.sh prod    ghcr.io/<owner>/portfolio-backend:prod    ghcr.io/<owner>/portfolio-web:prod
    ```
-7. Migrations BDD (une fois par env, depuis le conteneur backend) :
+6. Migrations BDD (une fois par env, depuis le conteneur backend) :
    ```bash
+   cd /home/deploy/apps/portfolio-preprod
    docker compose --env-file deploy/.env.preprod -f deploy/docker-compose.yml exec backend node scripts/migrate.js
    docker compose --env-file deploy/.env.preprod -f deploy/docker-compose.yml exec backend node scripts/seedAdmin.js
-   # idem pour prod avec .env.prod
+   # idem dans portfolio-prod avec .env.prod
    ```
 
 ## Secrets GitHub
@@ -98,7 +105,7 @@ Secrets par environment (ou repository) :
 | `VPS_HOST` | IP / hostname OVH | `54.37.231.243` |
 | `VPS_USER` | User SSH | `deploy` |
 | `VPS_SSH_KEY` | Clé privée SSH (contenu PEM) | clé du user `deploy` |
-| `VPS_APP_PATH` | Chemin clone monorepo sur le VPS | `/home/deploy/portfolio` |
+| `VPS_APP_PATH` | Clone sous `apps/<projet>-<env>` | preprod: `/home/deploy/apps/portfolio-preprod` — prod: `/home/deploy/apps/portfolio-prod` |
 
 Connexion manuelle : `ssh deploy@54.37.231.243`
 
