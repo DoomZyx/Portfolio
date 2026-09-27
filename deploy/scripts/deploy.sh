@@ -23,8 +23,10 @@ if [[ "${ENV_NAME}" != "preprod" && "${ENV_NAME}" != "prod" ]]; then
   exit 1
 fi
 
-export COMPOSE_PROJECT_NAME="${PROJECT_NAME}"
-export BACKEND_IMAGE WEB_IMAGE
+# -p gagne sur un COMPOSE_PROJECT_NAME résiduel dans le shell
+compose() {
+  docker compose -p "${PROJECT_NAME}" --env-file "${ENV_FILE}" -f "${COMPOSE_FILE}" "$@"
+}
 
 tmp_env="$(mktemp)"
 sed \
@@ -34,15 +36,15 @@ sed \
 mv "${tmp_env}" "${ENV_FILE}"
 
 echo "==> Pull images"
-docker compose --env-file "${ENV_FILE}" -f "${COMPOSE_FILE}" pull
+compose pull
 
 echo "==> Up ${PROJECT_NAME}"
-docker compose --env-file "${ENV_FILE}" -f "${COMPOSE_FILE}" up -d --remove-orphans
+compose up -d --remove-orphans
 
 echo "==> Prune dangling images (safe)"
 docker image prune -f
 
 echo "==> Status"
-docker compose --env-file "${ENV_FILE}" -f "${COMPOSE_FILE}" ps
+compose ps
 
 echo "Deploy ${ENV_NAME} OK"

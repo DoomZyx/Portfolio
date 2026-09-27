@@ -1,9 +1,12 @@
 # Stack déployable (preprod OU prod) — un projet Compose par environnement
-# Usage:
-#   COMPOSE_PROJECT_NAME=portfolio-preprod docker compose --env-file deploy/.env.preprod -f deploy/docker-compose.yml up -d
-#   COMPOSE_PROJECT_NAME=portfolio-prod    docker compose --env-file deploy/.env.prod    -f deploy/docker-compose.yml up -d
-
-name: portfolio
+# Usage (préférer les wrappers) :
+#   ./deploy/scripts/compose-env.sh preprod up -d
+#   ./deploy/scripts/compose-env.sh prod up -d
+#   ./deploy/scripts/deploy.sh preprod|prod <backend_image> <web_image>
+#
+# Ne pas exporter COMPOSE_PROJECT_NAME dans le shell : le flag -p des scripts
+# prime, et sans script le nom du dossier (portfolio-preprod / portfolio-prod)
+# sert de nom de projet.
 
 services:
   db:

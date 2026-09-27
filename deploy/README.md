@@ -52,7 +52,8 @@ CI commune : `.github/workflows/ci.yml` sur PR/`push` vers `dev`, `preprod` et `
 | `deploy/.env.*.example` | Modèles secrets (copier sur le VPS) |
 | `deploy/nginx/frontend.conf` | Config nginx **dans** l’image web |
 | `deploy/host-nginx/*.conf` | TLS / domaines sur l’hôte OVH |
-| `deploy/scripts/deploy.sh` | Pull images + `compose up` |
+| `deploy/scripts/deploy.sh` | Pull images + `compose up` (`-p` forcé) |
+| `deploy/scripts/compose-env.sh` | Wrapper Compose sûr (`preprod`/`prod` + args) |
 
 ## Setup VPS (une fois)
 
@@ -86,12 +87,20 @@ CI commune : `.github/workflows/ci.yml` sur PR/`push` vers `dev`, `preprod` et `
    cd /home/deploy/apps/portfolio-prod
    ./deploy/scripts/deploy.sh prod    ghcr.io/<owner>/portfolio-backend:prod    ghcr.io/<owner>/portfolio-web:prod
    ```
+   Opérations Compose courantes (sans toucher à `COMPOSE_PROJECT_NAME`) :
+   ```bash
+   ./deploy/scripts/compose-env.sh preprod up -d
+   ./deploy/scripts/compose-env.sh prod ps
+   ./deploy/scripts/compose-env.sh prod logs -f web
+   ```
 6. Migrations BDD (une fois par env, depuis le conteneur backend) :
    ```bash
    cd /home/deploy/apps/portfolio-preprod
-   docker compose --env-file deploy/.env.preprod -f deploy/docker-compose.yml exec backend node scripts/migrate.js
-   docker compose --env-file deploy/.env.preprod -f deploy/docker-compose.yml exec backend node scripts/seedAdmin.js
-   # idem dans portfolio-prod avec .env.prod
+   ./deploy/scripts/compose-env.sh preprod exec backend node scripts/migrate.js
+   ./deploy/scripts/compose-env.sh preprod exec backend node scripts/seedAdmin.js
+   # idem dans portfolio-prod :
+   ./deploy/scripts/compose-env.sh prod exec backend node scripts/migrate.js
+   ./deploy/scripts/compose-env.sh prod exec backend node scripts/seedAdmin.js
    ```
 
 ## Secrets GitHub
