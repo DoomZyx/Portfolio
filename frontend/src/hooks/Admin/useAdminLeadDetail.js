@@ -236,7 +236,9 @@ export function useAdminLeadDetail(id) {
     }
   }
 
-  const diagnosticRows = lead ? formatDiagnosticRows(lead.diagnostic) : [];
+  const diagnosticRows = lead
+    ? formatDiagnosticRows(lead.diagnostic, lead.projectType)
+    : [];
 
   return {
     lead,

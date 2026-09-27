@@ -74,7 +74,7 @@ function AdminDashboard() {
           </Link>
           <Link
             className="admin-btn admin-btn-secondary"
-            to="/diagnostic/ecommerce"
+            to="/diagnostic"
           >
             Ouvrir le diagnostic
           </Link>

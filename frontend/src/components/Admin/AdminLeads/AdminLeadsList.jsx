@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getTechnicalLabel } from "../../../domain/ecommerce/recommendation";
+import { getTechnicalLabel } from "../../../domain/recommendationLabels";
 import {
   LEAD_STATUSES,
   formatDate,
@@ -85,11 +85,14 @@ function AdminLeadsList({ leads, updatingId, onQuickStatus }) {
                 </td>
                 <td className="admin-td-wrap">{lead.company || "-"}</td>
                 <td className="admin-td-wrap">
-                  {getBudgetLabel(lead.diagnostic)}
+                  {getBudgetLabel(lead.diagnostic, lead.projectType)}
                 </td>
                 <td className="admin-td-wrap">
                   {lead.recommendation?.technical
-                    ? getTechnicalLabel(lead.recommendation.technical)
+                    ? getTechnicalLabel(
+                        lead.recommendation.technical,
+                        lead.projectType,
+                      )
                     : "-"}
                 </td>
                 <td>
@@ -133,9 +136,12 @@ function AdminLeadsList({ leads, updatingId, onQuickStatus }) {
             <p className="admin-lead-card-meta">
               {lead.email}
               <br />
-              {getBudgetLabel(lead.diagnostic)} ·{" "}
+              {getBudgetLabel(lead.diagnostic, lead.projectType)} ·{" "}
               {lead.recommendation?.technical
-                ? getTechnicalLabel(lead.recommendation.technical)
+                ? getTechnicalLabel(
+                    lead.recommendation.technical,
+                    lead.projectType,
+                  )
                 : "-"}
             </p>
             <label htmlFor={`mobile-status-${lead.id}`}>

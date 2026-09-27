@@ -1,4 +1,6 @@
-import { DIAGNOSTIC_STEPS } from "../domain/ecommerce/questions.js";
+import { DIAGNOSTIC_STEPS as ECOMMERCE_STEPS } from "../domain/ecommerce/questions.js";
+import { DIAGNOSTIC_STEPS as MVP_STEPS } from "../domain/mvp/questions.js";
+import { DIAGNOSTIC_STEPS as VISIBILITY_STEPS } from "../domain/visibility/questions.js";
 
 export const LEAD_STATUSES = [
   "NEW",
@@ -17,6 +19,12 @@ const STATUS_LABELS = {
   WON: "Gagné",
   LOST: "Perdu",
 };
+
+function stepsForProjectType(projectType) {
+  if (projectType === "mvp") return MVP_STEPS;
+  if (projectType === "visibility") return VISIBILITY_STEPS;
+  return ECOMMERCE_STEPS;
+}
 
 export function statusLabel(status) {
   return STATUS_LABELS[status] || status;
@@ -50,17 +58,18 @@ export function formatDateTime(value) {
   return new Date(value).toLocaleString("fr-FR");
 }
 
-function optionLabel(stepId, value) {
-  const step = DIAGNOSTIC_STEPS.find((item) => item.id === stepId);
+function optionLabel(steps, stepId, value) {
+  const step = steps.find((item) => item.id === stepId);
   if (!step) return value;
   const option = step.options.find((item) => item.value === value);
   return option ? option.label : value;
 }
 
-export function formatDiagnosticRows(diagnostic) {
+export function formatDiagnosticRows(diagnostic, projectType = "ecommerce") {
   if (!diagnostic || typeof diagnostic !== "object") return [];
+  const steps = stepsForProjectType(projectType);
 
-  return DIAGNOSTIC_STEPS.map((step) => {
+  return steps.map((step) => {
     const raw = diagnostic[step.id];
     let display = "-";
 
@@ -68,10 +77,10 @@ export function formatDiagnosticRows(diagnostic) {
       const values = Array.isArray(raw) ? raw : [];
       const cleaned = values.filter((v) => v && v !== "NONE");
       display = cleaned.length
-        ? cleaned.map((v) => optionLabel(step.id, v)).join(", ")
+        ? cleaned.map((v) => optionLabel(steps, step.id, v)).join(", ")
         : "Aucun";
     } else if (raw) {
-      display = optionLabel(step.id, raw);
+      display = optionLabel(steps, step.id, raw);
     }
 
     return {
@@ -82,9 +91,13 @@ export function formatDiagnosticRows(diagnostic) {
   });
 }
 
-export function getBudgetLabel(diagnostic) {
+export function getBudgetLabel(diagnostic, projectType = "ecommerce") {
   if (!diagnostic?.budget) return "-";
-  return optionLabel("budget", diagnostic.budget);
+  return optionLabel(
+    stepsForProjectType(projectType),
+    "budget",
+    diagnostic.budget,
+  );
 }
 
 export function formatPercent(value) {

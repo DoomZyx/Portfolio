@@ -1,6 +1,16 @@
 import { leadModel } from "../models/leadModel.js";
 import { computeEcommerceRecommendation } from "../domain/ecommerce/recommendation.js";
+import { computeMvpRecommendation } from "../domain/mvp/recommendation.js";
+import { computeVisibilityRecommendation } from "../domain/visibility/recommendation.js";
 import { validatePublicLeadPayload } from "../services/leadValidation.js";
+
+function computeRecommendation(projectType, diagnostic) {
+  if (projectType === "mvp") return computeMvpRecommendation(diagnostic);
+  if (projectType === "visibility") {
+    return computeVisibilityRecommendation(diagnostic);
+  }
+  return computeEcommerceRecommendation(diagnostic);
+}
 
 export const leadController = {
   async create(request, reply) {
@@ -11,7 +21,10 @@ export const leadController = {
 
     const payload = parsed.value;
     // Never trust client-computed recommendation
-    const recommendation = computeEcommerceRecommendation(payload.diagnostic);
+    const recommendation = computeRecommendation(
+      payload.projectType,
+      payload.diagnostic,
+    );
 
     try {
       const lead = await leadModel.create({

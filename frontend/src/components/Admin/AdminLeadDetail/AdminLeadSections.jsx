@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getTechnicalLabel } from "../../../domain/ecommerce/recommendation";
+import { getTechnicalLabel } from "../../../domain/recommendationLabels";
 import {
   LEAD_STATUSES,
   formatDateTime,
@@ -234,7 +234,10 @@ export function AdminLeadInfoCards({
             <dt>Orientation</dt>
             <dd>
               {lead.recommendation?.technical
-                ? getTechnicalLabel(lead.recommendation.technical)
+                ? getTechnicalLabel(
+                    lead.recommendation.technical,
+                    lead.projectType,
+                  )
                 : "-"}
               {lead.recommendation?.strategicSupportRecommended
                 ? " · accompagnement stratégique recommandé"

@@ -75,6 +75,41 @@ describe("validatePublicLeadPayload", () => {
     );
   });
 
+  it("accepte mvp et visibility", () => {
+    const mvp = validatePublicLeadPayload({
+      ...validPublicLead,
+      projectType: "mvp",
+      source: "diagnostic_mvp",
+      diagnostic: {
+        productStage: "PROTOTYPE",
+        objective: "BUILD_MVP",
+        maturity: ["BUSINESS_MODEL", "GO_TO_MARKET", "PRICING"],
+        scopeClarity: "CLEAR_CORE",
+        constraints: ["NONE"],
+        budget: "FROM_5K_TO_10K",
+        timeline: "FROM_1_TO_3_MONTHS",
+      },
+    });
+    assert.equal(mvp.error, undefined);
+    assert.equal(mvp.value.projectType, "mvp");
+
+    const visibility = validatePublicLeadPayload({
+      ...validPublicLead,
+      projectType: "visibility",
+      source: "diagnostic_visibility",
+      diagnostic: {
+        currentPresence: "NONE",
+        objective: "CREDIBILITY",
+        contentReady: ["TEXTS", "OFFER_CLEAR"],
+        pagesNeeded: "LANDING",
+        budget: "FROM_2K_TO_5K",
+        timeline: "FROM_1_TO_3_MONTHS",
+      },
+    });
+    assert.equal(visibility.error, undefined);
+    assert.equal(visibility.value.projectType, "visibility");
+  });
+
   it("rejette un projectType non supporté", () => {
     const result = validatePublicLeadPayload({
       ...validPublicLead,

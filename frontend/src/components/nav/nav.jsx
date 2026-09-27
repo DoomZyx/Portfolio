@@ -58,7 +58,7 @@ function Nav() {
             <HashLink smooth={true} to="/#about">
               A propos
             </HashLink>
-            <Link to="/diagnostic/ecommerce">Diagnostic</Link>
+            <Link to="/diagnostic">Diagnostic</Link>
           </div>
           <HashLink smooth={true} to="/#contact">
             <div className="connectButton">
@@ -81,7 +81,7 @@ function Nav() {
             <HashLink smooth={true} to="/#about" onClick={closeMenu}>
               A propos
             </HashLink>
-            <Link to="/diagnostic/ecommerce" onClick={closeMenu}>
+            <Link to="/diagnostic" onClick={closeMenu}>
               Diagnostic
             </Link>
           </div>

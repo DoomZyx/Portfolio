@@ -3,8 +3,13 @@ import { Suspense, lazy } from "react";
 
 const Homepage = lazy(() => import("./pages/homepage"));
 const Projects = lazy(() => import("./components/Projects/projects"));
+const DiagnosticHubPage = lazy(() => import("./pages/diagnosticHub"));
 const DiagnosticEcommercePage = lazy(
   () => import("./pages/diagnosticEcommerce"),
+);
+const DiagnosticMvpPage = lazy(() => import("./pages/diagnosticMvp"));
+const DiagnosticVisibilityPage = lazy(
+  () => import("./pages/diagnosticVisibility"),
 );
 const AdminLoginPage = lazy(() => import("./pages/admin/adminLogin"));
 const AdminDashboardPage = lazy(() => import("./pages/admin/adminDashboard"));
@@ -41,9 +46,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/project/:id" element={<Projects />} />
+          <Route path="/diagnostic" element={<DiagnosticHubPage />} />
           <Route
             path="/diagnostic/ecommerce"
             element={<DiagnosticEcommercePage />}
+          />
+          <Route path="/diagnostic/mvp" element={<DiagnosticMvpPage />} />
+          <Route
+            path="/diagnostic/visibility"
+            element={<DiagnosticVisibilityPage />}
           />
           <Route path="/admin/login" element={<AdminLoginPage />} />
           <Route path="/admin" element={<AdminDashboardPage />} />

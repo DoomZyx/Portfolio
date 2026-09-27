@@ -8,46 +8,8 @@ const STATUSES = new Set([
   "LOST",
 ]);
 
-const ALLOWED_CURRENT = new Set([
-  "NONE",
-  "SHOPIFY",
-  "WOOCOMMERCE",
-  "OTHER_SAAS",
-  "CUSTOM",
-]);
-const ALLOWED_OBJECTIVE = new Set([
-  "LAUNCH_FAST",
-  "BUILD_BRAND",
-  "INCREASE_CONVERSIONS",
-  "REPLACE_LIMITED",
-  "AUTOMATE_PROCESSES",
-  "SPECIFIC_EXPERIENCE",
-]);
-const ALLOWED_CATALOG = new Set([
-  "UNDER_20",
-  "FROM_20_TO_100",
-  "FROM_100_TO_1000",
-  "OVER_1000",
-]);
-const ALLOWED_NEEDS = new Set([
-  "SUBSCRIPTION",
-  "B2B_PRICING",
-  "MARKETPLACE",
-  "ADVANCED_ACCOUNT",
-  "CONFIGURATOR",
-  "INTERNATIONAL",
-  "ERP_CRM_API",
-  "SPECIAL_LOGISTICS",
-  "OTHER_SPECIFIC",
-  "NONE",
-]);
-const ALLOWED_BUSINESS = new Set([
-  "BRANDING",
-  "SEGMENTATION",
-  "ACQUISITION",
-  "CONVERSION",
-  "NONE",
-]);
+const ALLOWED_PROJECT_TYPES = new Set(["ecommerce", "mvp", "visibility"]);
+
 const ALLOWED_BUDGET = new Set([
   "UNDER_2K",
   "FROM_2K_TO_5K",
@@ -62,6 +24,101 @@ const ALLOWED_TIMELINE = new Set([
   "OVER_6_MONTHS",
 ]);
 
+const ECOMMERCE = {
+  currentSolution: new Set([
+    "NONE",
+    "SHOPIFY",
+    "WOOCOMMERCE",
+    "OTHER_SAAS",
+    "CUSTOM",
+  ]),
+  objective: new Set([
+    "LAUNCH_FAST",
+    "BUILD_BRAND",
+    "INCREASE_CONVERSIONS",
+    "REPLACE_LIMITED",
+    "AUTOMATE_PROCESSES",
+    "SPECIFIC_EXPERIENCE",
+  ]),
+  catalogSize: new Set([
+    "UNDER_20",
+    "FROM_20_TO_100",
+    "FROM_100_TO_1000",
+    "OVER_1000",
+  ]),
+  needs: new Set([
+    "SUBSCRIPTION",
+    "B2B_PRICING",
+    "MARKETPLACE",
+    "ADVANCED_ACCOUNT",
+    "CONFIGURATOR",
+    "INTERNATIONAL",
+    "ERP_CRM_API",
+    "SPECIAL_LOGISTICS",
+    "OTHER_SPECIFIC",
+    "NONE",
+  ]),
+  business: new Set([
+    "BRANDING",
+    "SEGMENTATION",
+    "ACQUISITION",
+    "CONVERSION",
+    "NONE",
+  ]),
+};
+
+const MVP = {
+  productStage: new Set(["IDEA", "PROTOTYPE", "EARLY_USERS", "REVENUE"]),
+  objective: new Set([
+    "VALIDATE_MARKET",
+    "BUILD_MVP",
+    "EXTEND_PRODUCT",
+    "REBUILD",
+  ]),
+  maturity: new Set([
+    "BUSINESS_MODEL",
+    "GO_TO_MARKET",
+    "PRICING",
+    "TARGET_USERS",
+    "COMPETITORS",
+    "NONE",
+  ]),
+  scopeClarity: new Set(["CLEAR_CORE", "PARTIAL", "UNCLEAR"]),
+  constraints: new Set([
+    "AUTH_ROLES",
+    "PAYMENTS",
+    "INTEGRATIONS",
+    "REALTIME",
+    "MOBILE",
+    "DATA_HEAVY",
+    "OTHER_SPECIFIC",
+    "NONE",
+  ]),
+};
+
+const VISIBILITY = {
+  currentPresence: new Set([
+    "NONE",
+    "SOCIAL_ONLY",
+    "OUTDATED_SITE",
+    "ACTIVE_SITE",
+  ]),
+  objective: new Set([
+    "CREDIBILITY",
+    "GENERATE_LEADS",
+    "BRAND_IMAGE",
+    "ANNOUNCE",
+  ]),
+  contentReady: new Set([
+    "TEXTS",
+    "VISUALS",
+    "OFFER_CLEAR",
+    "REFERENCES",
+    "NONE",
+  ]),
+  pagesNeeded: new Set(["LANDING", "MULTI_PAGE", "REDESIGN", "UNSURE"]),
+};
+
 function asTrimmedString(value, max) {
   if (value === undefined || value === null || value === "") return null;
   if (typeof value !== "string") return undefined;
@@ -75,6 +132,172 @@ function sanitizeText(value, max) {
   const s = asTrimmedString(value, max);
   if (s === undefined) return { error: "invalid" };
   return { value: s };
+}
+
+function validateEnum(value, allowed, field) {
+  if (!allowed.has(value)) return { error: `invalid ${field}` };
+  return { value };
+}
+
+function validateMulti(values, allowed, field) {
+  if (!Array.isArray(values) || values.some((item) => !allowed.has(item))) {
+    return { error: `invalid ${field}` };
+  }
+  return { value: values };
+}
+
+function validateEcommerceDiagnostic(diagnostic) {
+  const currentSolution = validateEnum(
+    diagnostic.currentSolution,
+    ECOMMERCE.currentSolution,
+    "currentSolution",
+  );
+  if (currentSolution.error) return currentSolution;
+  const objective = validateEnum(
+    diagnostic.objective,
+    ECOMMERCE.objective,
+    "objective",
+  );
+  if (objective.error) return objective;
+  const catalogSize = validateEnum(
+    diagnostic.catalogSize,
+    ECOMMERCE.catalogSize,
+    "catalogSize",
+  );
+  if (catalogSize.error) return catalogSize;
+  const budget = validateEnum(diagnostic.budget, ALLOWED_BUDGET, "budget");
+  if (budget.error) return budget;
+  const timeline = validateEnum(
+    diagnostic.timeline,
+    ALLOWED_TIMELINE,
+    "timeline",
+  );
+  if (timeline.error) return timeline;
+  const needs = validateMulti(diagnostic.needs, ECOMMERCE.needs, "needs");
+  if (needs.error) return needs;
+  const business = validateMulti(
+    diagnostic.business,
+    ECOMMERCE.business,
+    "business",
+  );
+  if (business.error) return business;
+
+  return {
+    value: {
+      currentSolution: currentSolution.value,
+      objective: objective.value,
+      catalogSize: catalogSize.value,
+      needs: needs.value,
+      business: business.value,
+      budget: budget.value,
+      timeline: timeline.value,
+    },
+  };
+}
+
+function validateMvpDiagnostic(diagnostic) {
+  const productStage = validateEnum(
+    diagnostic.productStage,
+    MVP.productStage,
+    "productStage",
+  );
+  if (productStage.error) return productStage;
+  const objective = validateEnum(diagnostic.objective, MVP.objective, "objective");
+  if (objective.error) return objective;
+  const scopeClarity = validateEnum(
+    diagnostic.scopeClarity,
+    MVP.scopeClarity,
+    "scopeClarity",
+  );
+  if (scopeClarity.error) return scopeClarity;
+  const budget = validateEnum(diagnostic.budget, ALLOWED_BUDGET, "budget");
+  if (budget.error) return budget;
+  const timeline = validateEnum(
+    diagnostic.timeline,
+    ALLOWED_TIMELINE,
+    "timeline",
+  );
+  if (timeline.error) return timeline;
+  const maturity = validateMulti(diagnostic.maturity, MVP.maturity, "maturity");
+  if (maturity.error) return maturity;
+  const constraints = validateMulti(
+    diagnostic.constraints,
+    MVP.constraints,
+    "constraints",
+  );
+  if (constraints.error) return constraints;
+
+  return {
+    value: {
+      productStage: productStage.value,
+      objective: objective.value,
+      maturity: maturity.value,
+      scopeClarity: scopeClarity.value,
+      constraints: constraints.value,
+      budget: budget.value,
+      timeline: timeline.value,
+    },
+  };
+}
+
+function validateVisibilityDiagnostic(diagnostic) {
+  const currentPresence = validateEnum(
+    diagnostic.currentPresence,
+    VISIBILITY.currentPresence,
+    "currentPresence",
+  );
+  if (currentPresence.error) return currentPresence;
+  const objective = validateEnum(
+    diagnostic.objective,
+    VISIBILITY.objective,
+    "objective",
+  );
+  if (objective.error) return objective;
+  const pagesNeeded = validateEnum(
+    diagnostic.pagesNeeded,
+    VISIBILITY.pagesNeeded,
+    "pagesNeeded",
+  );
+  if (pagesNeeded.error) return pagesNeeded;
+  const budget = validateEnum(diagnostic.budget, ALLOWED_BUDGET, "budget");
+  if (budget.error) return budget;
+  const timeline = validateEnum(
+    diagnostic.timeline,
+    ALLOWED_TIMELINE,
+    "timeline",
+  );
+  if (timeline.error) return timeline;
+  const contentReady = validateMulti(
+    diagnostic.contentReady,
+    VISIBILITY.contentReady,
+    "contentReady",
+  );
+  if (contentReady.error) return contentReady;
+
+  return {
+    value: {
+      currentPresence: currentPresence.value,
+      objective: objective.value,
+      contentReady: contentReady.value,
+      pagesNeeded: pagesNeeded.value,
+      budget: budget.value,
+      timeline: timeline.value,
+    },
+  };
+}
+
+function validateDiagnosticByProjectType(projectType, diagnostic) {
+  if (projectType === "mvp") return validateMvpDiagnostic(diagnostic);
+  if (projectType === "visibility") {
+    return validateVisibilityDiagnostic(diagnostic);
+  }
+  return validateEcommerceDiagnostic(diagnostic);
+}
+
+function defaultSourceFor(projectType) {
+  if (projectType === "mvp") return "diagnostic_mvp";
+  if (projectType === "visibility") return "diagnostic_visibility";
+  return "diagnostic_ecommerce";
 }
 
 export function validatePublicLeadPayload(body) {
@@ -98,9 +321,12 @@ export function validatePublicLeadPayload(body) {
   if (message === undefined) return { error: "invalid message" };
 
   const projectType = asTrimmedString(body.projectType, 40) || "ecommerce";
-  if (projectType !== "ecommerce") return { error: "unsupported projectType" };
+  if (!ALLOWED_PROJECT_TYPES.has(projectType)) {
+    return { error: "unsupported projectType" };
+  }
 
-  const source = asTrimmedString(body.source, 80) || "diagnostic_ecommerce";
+  const source =
+    asTrimmedString(body.source, 80) || defaultSourceFor(projectType);
   const utmSource = asTrimmedString(body.utmSource, 120);
   const utmMedium = asTrimmedString(body.utmMedium, 120);
   const utmCampaign = asTrimmedString(body.utmCampaign, 120);
@@ -115,28 +341,11 @@ export function validatePublicLeadPayload(body) {
     return { error: "diagnostic is required" };
   }
 
-  const {
-    currentSolution,
-    objective,
-    catalogSize,
-    needs,
-    business,
-    budget,
-    timeline,
-  } = diagnostic;
-
-  if (!ALLOWED_CURRENT.has(currentSolution)) return { error: "invalid currentSolution" };
-  if (!ALLOWED_OBJECTIVE.has(objective)) return { error: "invalid objective" };
-  if (!ALLOWED_CATALOG.has(catalogSize)) return { error: "invalid catalogSize" };
-  if (!ALLOWED_BUDGET.has(budget)) return { error: "invalid budget" };
-  if (!ALLOWED_TIMELINE.has(timeline)) return { error: "invalid timeline" };
-
-  if (!Array.isArray(needs) || needs.some((n) => !ALLOWED_NEEDS.has(n))) {
-    return { error: "invalid needs" };
-  }
-  if (!Array.isArray(business) || business.some((b) => !ALLOWED_BUSINESS.has(b))) {
-    return { error: "invalid business" };
-  }
+  const parsedDiagnostic = validateDiagnosticByProjectType(
+    projectType,
+    diagnostic,
+  );
+  if (parsedDiagnostic.error) return parsedDiagnostic;
 
   return {
     value: {
@@ -152,15 +361,7 @@ export function validatePublicLeadPayload(body) {
       utmCampaign,
       landingPage,
       referrer,
-      diagnostic: {
-        currentSolution,
-        objective,
-        catalogSize,
-        needs,
-        business,
-        budget,
-        timeline,
-      },
+      diagnostic: parsedDiagnostic.value,
     },
   };
 }

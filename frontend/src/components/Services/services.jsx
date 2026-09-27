@@ -47,14 +47,14 @@ function MyServices() {
         <div className="diagnostic-cta-wrap">
           <article className="diagnostic-cta-services">
             <div className="diagnostic-cta-content">
-              <h3>Projet e-commerce ?</h3>
+              <h3>Un projet en tête ?</h3>
               <p>
-                Obtenez une première orientation : SaaS adapté, accompagnement
-                stratégique, ou étude d&apos;architecture, selon votre besoin
-                business.
+                E-commerce, MVP ou simple besoin de visibilité : obtenez une
+                première orientation selon votre contexte, puis discutez de la
+                suite.
               </p>
             </div>
-            <Link className="diagnostic-cta-link" to="/diagnostic/ecommerce">
+            <Link className="diagnostic-cta-link" to="/diagnostic">
               Lancer le diagnostic
             </Link>
           </article>
