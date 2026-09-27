@@ -86,9 +86,9 @@ $bg-card: rgba(30, 30, 30, 0.6);
 .diagnostic-lead {
   margin: 0 0 1.5rem;
   font-size: clamp(0.88rem, 3.2vw, 0.95rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
   text-align: center;
 }
 
@@ -104,8 +104,8 @@ $bg-card: rgba(30, 30, 30, 0.6);
   gap: 0.75rem;
   margin-bottom: 0.5rem;
   font-size: 0.85rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.75);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .diagnostic-progress-track {
@@ -136,8 +136,8 @@ $bg-card: rgba(30, 30, 30, 0.6);
 .diagnostic-step-description {
   margin: 0 0 1.1rem;
   font-size: clamp(0.88rem, 3.2vw, 0.95rem);
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .diagnostic-options {
@@ -337,17 +337,17 @@ a.diagnostic-btn {
 .diagnostic-result-body {
   margin: 0 0 1rem;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.87);
+  color: #ffffff;
 }
 
 .diagnostic-result-note {
   margin: 0 0 1.25rem;
   font-size: 0.9rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .diagnostic-contact-form {
@@ -404,8 +404,8 @@ a.diagnostic-btn {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  padding: 1.5rem 0 0.5rem;
-  margin-top: 0.5rem;
+  padding: 3rem 0;
+  margin-top: 1rem;
 }
 
 .diagnostic-cta-services {
@@ -534,8 +534,8 @@ a.diagnostic-btn {
   }
 
   .diagnostic-cta-wrap {
-    padding: 2.5rem 0 1rem;
-    margin-top: 1rem;
+    padding: 4.5rem 0;
+    margin-top: 1.5rem;
   }
 
   .diagnostic-cta-services {
@@ -568,8 +568,8 @@ a.diagnostic-btn {
   }
 
   .diagnostic-cta-wrap {
-    padding: 3rem 0 1.5rem;
-    margin-top: 1.25rem;
+    padding: 6rem 0;
+    margin-top: 2rem;
   }
 
   .diagnostic-cta-services {

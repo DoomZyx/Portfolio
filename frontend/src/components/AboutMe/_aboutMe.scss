@@ -22,6 +22,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1.5rem;
   flex: 1;
   min-width: 0;
   border: 1px solid #484646;
@@ -39,13 +40,24 @@
   h2 {
     color: #ecbd00;
     font-size: 1rem;
+    margin: 0;
   }
+}
+
+.aboutMe-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+
   h4 {
     font-weight: 400;
-    font-size: 0.85rem;
+    font-size: 1rem;
     width: 90%;
-    line-height: 1.5;
-    margin: 0;
+    margin: 0 auto;
+    line-height: 1.7;
+    color: #ffffff;
   }
 }
 
@@ -65,11 +77,13 @@
     h2 {
       font-size: 1.2rem;
     }
-    h3 {
-      font-size: 1.5rem;
-    }
+  }
+
+  .aboutMe-text {
+    gap: 1.75rem;
+
     h4 {
-      font-weight: 600;
+      font-weight: 400;
       font-size: 1.1rem;
     }
   }
@@ -78,16 +92,16 @@
 @include desktop-up {
   .about-section {
     position: relative;
-    padding-bottom: 12rem;
-    min-height: 400px;
-    overflow-x: visible;
+    padding-bottom: 8rem;
+    min-height: 640px;
+    overflow-x: hidden;
   }
 
   .aboutMeContainer {
     position: absolute;
-    bottom: 0;
     left: 50%;
-    transform: translate(-50%, 50%);
+    bottom: 22%;
+    transform: translateX(-50%);
     width: 100%;
     max-width: 800px;
     padding: 0 1rem;
@@ -95,7 +109,6 @@
   }
 
   .aboutMeSec {
-    transform: translateY(-100%);
     padding: 2rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 
@@ -104,14 +117,17 @@
       width: 100%;
       text-align: center;
     }
-    h3 {
-      font-size: 2.2em;
-    }
+  }
+
+  .aboutMe-text {
+    gap: 1.5rem;
+
     h4 {
-      font-weight: 200;
-      font-size: 1.3em;
+      font-weight: 400;
+      font-size: 1.15em;
       width: 85%;
-      line-height: 1.5;
+      line-height: 1.65;
+      color: #ffffff;
     }
   }
 }

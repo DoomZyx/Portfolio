@@ -1,5 +1,4 @@
 import { Suspense, lazy, useMemo } from "react";
-import { useRef, useEffect } from "react";
 import { HashLink as Link } from "react-router-hash-link";
 import projects from "../../data/projects";
 import "./_myportfolio.scss";
@@ -33,24 +32,6 @@ function ProjectCard({ project }) {
 }
 
 function MyPortfolio() {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-
-    const handleWheel = (e) => {
-      e.preventDefault();
-    };
-
-    if (container) {
-      container.addEventListener("wheel", handleWheel, { passive: false });
-
-      return () => {
-        container.removeEventListener("wheel", handleWheel);
-      };
-    }
-  }, []);
-
   const portfolioItems = useMemo(() => {
     const sortedProjects = [...projects].sort((a, b) => a.id - b.id);
     const decorativeElements = [
@@ -69,7 +50,7 @@ function MyPortfolio() {
         Mon portfolio
       </h2>
 
-      <div className="container" ref={containerRef}>
+      <div className="container">
         <div className="portfolio-grid">
           {projects
             .sort((a, b) => a.id - b.id)

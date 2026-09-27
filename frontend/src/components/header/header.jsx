@@ -10,7 +10,7 @@ function Header() {
             alt="Logo Portfolio Axel Cella"
             width={1900}
             height={900}
-            fetchPriority="high"
+            fetchpriority="high"
           />
         </div>
       </header>

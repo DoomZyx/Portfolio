@@ -2,7 +2,7 @@
 
 // Mobile first - base = mobile
 .header-layout {
-  margin-top: 10em;
+  margin-top: 7.25em;
   margin-bottom: clamp(3em, 10vw, 8em);
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@
 
 @include desktop-up {
   .header-layout {
-    margin-top: 9em;
+    margin-top: 6.25em;
     margin-bottom: 13em;
     flex-direction: row;
   }
