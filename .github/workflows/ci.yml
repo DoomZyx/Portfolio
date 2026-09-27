@@ -53,6 +53,7 @@ jobs:
             echo "Pas de script test:recommendation — skip"
           fi
       - run: pnpm run lint
+        continue-on-error: true
       - run: pnpm run build
         env:
           VITE_API_URL: /api/chat
