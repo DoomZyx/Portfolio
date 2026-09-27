@@ -159,6 +159,10 @@ export function useDiagnostic({
         projectType,
         tracking: {
           source,
+          // Exception diagnostic : UTM interne pour marquer le parcours dans l'admin
+          utmSource: "diagnostic",
+          utmMedium: "portfolio",
+          utmCampaign: projectType,
           landingPage: window.location.href,
           referrer: document.referrer || undefined,
         },
