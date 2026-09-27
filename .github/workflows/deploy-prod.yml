@@ -91,7 +91,7 @@ jobs:
             git fetch origin prod
             git checkout prod
             git pull --ff-only origin prod
-            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_USER }}" --password-stdin
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
             chmod +x deploy/scripts/deploy.sh
             ./deploy/scripts/deploy.sh prod \
               "${{ needs.build-and-push.outputs.backend_image }}" \

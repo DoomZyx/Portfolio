@@ -98,11 +98,11 @@ Secrets par environment (ou repository) :
 | `VPS_HOST` | IP / hostname OVH | `54.37.231.243` |
 | `VPS_USER` | User SSH | `deploy` |
 | `VPS_SSH_KEY` | Clé privée SSH (contenu PEM) | clé du user `deploy` |
-| `VPS_APP_PATH` | Chemin clone monorepo sur le VPS | ex. `/home/deploy/portfolio` |
-| `GHCR_USER` | User GitHub pour pull images | ton user GitHub |
-| `GHCR_TOKEN` | PAT `read:packages` | token GitHub |
+| `VPS_APP_PATH` | Chemin clone monorepo sur le VPS | `/home/deploy/portfolio` |
 
 Connexion manuelle : `ssh deploy@54.37.231.243`
+
+> `GHCR_USER` / `GHCR_TOKEN` ne sont **pas** nécessaires : le workflow se connecte à GHCR avec `GITHUB_TOKEN` le temps du deploy.
 
 Packages GHCR : rendre les images privées ; le push CI utilise `GITHUB_TOKEN`.
 
