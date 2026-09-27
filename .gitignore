@@ -1,9 +1,13 @@
-nodes_modules
+node_modules
 .env
 
 # Fichiers de configuration monorepo
 ecosystem.config.js
 
+# Secrets déploiement VPS (ne jamais committer)
+deploy/.env.preprod
+deploy/.env.prod
+deploy/.env.local
 
 # Logs
 logs

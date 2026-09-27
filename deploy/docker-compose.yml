@@ -1,0 +1,70 @@
+# Stack déployable (preprod OU prod) — un projet Compose par environnement
+# Usage:
+#   COMPOSE_PROJECT_NAME=portfolio-preprod docker compose --env-file deploy/.env.preprod -f deploy/docker-compose.yml up -d
+#   COMPOSE_PROJECT_NAME=portfolio-prod    docker compose --env-file deploy/.env.prod    -f deploy/docker-compose.yml up -d
+
+name: portfolio
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    image: ${BACKEND_IMAGE}
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: "3001"
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_API_URL: ${OPENAI_API_URL:-https://api.openai.com/v1/chat/completions}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-}
+      ISSUER_NAME: ${ISSUER_NAME:-}
+      ISSUER_SIRET: ${ISSUER_SIRET:-}
+      ISSUER_ADDRESS: ${ISSUER_ADDRESS:-}
+      ISSUER_VAT: ${ISSUER_VAT:-}
+      ISSUER_EMAIL: ${ISSUER_EMAIL:-}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - internal
+
+  web:
+    image: ${WEB_IMAGE}
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${WEB_PORT}:80"
+    depends_on:
+      - backend
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  pgdata:
