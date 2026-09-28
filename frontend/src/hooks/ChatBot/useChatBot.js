@@ -12,14 +12,13 @@ export const useChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const conversationHistoryRef = useRef([INITIAL_MESSAGE]);
+  const leadCapturedRef = useRef(false);
   const messagesEndRef = useRef(null);
 
-  // Fonction pour scroller en bas
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Se déclenche à chaque fois que le tableau 'messages' change (ou quand le bot commence à écrire)
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -95,16 +94,33 @@ export const useChatBot = () => {
     setIsLoading(true);
 
     try {
-      const response = await sendMessageToGPT(conversationHistoryRef.current);
+      const result = await sendMessageToGPT(conversationHistoryRef.current, {
+        captureLead: !leadCapturedRef.current,
+        tracking: {
+          landingPage: window.location.href,
+          referrer: document.referrer || undefined,
+        },
+      });
 
       const botMsg = {
         id: Date.now() + 1,
         sender: "bot",
-        text: response,
+        text: result.message,
       };
 
       setMessages((prev) => [...prev, botMsg]);
       conversationHistoryRef.current.push(botMsg);
+
+      if (result.leadCreated && !leadCapturedRef.current) {
+        leadCapturedRef.current = true;
+        const confirmMsg = {
+          id: Date.now() + 2,
+          sender: "bot",
+          text: "Merci, vos coordonnées ont bien été transmises à Axel. Il vous recontactera rapidement pour la suite.",
+        };
+        setMessages((prev) => [...prev, confirmMsg]);
+        conversationHistoryRef.current.push(confirmMsg);
+      }
 
       const intent = identifyUserIntent(userMessage);
       const showCTA = shouldShowContactCTA(
@@ -114,10 +130,11 @@ export const useChatBot = () => {
 
       if (
         showCTA &&
+        !leadCapturedRef.current &&
         !conversationHistoryRef.current.some((msg) => msg.action === "contact")
       ) {
         const ctaMsg = {
-          id: Date.now() + 2,
+          id: Date.now() + 3,
           sender: "bot",
           text: "Souhaitez-vous que nous discutions de votre projet plus en détail ?",
           action: "contact",
@@ -128,7 +145,7 @@ export const useChatBot = () => {
           conversationHistoryRef.current.push(ctaMsg);
         }, 1000);
       }
-    } catch (error) {
+    } catch {
       const errorMsg = {
         id: Date.now() + 1,
         sender: "bot",

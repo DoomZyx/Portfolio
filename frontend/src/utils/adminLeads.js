@@ -1,6 +1,7 @@
 import { DIAGNOSTIC_STEPS as ECOMMERCE_STEPS } from "../domain/ecommerce/questions.js";
 import { DIAGNOSTIC_STEPS as MVP_STEPS } from "../domain/mvp/questions.js";
 import { DIAGNOSTIC_STEPS as VISIBILITY_STEPS } from "../domain/visibility/questions.js";
+import { DIAGNOSTIC_STEPS as CHAT_STEPS } from "../domain/chat/questions.js";
 
 export const LEAD_STATUSES = [
   "NEW",
@@ -23,6 +24,7 @@ const STATUS_LABELS = {
 function stepsForProjectType(projectType) {
   if (projectType === "mvp") return MVP_STEPS;
   if (projectType === "visibility") return VISIBILITY_STEPS;
+  if (projectType === "chat") return CHAT_STEPS;
   return ECOMMERCE_STEPS;
 }
 
@@ -79,6 +81,8 @@ export function formatDiagnosticRows(diagnostic, projectType = "ecommerce") {
       display = cleaned.length
         ? cleaned.map((v) => optionLabel(steps, step.id, v)).join(", ")
         : "Aucun";
+    } else if (step.type === "text") {
+      display = typeof raw === "string" && raw.trim() ? raw.trim() : "-";
     } else if (raw) {
       display = optionLabel(steps, step.id, raw);
     }

@@ -1,10 +1,8 @@
 import { Suspense, lazy, useState } from "react";
-import { Link } from "react-router-dom";
 const ShapeshifterViewer = lazy(
   () => import("../../animation/models/shapeshifter"),
 );
 import "./_services.scss";
-import "../Diagnostic/_diagnostic.scss";
 import Modal from "../Modal/modal";
 import { SERVICES } from "../../data/services";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,22 +40,6 @@ function MyServices() {
               <span className="step-action">Voir plus</span>
             </button>
           ))}
-        </div>
-
-        <div className="diagnostic-cta-wrap">
-          <article className="diagnostic-cta-services">
-            <div className="diagnostic-cta-content">
-              <h3>Un projet en tête ?</h3>
-              <p>
-                E-commerce, MVP ou simple besoin de visibilité : obtenez une
-                première orientation selon votre contexte, puis discutez de la
-                suite.
-              </p>
-            </div>
-            <Link className="diagnostic-cta-link" to="/diagnostic">
-              Lancer le diagnostic
-            </Link>
-          </article>
         </div>
 
         {/* Modale partagée pour chaque étape */}

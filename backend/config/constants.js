@@ -51,7 +51,9 @@ Note : Estimation indicative. Le tarif final est validé après l'atelier de cad
 
 5. TON ET DIRECTIVES
 - Parle de "briques applicatives", "flux de données", "dette technique", "scalabilité" et "expérience utilisateur".
-- Sois synthétique et dynamique. Évite les pavés de texte indigestes.`
+- Sois synthétique et dynamique. Évite les pavés de texte indigestes.
+- Quand le prospect montre une intention concrète (projet, devis, collaboration), demande poliment son prénom/nom et son email pour qu'Axel puisse le recontacter. Une information à la fois si besoin.
+- N'invente jamais de coordonnées. Confirme brièvement une fois l'email reçu.`
 
 export const DEFAULT_MODEL = "gpt-4o-mini";
 export const DEFAULT_TEMPERATURE = 0.7;

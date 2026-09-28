@@ -110,6 +110,25 @@ describe("validatePublicLeadPayload", () => {
     assert.equal(visibility.value.projectType, "visibility");
   });
 
+  it("accepte un lead chatbot", () => {
+    const result = validatePublicLeadPayload({
+      name: "Alice Martin",
+      email: "alice@acme.fr",
+      projectType: "chat",
+      source: "chatbot",
+      utmSource: "chatbot",
+      utmMedium: "portfolio",
+      utmCampaign: "conversation",
+      diagnostic: {
+        intent: "create",
+        projectSummary: "Besoin d'un MVP e-commerce B2B avec tarification.",
+      },
+    });
+    assert.equal(result.error, undefined);
+    assert.equal(result.value.projectType, "chat");
+    assert.equal(result.value.diagnostic.intent, "create");
+  });
+
   it("rejette un projectType non supporté", () => {
     const result = validatePublicLeadPayload({
       ...validPublicLead,

@@ -8,7 +8,12 @@ const STATUSES = new Set([
   "LOST",
 ]);
 
-const ALLOWED_PROJECT_TYPES = new Set(["ecommerce", "mvp", "visibility"]);
+const ALLOWED_PROJECT_TYPES = new Set([
+  "ecommerce",
+  "mvp",
+  "visibility",
+  "chat",
+]);
 
 const ALLOWED_BUDGET = new Set([
   "UNDER_2K",
@@ -117,6 +122,10 @@ const VISIBILITY = {
     "NONE",
   ]),
   pagesNeeded: new Set(["LANDING", "MULTI_PAGE", "REDESIGN", "UNSURE"]),
+};
+
+const CHAT = {
+  intent: new Set(["create", "improve", "services", "general", "unknown"]),
 };
 
 function asTrimmedString(value, max) {
@@ -286,17 +295,37 @@ function validateVisibilityDiagnostic(diagnostic) {
   };
 }
 
+function validateChatDiagnostic(diagnostic) {
+  const intent = validateEnum(diagnostic.intent, CHAT.intent, "intent");
+  if (intent.error) return intent;
+
+  const summaryRaw = diagnostic.projectSummary;
+  if (typeof summaryRaw !== "string") {
+    return { error: "invalid projectSummary" };
+  }
+  const projectSummary = summaryRaw.trim().slice(0, 2000);
+
+  return {
+    value: {
+      intent: intent.value,
+      projectSummary,
+    },
+  };
+}
+
 function validateDiagnosticByProjectType(projectType, diagnostic) {
   if (projectType === "mvp") return validateMvpDiagnostic(diagnostic);
   if (projectType === "visibility") {
     return validateVisibilityDiagnostic(diagnostic);
   }
+  if (projectType === "chat") return validateChatDiagnostic(diagnostic);
   return validateEcommerceDiagnostic(diagnostic);
 }
 
 function defaultSourceFor(projectType) {
   if (projectType === "mvp") return "diagnostic_mvp";
   if (projectType === "visibility") return "diagnostic_visibility";
+  if (projectType === "chat") return "chatbot";
   return "diagnostic_ecommerce";
 }
 

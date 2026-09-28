@@ -18,6 +18,9 @@ const Catchphrase2 = lazy(() =>
 );
 const MyPortfolio = lazy(() => import("../components/MyPortfolio/myPortfolio"));
 const MyServices = lazy(() => import("../components/Services/services"));
+const ProductLifecycle = lazy(
+  () => import("../components/ProductLifecycle/productLifecycle"),
+);
 const ContactMe = lazy(() => import("../components/Contact/contact"));
 const Footer = lazy(() => import("../components/footer/footer.jsx"));
 const ChatBot = lazy(() => import("../components/ChatBot/ChatBot"));
@@ -54,6 +57,9 @@ function homepage() {
         </Suspense>
         <Suspense fallback={<SectionFallback minHeight="400px" />}>
           <MyServices />
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="520px" />}>
+          <ProductLifecycle />
         </Suspense>
         <Suspense fallback={<SectionFallback minHeight="450px" />}>
           <ContactMe />
