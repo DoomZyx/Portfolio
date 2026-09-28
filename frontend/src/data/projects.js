@@ -12,50 +12,356 @@ import WM1 from "/public/WMPerformance/WM1.webp";
 import WM2 from "/public/WMPerformance/WM2.webp";
 import WM3 from "/public/WMPerformance/WM3.webp";
 
-    
+import portfolioHero from "/public/Portfolio.webp";
+
+/**
+ * Schéma étude de cas (champs optionnels selon le projet) :
+ * - card.problemOneLiner / card.outcomeChip : surface homepage
+ * - summary.problem / approach / objective : récit principal
+ * - summary.metaReveal : révélation méta (AxelCella)
+ * - decisions[] : jugement produit
+ * - workflow[] : flux métier (uniquement si pertinent)
+ * - behindTheScenes : profondeur progressive
+ * - ctas[] : primary → diagnostic ; secondary → site / contact
+ */
+
 const projects = [
   {
     id: 1,
+    slug: "mysmartfood",
     title: {
       fr: "MySmartFood",
       en: "MySmartFood",
     },
     progression: "in-progress",
-    images: [AI1, AI2, AI3, AI4, AI5  ],
-    description: {
-      fr: "Beaucoup de restaurateurs perdent des commandes parce qu’ils ne peuvent pas répondre à tous les appels entrants, surtout aux heures de forte affluence. \n Cet assistant automatise ces appels : il prend les commandes, enregistre les réservations et répond aux questions fréquentes sur les menus, horaires et coordonnées, sans mobiliser le personnel. \n Les menus et informations sont configurables via une interface web intuitive, et toutes les interactions sont centralisées sur un tableau de bord accessible en temps réel et une intégration au logiciel de gestion de caisse, permettant au restaurateur de suivre facilement son activité. \n \n En phase de test, 4 appels manqués par jour représentent environ 2 000 € de chiffre d’affaires perdu par mois (sans compter le coût des matières premières). L’assistant permet de récupérer cette valeur et d’augmenter le CA sans effort supplémentaire, tout en simplifiant la gestion quotidienne des appels.",
-      en: "This project provides an AI-powered voice assistant designed for restaurants, snack bars, and fast-food establishments. The assistant automatically handles incoming calls: it takes orders, records reservations, and answers customer questions regarding menus, opening hours, and the restaurant’s contact details. Menus and restaurant information can be configured by the restaurateur through a web interface. All orders and reservations handled by the assistant are centralized and displayed in real time on a web dashboard, enabling simple and efficient management without requiring staff to handle phone calls",
-    },
+    statusLabel: "En développement : validation de l’infrastructure IA",
+    order: 1,
+    images: [AI1, AI2, AI3, AI4, AI5],
     url: "https://mysmartfood.fr",
+    card: {
+      problemOneLiner:
+        "Des restaurants peuvent perdre des commandes ou réservations lorsqu’ils ne peuvent pas répondre à tous les appels.",
+      outcomeChip: "Objectif : automatiser les appels entrants",
+    },
+    summary: {
+      lead: "Assistant vocal pour la restauration : prendre en charge une partie des appels entrants (commandes, réservations, demandes courantes), conçu pour alléger la charge téléphonique. Le produit est actuellement en développement et en validation d’infrastructure.",
+      problemTitle: "Problème",
+      problem: [
+        "Aux heures d’affluence, une partie des appels peut rester sans réponse. Derrière un appel manqué : une commande non prise, une réservation partie ailleurs, ou une question simple (menu, horaires) qui interrompt le service.",
+        "Dans le scénario étudié, environ 4 appels manqués par jour pouvaient représenter un ordre de grandeur d’environ 2 000 € de chiffre d’affaires potentiel non capté sur un mois (hors coût des matières). Il s’agit d’une estimation pour illustrer le problème initial, pas d’un résultat déjà obtenu par le produit.",
+      ],
+      approachTitle: "Approche",
+      approach: [
+        "Traiter une partie des appels entrants via un assistant vocal.",
+        "Couvrir commandes, réservations, demandes courantes et informations restaurant.",
+        "Permettre la configuration des menus et informations via une interface web.",
+        "Centraliser le suivi des interactions côté restaurant.",
+        "Se connecter au système métier / caisse lorsque l’intégration correspondante est disponible.",
+      ],
+      objectiveTitle: "Objectif & validation en cours",
+      objective: [
+        "Objectif produit : réduire la charge téléphonique, limiter les opportunités perdues sur le canal appel, et éviter que le téléphone interrompe en continu le personnel, sans prétendre à un ROI déjà mesuré en production.",
+        "Un appel qui fonctionne correctement ne suffit pas à déclarer un système « scalable ». L’étape actuelle consiste à tester une IA hébergée localement sous plusieurs appels concurrents, afin de déterminer combien de conversations peuvent être traitées simultanément sans dégrader la latence, la compréhension ou la qualité vocale perçue.",
+        "Ces mesures serviront à dimensionner l’infrastructure et à estimer combien de restaurants un même serveur peut servir avant d’ajouter des ressources. Plus tard, elles permettront aussi de calculer un coût d’infrastructure réel par client. Aucun chiffre de capacité n’est annoncé tant qu’il n’a pas été benchmarké.",
+      ],
+    },
+    decisions: [
+      {
+        title: "Pourquoi traiter le téléphone en priorité",
+        body: "Le canal douloureux identifié est l’appel. Un nouveau site ou un chatbot web ne règle pas les appels auxquels le restaurant n’arrive pas à répondre aux heures de pointe.",
+      },
+      {
+        title: "Pourquoi travailler sur une IA hébergée localement",
+        body: "Choix d’architecture en validation : mieux contrôler l’infrastructure, viser une maîtrise des coûts, pouvoir mesurer les ressources réellement nécessaires, et limiter certaines dépendances à des coûts variables externes. Ces bénéfices sont en cours d’évaluation, pas annoncés comme déjà prouvés.",
+      },
+      {
+        title: "Pourquoi benchmarker la simultanéité avant de multiplier les restaurants",
+        body: "La capacité commerciale ne se décide pas parce que « ça marche sur une machine ». Elle dépend notamment des appels concurrents, de la consommation de ressources, de la latence, de la qualité STT / LLM / TTS et de la qualité perçue. Mesurer d’abord, dimensionner ensuite.",
+      },
+    ],
+    workflow: {
+      title: "Parcours métier cible",
+      steps: [
+        "Appel entrant",
+        "Assistant vocal",
+        "Commande / réservation / information",
+        "Dashboard restaurant",
+        "Système métier / caisse (intégration selon disponibilité)",
+      ],
+    },
+    behindTheScenes: {
+      summary:
+        "Validation en cours : capacité de l’infrastructure. On mesure combien d’appels peuvent être traités correctement en parallèle avant de décider combien de restaurants un serveur peut servir.",
+      details: [
+        "Principe des benchmarks de charge : concurrence, latence, qualité conversationnelle, puis dimensionnement.",
+        "À mesurer avant toute annonce commerciale : appels simultanés à qualité acceptable, restaurants par serveur, coût d’infrastructure par client.",
+        "Philosophie : ne pas annoncer une capacité technique avant de l’avoir mesurée.",
+      ],
+    },
+    ctas: [
+      { label: "Diagnostiquer mon projet", to: "/diagnostic", variant: "primary" },
+      {
+        label: "Voir MySmartFood",
+        href: "https://mysmartfood.fr",
+        variant: "secondary",
+        external: true,
+      },
+    ],
   },
   {
     id: 2,
+    slug: "mafra",
     title: {
       fr: "MAFRA",
       en: "MAFRA",
     },
-    progression: "in-progress",
+    progression: "completed",
+    statusLabel: "Livré, usage adapté par le client",
+    order: 2,
     images: [MAFRA1, MAFRA2, MAFRA3],
-    description: {
-      fr: "Mafra est une plateforme e-commerce conçue pour répondre aux besoins distincts des particuliers et des professionnels de l’entretien automobile. L’objectif du projet était de bâtir un produit digital robuste, scalable et orienté performance, capable de gérer des usages B2C et B2B au sein d’une même architecture. \n Le cœur du projet repose sur une architecture fonctionnelle claire : un parcours d’achat fluide et sécurisé pour les particuliers, un espace professionnel dédié intégrant des règles métiers spécifiques. Pour les professionnels, Mafra intègre un système de vérification automatisé basé sur les données officielles de l’INSEE (SIRET, raison sociale, code NAF), garantissant la légitimité des comptes et la conformité B2B. Une fois validés, les professionnels bénéficient de tarifs personnalisés. \n L’authentification repose sur une stratégie OAuth sécurisée, pensée pour simplifier l’accès tout en garantissant un haut niveau de fiabilité et de protection des données. \n L’ensemble de la plateforme a été conçu avec une attention particulière portée à la séparation des rôles, à la gestion des permissions et à l’évolutivité du produit. Mafra illustre une approche complète de l’architecture de produit digital : de la définition des besoins métiers à la structuration technique, en passant par l’expérience utilisateur, la sécurité et la performance. Le projet a été pensé non comme un simple site e-commerce, mais comme une solution digitale durable, capable d’évoluer avec les usages et la croissance de l’activité. \n La suite prévoyait d’automatiser l’expédition via Boxtal et d’intégrer le parcours de paiement de bout en bout. Le client a finalement préféré gérer ses ventes par téléphone et en proximité, pour rester au plus près de sa relation client au quotidien.",
-      en: "Mafra is an e-commerce platform specialized in automotive care products, designed for both individual customers and professionals. The website offers a curated catalog of products for vehicle care and maintenance, providing a simple, secure, and efficient shopping experience. For professionals, Mafra provides a dedicated space with tailored pricing and a company verification system based on official INSEE data (SIRET number, registered company name, and NAF code). Access to professional accounts is secured through OAuth authentication, ensuring a reliable environment aligned with B2B standards. Mafra was designed to meet the needs of both individual customers and automotive professionals by combining speed, reliability, and streamlined order management. \n The next step was to automate shipping through Boxtal and complete the end-to-end payment flow. The client ultimately preferred to manage sales by phone and in person, staying closer to their day-to-day customer relationships.",
-    },
     url: "https://mafraest.com",
+    card: {
+      problemOneLiner:
+        "Un e-commerce auto devait servir particuliers et professionnels, avec des règles différentes.",
+      outcomeChip: "B2C + B2B sur une même base",
+    },
+    summary: {
+      lead: "Plateforme e-commerce d’entretien automobile conçue pour deux publics : particuliers (achat simple) et professionnels (comptes vérifiés, tarifs dédiés).",
+      problemTitle: "Problème",
+      problem: [
+        "Mélanger B2C et B2B dans un shop classique crée des frictions : tarifs, légitimité des comptes pro, permissions, et risque de traiter tous les clients comme des particuliers.",
+        "Le besoin : une architecture fonctionnelle claire. Un parcours fluide pour les particuliers, un espace pro avec règles métier, sans dupliquer tout le produit.",
+      ],
+      approachTitle: "Approche",
+      approach: [
+        "Parcours d’achat B2C simple et sécurisé.",
+        "Espace professionnel avec règles dédiées.",
+        "Vérification automatisée via données INSEE (SIRET, raison sociale, code NAF).",
+        "Tarifs personnalisés une fois le compte validé.",
+        "Authentification OAuth pour simplifier l’accès sans baisser le niveau de confiance.",
+      ],
+      objectiveTitle: "Apport",
+      objective: [
+        "Le produit permet de gérer deux usages dans une même plateforme, avec séparation des rôles et une base évolutive.",
+        "La suite envisagée incluait l’automatisation d’expédition et un parcours de paiement de bout en bout. Le client a ensuite privilégié une relation commerciale de proximité ; le digital reste un outil de catalogue, de crédibilité et d’organisation plutôt qu’un tunnel de vente forcé.",
+      ],
+    },
+    decisions: [
+      {
+        title: "Pourquoi vérifier les pros via l’INSEE",
+        body: "Réduire les faux comptes et industrialiser l’accès B2B sans transformer la validation en goulot administratif manuel permanent.",
+      },
+      {
+        title: "Ce qui a été volontairement reporté",
+        body: "Expédition automatisée et checkout complet : utiles, mais secondaires tant que le double parcours B2C/B2B et la confiance des comptes n’étaient pas posés.",
+      },
+      {
+        title: "Ce que l’adaptation d’usage a changé",
+        body: "Le produit n’a pas « échoué » : l’usage réel a recentré la priorité. Le digital structure l’offre ; la relation de proximité peut reprendre le dernier kilomètre commercial.",
+      },
+    ],
+    workflow: {
+      title: "Parcours fonctionnel",
+      steps: [
+        "Visiteur",
+        "Parcours particulier ou demande de compte pro",
+        "Vérification INSEE (si pro)",
+        "Tarifs et permissions adaptés",
+        "Commande / relation commerciale",
+      ],
+    },
+    behindTheScenes: {
+      summary:
+        "Le cœur du sujet n’était pas « un e-commerce de plus », mais deux métiers dans une même base : rôles, permissions, confiance des comptes pro.",
+      details: [
+        "Séparation des parcours B2C / B2B.",
+        "Vérification d’entreprise via données officielles.",
+        "OAuth et gestion des permissions comme briques de confiance, pas comme détail technique isolé.",
+      ],
+    },
+    ctas: [
+      { label: "Diagnostiquer mon projet", to: "/diagnostic", variant: "primary" },
+      {
+        label: "Voir MAFRA",
+        href: "https://mafraest.com",
+        variant: "secondary",
+        external: true,
+      },
+    ],
   },
   {
     id: 3,
+    slug: "wm-performance",
     title: {
       fr: "WM Performance",
       en: "WM Performance",
     },
     progression: "completed",
+    statusLabel: "Livré",
+    order: 3,
     images: [WM1, WM2, WM3],
-    description: {
-      fr: "WM Performance est un spécialiste de la reprogrammation moteur et de l’entretien automobile haute performance. L’objectif du projet était de concevoir une présence digitale premium, capable de traduire une expertise mécanique et électronique exigeante en une expérience web claire, immersive et orientée conversion. \n Le site s’appuie sur une direction artistique sombre et technique, photographies cockpit, accents racing, pour ancrer immédiatement la marque dans l’univers de la performance. Les parcours de service (diagnostic, développement cartographique, validation sur banc) sont structurés pour guider le client de la compréhension métier jusqu’à la prise de contact. \n Un module 3D interactif permet d’explorer les stages d’intervention directement sur un modèle véhicule : hotspots techniques, fiches explicatives et bascule Stage 1 / 2 / 3. Cette brique transforme une offre complexe en parcours pédagogique, sans sacrifier le niveau de détail attendu par une clientèle passionnée. \n Le produit digital a été pensé comme un outil de crédibilité et de génération de leads : storytelling visuel fort, lisibilité des prestations, et expérience technique différenciante au service de la conversion.",
-      en: "WM Performance is a specialist in engine remapping and high-performance automotive maintenance. The project aimed to build a premium digital presence that translates demanding mechanical and electronic expertise into a clear, immersive, conversion-oriented web experience. \n The site relies on a dark, technical art direction, cockpit photography, racing accents, to immediately place the brand in the performance universe. Service journeys (diagnostics, mapping development, dyno validation) are structured to guide clients from understanding the offer to contacting the workshop. \n An interactive 3D module lets visitors explore intervention stages on a vehicle model: technical hotspots, detail cards, and Stage 1 / 2 / 3 switching. This turns a complex offer into an educational journey without losing the depth expected by enthusiasts. \n The digital product was designed as both a credibility and lead-generation tool: strong visual storytelling, clear services, and a differentiating technical experience focused on conversion.",
-    },
     url: "https://wmperformance.fr/",
+    card: {
+      problemOneLiner:
+        "Une expertise moteur exigeante était difficile à comprendre, et encore plus à transformer en contact.",
+      outcomeChip: "Crédibilité + prise de contact",
+    },
+    summary: {
+      lead: "Site premium pour un spécialiste de la reprogrammation moteur : rendre une offre technique lisible, immersive, et orientée prise de contact.",
+      problemTitle: "Problème",
+      problem: [
+        "L’offre (diagnostic, cartographie, stages, banc) est riche mais opaque pour un prospect. Sans narration claire, le site devient une brochure : soignée, mais qui ne guide pas vers le contact.",
+      ],
+      approachTitle: "Approche",
+      approach: [
+        "Direction artistique sombre et technique alignée sur l’univers performance.",
+        "Parcours de services structurés : comprendre, comparer, contacter.",
+        "Module 3D pour explorer les stages sur un modèle véhicule (hotspots, fiches, Stage 1 / 2 / 3).",
+        "Objectif produit : crédibilité et génération de demandes, sans métrique publique inventée.",
+      ],
+      objectiveTitle: "Apport",
+      objective: [
+        "Une offre complexe devient un parcours pédagogique. Le 3D n’est pas un gadget : il sert à expliquer et à différencier, puis à ramener vers le contact.",
+      ],
+    },
+    decisions: [
+      {
+        title: "Pourquoi du 3D plutôt qu’une liste de stages",
+        body: "La clientèle attend du détail ; une liste plate ne porte ni la marque ni la compréhension de l’intervention.",
+      },
+      {
+        title: "Ce qui n’a pas été construit",
+        body: "Pas de configurateur métier complet ni de tunnel e-commerce. Le site devait convaincre et qualifier l’intérêt, pas vendre un stage en self-service.",
+      },
+      {
+        title: "Ce que ça change pour l’atelier",
+        body: "Le prospect peut arriver déjà un cran plus informé ; le site fait une partie du travail de pédagogie en amont.",
+      },
+    ],
+    workflow: {
+      title: "Parcours visiteur",
+      steps: [
+        "Comprendre l’offre",
+        "Explorer les stages",
+        "Contacter l’atelier",
+      ],
+    },
+    behindTheScenes: {
+      summary:
+        "Ici, la différenciation passe par l’expérience et la lisibilité de l’offre, pas par un schéma d’architecture technique.",
+      details: [
+        "DA et storytelling visuel au service de la marque.",
+        "Module 3D comme support pédagogique.",
+        "Tunnel volontairement simple jusqu’au contact.",
+      ],
+    },
+    ctas: [
+      { label: "Diagnostiquer mon projet", to: "/diagnostic", variant: "primary" },
+      {
+        label: "Voir WM Performance",
+        href: "https://wmperformance.fr/",
+        variant: "secondary",
+        external: true,
+      },
+    ],
+  },
+  {
+    id: 4,
+    slug: "axelcella",
+    title: {
+      fr: "Portfolio",
+      en: "Portfolio",
+    },
+    progression: "completed",
+    statusLabel: "Produit vivant",
+    order: 4,
+    images: [portfolioHero],
+    url: null,
+    card: {
+      problemOneLiner:
+        "Une vitrine seule ne qualifie pas un besoin, et ne prépare pas un échange utile.",
+      outcomeChip: "Du visiteur à une demande exploitable",
+      cardTitle: "Portfolio",
+    },
+    summary: {
+      lead: "Ce site n’a pas été conçu uniquement pour montrer des réalisations. Il a été pensé pour accompagner un parcours : comprendre l’approche, clarifier un besoin, puis formuler une demande exploitable.",
+      problemTitle: "Problème",
+      problem: [
+        "Un portfolio classique laisse le prospect seul : il lit, puis remplit souvent un formulaire vide de contexte. Résultat côté indépendant : des messages flous, peu actionnables, et du temps perdu à re-qualifier.",
+      ],
+      approachTitle: "Approche",
+      approach: [
+        "Positionnement et services pour expliquer la méthode : cadrer avant de coder.",
+        "Études de cas pour montrer le jugement sur des situations réelles.",
+        "Diagnostic interactif (e-commerce, MVP, visibilité) pour orienter.",
+        "Chatbot pour répondre et qualifier en conversation.",
+        "Centralisation des demandes enrichies pour préparer l’échange.",
+      ],
+      metaReveal:
+        "Si vous venez d’utiliser le diagnostic ou le chatbot, vous êtes déjà passé dans ce parcours. Ce n’est pas une démo fictive : c’est le produit en situation réelle.",
+      objectiveTitle: "Apport",
+      objective: [
+        "Une demande n’arrive plus nécessairement « nue » : elle peut arriver avec un contexte (parcours, réponses, intention). Le site travaille avant le rendez-vous.",
+      ],
+    },
+    decisions: [
+      {
+        title: "Pourquoi un diagnostic plutôt qu’un seul gros formulaire",
+        body: "Le besoin n’est pas le même pour une boutique, un MVP ou une landing. Orienter avant de demander le contact.",
+      },
+      {
+        title: "Ce qui a été volontairement gardé simple",
+        body: "Le contact classique reste léger pour qui veut juste écrire. La qualification profonde passe par le diagnostic ou la conversation, là où le contexte a de la valeur.",
+      },
+      {
+        title: "Ce que ça change pour l’échange",
+        body: "Moins de « bonjour je veux un site » sans détail ; plus de matière pour préparer un vrai cadrage.",
+      },
+    ],
+    workflow: {
+      title: "Du clic à une demande exploitable",
+      steps: [
+        "Attirer",
+        "Informer",
+        "Diagnostiquer",
+        "Qualifier",
+        "Suivre",
+      ],
+      stepHints: [
+        "Landing, positionnement, projets",
+        "Services, méthode, cas",
+        "Parcours e-commerce / MVP / visibilité",
+        "Recommandation et conversation",
+        "Demande centralisée, contexte conservé",
+      ],
+    },
+    behindTheScenes: {
+      summary:
+        "Ce qui compte ici, c’est le parcours commercial : attirer, informer, diagnostiquer, qualifier, suivre. Pas l’étalage de la stack.",
+      details: [
+        "Briques exposées : diagnostic, chatbot, lead enrichi, suivi.",
+        "Coulisses : back-office, documents, détails d’infrastructure (volontairement secondaires).",
+        "L’architecture suit le parcours commercial, pas l’inverse.",
+      ],
+    },
+    ctas: [
+      { label: "Lancer le diagnostic", to: "/diagnostic", variant: "primary" },
+      { label: "Écrire un message", href: "/#contact", variant: "secondary" },
+    ],
   },
 ];
+
+export function getProjectsSorted() {
+  return [...projects].sort((a, b) => a.order - b.order);
+}
+
+export function findProject(idOrSlug) {
+  if (idOrSlug == null || idOrSlug === "") return undefined;
+  const asNumber = Number.parseInt(String(idOrSlug), 10);
+  if (!Number.isNaN(asNumber) && String(asNumber) === String(idOrSlug)) {
+    return projects.find((project) => project.id === asNumber);
+  }
+  return projects.find((project) => project.slug === idOrSlug);
+}
 
 export default projects;

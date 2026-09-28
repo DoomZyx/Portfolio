@@ -1,19 +1,18 @@
 import { useParams } from "react-router-dom";
-import data from "../../data/projects";
+import { findProject } from "../../data/projects";
 import Nav from "../nav/nav";
 import Carousel from "../Carousel/carousel";
-import "./_projects.scss";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-
-
 import Footer from "../footer/footer.jsx";
+import CaseStudySection from "./CaseStudySection";
+import CaseStudyDecisions from "./CaseStudyDecisions";
+import CaseStudyWorkflow from "./CaseStudyWorkflow";
+import CaseStudyBehindTheScenes from "./CaseStudyBehindTheScenes";
+import CaseStudyCta from "./CaseStudyCta";
+import "./_projects.scss";
 
 function Projects() {
   const { id } = useParams();
-  const project = data.find((proj) => proj.id === parseInt(id));
+  const project = findProject(id);
 
   if (!project) {
     return (
@@ -27,44 +26,64 @@ function Projects() {
     );
   }
 
-  const descriptionWithBreaks = project.description.fr.replace(/\n/g, "<br />"); //dangerouslySetInnerHTML permet de rendre br dans les descriptions comme un élément HTML
+  const { summary } = project;
+  const title = project.title.fr;
 
   return (
     <>
       <Nav />
       <main className="project-page">
         <header className="project-header">
-          <h1 className="project-title">{project.title.fr}</h1>
-          <span className="project-status">
-            {project.progression === "in-progress" ? (
-              <FontAwesomeIcon icon={faSpinner} spin />
-            ) : project.progression === "completed" ? (
-              <FontAwesomeIcon icon={faCheck} />
+          <div className="project-header-text">
+            <h1 className="project-title">{title}</h1>
+            {project.subtitle ? (
+              <p className="project-subtitle">{project.subtitle}</p>
             ) : null}
-          </span>
+          </div>
+          {project.statusLabel ? (
+            <p className="project-status-label">{project.statusLabel}</p>
+          ) : null}
         </header>
 
         <section className="project-content">
-          <div className="project-carousel">
-            <Carousel images={project.images} />
-          </div>
-          <div className="project-info">
-            <div className="project-description">
-              <h2 className="project-description-title">Description</h2>
-              <div className="project-description-text" dangerouslySetInnerHTML={{ __html: descriptionWithBreaks }} />
+          {project.images?.length ? (
+            <div className="project-carousel">
+              <Carousel images={project.images} projectTitle={title} />
             </div>
-            <div className="project-actions">
-              {project.url && (
-                <a
-                  className="project-link project-link-website"
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visiter le site
-                </a>
-              )}
-            </div>
+          ) : null}
+
+          <div className="project-info case-study-body">
+            {summary?.lead ? (
+              <p className="case-study-lead">{summary.lead}</p>
+            ) : null}
+
+            <CaseStudySection
+              title={summary?.problemTitle}
+              paragraphs={summary?.problem}
+            />
+
+            <CaseStudySection
+              title={summary?.approachTitle}
+              items={summary?.approach}
+            />
+
+            {summary?.metaReveal ? (
+              <aside className="case-study-meta-reveal" aria-label="Note">
+                <p>{summary.metaReveal}</p>
+              </aside>
+            ) : null}
+
+            <CaseStudySection
+              title={summary?.objectiveTitle}
+              paragraphs={summary?.objective}
+            />
+
+            <CaseStudyDecisions decisions={project.decisions} />
+            <CaseStudyWorkflow workflow={project.workflow} />
+            <CaseStudyBehindTheScenes
+              behindTheScenes={project.behindTheScenes}
+            />
+            <CaseStudyCta ctas={project.ctas} />
           </div>
         </section>
       </main>

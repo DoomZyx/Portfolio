@@ -105,21 +105,25 @@ nav {
   margin-top: 1.5em;
   display: flex;
   justify-content: center;
+  text-decoration: none;
 
   button {
-    background: none;
-    border: 1px solid #484646;
+    background: #ecbd00;
+    border: 1px solid #ecbd00;
     color: #ffffff;
     padding: 1em 1.5em;
     border-radius: 50px;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 0.9em;
     cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 
-    &:hover {
-      background: #ffffff;
-      color: #000000;
-      border-color: #ffffff;
+    &:hover,
+    &:focus-visible {
+      background: transparent;
+      color: #ecbd00;
+      border-color: #ecbd00;
+      outline: none;
     }
   }
 }
@@ -255,21 +259,26 @@ nav {
 
   .connectButton {
     margin-right: 0.5em;
+    text-decoration: none;
 
     button {
       cursor: pointer;
-      border: 1px solid #484646;
-      background: none;
+      border: 1px solid #ecbd00;
+      background: #ecbd00;
       color: #ffffff;
-      padding: 0.7em;
+      padding: 0.7em 1em;
       border-radius: 50px;
-      font-weight: 400;
+      font-weight: 600;
       font-size: 0.8em;
+      white-space: nowrap;
+      transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 
-      &:hover {
-        background: white;
-        color: #000000;
-        border: 1px solid #000000;
+      &:hover,
+      &:focus-visible {
+        background: transparent;
+        color: #ecbd00;
+        border-color: #ecbd00;
+        outline: none;
       }
     }
   }

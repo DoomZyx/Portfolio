@@ -58,13 +58,13 @@ function Nav() {
             <HashLink smooth={true} to="/#about">
               A propos
             </HashLink>
-            <Link to="/diagnostic">Diagnostic</Link>
+            <HashLink smooth={true} to="/#contact">
+              Contact
+            </HashLink>
           </div>
-          <HashLink smooth={true} to="/#contact">
-            <div className="connectButton">
-              <button type="button">Connectons-nous</button>
-            </div>
-          </HashLink>
+          <Link to="/diagnostic" className="connectButton">
+            <button type="button">Faire un diagnostic</button>
+          </Link>
         </div>
 
         <div className={`mobile-menu ${isOpen ? "open" : ""}`}>
@@ -81,15 +81,17 @@ function Nav() {
             <HashLink smooth={true} to="/#about" onClick={closeMenu}>
               A propos
             </HashLink>
-            <Link to="/diagnostic" onClick={closeMenu}>
-              Diagnostic
-            </Link>
+            <HashLink smooth={true} to="/#contact" onClick={closeMenu}>
+              Contact
+            </HashLink>
           </div>
-          <HashLink smooth={true} to="/#contact" onClick={closeMenu}>
-            <div className="connectButton-menu">
-              <button type="button">Connectons-nous</button>
-            </div>
-          </HashLink>
+          <Link
+            to="/diagnostic"
+            className="connectButton-menu"
+            onClick={closeMenu}
+          >
+            <button type="button">Faire un diagnostic</button>
+          </Link>
           <div className="burger-socials">
             <a
               href="tel:+33672886255"
