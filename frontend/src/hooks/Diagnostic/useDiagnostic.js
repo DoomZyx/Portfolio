@@ -139,8 +139,8 @@ export function useDiagnostic({
   }
 
   async function submitLead() {
-    if (!contact.name.trim() || !contact.email.trim()) {
-      setError("Le nom et l'email sont obligatoires.");
+    if (!contact.name.trim() || !contact.email.trim() || !contact.phone.trim()) {
+      setError("Le nom, l'email et le téléphone sont obligatoires.");
       return false;
     }
 

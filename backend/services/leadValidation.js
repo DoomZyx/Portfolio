@@ -354,6 +354,11 @@ export function validatePublicLeadPayload(body) {
     return { error: "unsupported projectType" };
   }
 
+  // Diagnostic : téléphone obligatoire. Chatbot : optionnel (souvent absent).
+  if (!phone && projectType !== "chat") {
+    return { error: "phone is required" };
+  }
+
   const source =
     asTrimmedString(body.source, 80) || defaultSourceFor(projectType);
   const utmSource = asTrimmedString(body.utmSource, 120);

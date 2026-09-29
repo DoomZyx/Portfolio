@@ -259,12 +259,13 @@ function DiagnosticWizard({
                 />
               </label>
               <label htmlFor="lead-phone">
-                Téléphone (optionnel)
+                Téléphone
                 <input
                   id="lead-phone"
                   name="phone"
                   type="tel"
                   autoComplete="tel"
+                  required
                   value={contact.phone}
                   onChange={(e) => updateContactField("phone", e.target.value)}
                 />

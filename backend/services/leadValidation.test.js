@@ -37,7 +37,7 @@ describe("validatePublicLeadPayload", () => {
     assert.deepEqual(result.value.diagnostic.needs, ["NONE"]);
   });
 
-  it("rejette name / email / diagnostic manquants", () => {
+  it("rejette name / email / phone / diagnostic manquants", () => {
     assert.equal(
       validatePublicLeadPayload({ ...validPublicLead, name: "" }).error,
       "name is required",
@@ -48,6 +48,13 @@ describe("validatePublicLeadPayload", () => {
         email: "not-an-email",
       }).error,
       "valid email is required",
+    );
+    assert.equal(
+      validatePublicLeadPayload({
+        ...validPublicLead,
+        phone: "",
+      }).error,
+      "phone is required",
     );
     assert.equal(
       validatePublicLeadPayload({
