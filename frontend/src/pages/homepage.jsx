@@ -43,6 +43,9 @@ function homepage() {
         <Suspense fallback={<SectionFallback minHeight="120px" />}>
           <CatchPhrasesCards />
         </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="400px" />}>
+          <MyPortfolio />
+        </Suspense>
         <Suspense fallback={<SectionFallback minHeight="160px" />}>
           <Catchphrase1 />
         </Suspense>
@@ -51,9 +54,6 @@ function homepage() {
         </Suspense>
         <Suspense fallback={<SectionFallback minHeight="320px" />}>
           <BackgroundABout />
-        </Suspense>
-        <Suspense fallback={<SectionFallback minHeight="400px" />}>
-          <MyPortfolio />
         </Suspense>
         <Suspense fallback={<SectionFallback minHeight="400px" />}>
           <MyServices />
