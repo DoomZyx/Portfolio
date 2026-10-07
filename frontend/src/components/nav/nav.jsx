@@ -1,6 +1,6 @@
 import { useEffect, useId, useState } from "react";
-import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import { Link, useNavigate } from "react-router-dom";
+import { scheduleNavScroll } from "../../hooks/ScrollToTop/scroll";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import "./_nav.scss";
@@ -45,17 +45,25 @@ const SOCIAL_LINKS = [
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const menuId = useId();
+  const navigate = useNavigate();
 
   const closeMenu = () => setIsOpen(false);
   const toggleMenu = () => setIsOpen((open) => !open);
+
+  const followLink = (event, to) => {
+    event.preventDefault();
+    closeMenu();
+    const hashIndex = to.indexOf("#");
+    const pathname = (hashIndex === -1 ? to : to.slice(0, hashIndex)) || "/";
+    const hash = hashIndex === -1 ? "" : to.slice(hashIndex);
+    navigate({ pathname, hash });
+    scheduleNavScroll(hash);
+  };
 
   useEffect(() => {
     document.body.classList.toggle("nav-menu-open", isOpen);
 
     if (!isOpen) return undefined;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
 
     const onKeyDown = (event) => {
       if (event.key === "Escape") closeMenu();
@@ -65,7 +73,6 @@ function Nav() {
 
     return () => {
       document.body.classList.remove("nav-menu-open");
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [isOpen]);
@@ -113,9 +120,9 @@ function Nav() {
 
         <div className="nav-links">
           {NAV_LINKS.map((link) => (
-            <HashLink key={link.to} smooth to={link.to}>
+            <Link key={link.to} to={link.to} onClick={(event) => followLink(event, link.to)}>
               {link.label}
-            </HashLink>
+            </Link>
           ))}
         </div>
 
@@ -132,12 +139,11 @@ function Nav() {
         <div className="mobile-menu-inner">
           <div className="burger-links">
             {NAV_LINKS.map((link, index) => (
-              <HashLink
+              <Link
                 key={link.to}
                 className="burger-link"
-                smooth
                 to={link.to}
-                onClick={closeMenu}
+                onClick={(event) => followLink(event, link.to)}
                 tabIndex={isOpen ? 0 : -1}
               >
                 <span className="burger-link-index">
@@ -147,7 +153,7 @@ function Nav() {
                 <span className="burger-link-arrow" aria-hidden="true">
                   →
                 </span>
-              </HashLink>
+              </Link>
             ))}
           </div>
 

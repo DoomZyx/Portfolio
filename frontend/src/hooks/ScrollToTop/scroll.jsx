@@ -1,52 +1,59 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+// html/body sont en height:100% : sur téléphone le scroll visible est souvent
+// body, pas documentElement. Scroller le mauvais élément laisse un écran vide.
+function scrollToNavTarget(hash) {
+  const id = hash ? hash.replace(/^#/, "") : "";
+
+  if (!id) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
+    return true;
+  }
+
+  const element = document.getElementById(id);
+  if (!element) return false;
+
+  const offset = window.matchMedia("(max-width: 63.99em)").matches ? 64 : 0;
+  element.scrollIntoView({ block: "start" });
+
+  const delta = element.getBoundingClientRect().top - offset;
+  if (Math.abs(delta) < 2) return true;
+
+  const before = element.getBoundingClientRect().top;
+  document.body.scrollTop += delta;
+  if (Math.abs(element.getBoundingClientRect().top - before) < 1) {
+    window.scrollBy(0, delta);
+  }
+  return true;
+}
+
+export function scheduleNavScroll(hash) {
+  let tries = 0;
+  let timer = 0;
+
+  const tick = () => {
+    if (scrollToNavTarget(hash) || tries >= 40) return;
+    tries += 1;
+    timer = window.setTimeout(tick, 100);
+  };
+
+  timer = window.setTimeout(tick, 0);
+  return () => window.clearTimeout(timer);
+}
+
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
 
-  // 1. Désactive la restauration automatique du navigateur au montage
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
   }, []);
 
-  // 2. Remonte en haut de page UNIQUEMENT si le chemin change (sans ancre)
-  useEffect(() => {
-    if (!hash) {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }
-  }, [pathname]); // <-- Uniquement pathname !
-
-  // 3. Gère le scroll fluide vers les ancres (#contact, etc.)
-  useEffect(() => {
-    if (!hash) return;
-
-    const id = hash.replace("#", "");
-    let retryTimer;
-
-    const scrollToHash = () => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        return true;
-      }
-      return false;
-    };
-
-    const timer = setTimeout(() => {
-      if (!scrollToHash()) {
-        retryTimer = setTimeout(scrollToHash, 400);
-      }
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(retryTimer);
-    };
-  }, [hash]); // <-- Uniquement hash !
+  useEffect(() => scheduleNavScroll(hash), [pathname, hash]);
 
   return null;
 }
