@@ -3,7 +3,9 @@ import { lazy, Suspense } from "react";
 // Above-the-fold : chargement synchrone pour éviter le CLS du premier viewport
 import Nav from "../components/nav/nav";
 import Header from "../components/header/header";
+import "./_homepage.scss";
 
+const DiagnosticHub = lazy(() => import("../components/Diagnostic/DiagnosticHub"));
 const BackgroundABout = lazy(() =>
   import("../components/backgroundAbout/backgroundAbout")
 );
@@ -43,8 +45,19 @@ function homepage() {
         <Suspense fallback={<SectionFallback minHeight="120px" />}>
           <CatchPhrasesCards />
         </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="280px" />}>
+          <div className="home-diagnostic" id="diagnostic">
+            <DiagnosticHub />
+          </div>
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="400px" />}>
+          <MyServices />
+        </Suspense>
         <Suspense fallback={<SectionFallback minHeight="400px" />}>
           <MyPortfolio />
+        </Suspense>
+        <Suspense fallback={<SectionFallback minHeight="520px" />}>
+          <ProductLifecycle />
         </Suspense>
         <Suspense fallback={<SectionFallback minHeight="160px" />}>
           <Catchphrase1 />
@@ -54,12 +67,6 @@ function homepage() {
         </Suspense>
         <Suspense fallback={<SectionFallback minHeight="320px" />}>
           <BackgroundABout />
-        </Suspense>
-        <Suspense fallback={<SectionFallback minHeight="400px" />}>
-          <MyServices />
-        </Suspense>
-        <Suspense fallback={<SectionFallback minHeight="520px" />}>
-          <ProductLifecycle />
         </Suspense>
         <Suspense fallback={<SectionFallback minHeight="450px" />}>
           <ContactMe />

@@ -7,8 +7,9 @@ import "./_nav.scss";
 
 const NAV_LINKS = [
   { to: "/", label: "Accueil" },
-  { to: "/#portfolio", label: "Portfolio" },
+  { to: "/#diagnostic", label: "Diagnostic" },
   { to: "/#services", label: "Services" },
+  { to: "/#portfolio", label: "Portfolio" },
   { to: "/#pedagogie", label: "Pédagogie" },
   { to: "/#about", label: "À propos" },
   { to: "/#contact", label: "Contact" },
@@ -126,7 +127,11 @@ function Nav() {
           ))}
         </div>
 
-        <Link to="/diagnostic" className="nav-cta">
+        <Link
+          to="/#diagnostic"
+          className="nav-cta"
+          onClick={(event) => followLink(event, "/#diagnostic")}
+        >
           Faire un diagnostic
         </Link>
       </div>
@@ -158,9 +163,9 @@ function Nav() {
           </div>
 
           <Link
-            to="/diagnostic"
+            to="/#diagnostic"
             className="nav-cta nav-cta--mobile"
-            onClick={closeMenu}
+            onClick={(event) => followLink(event, "/#diagnostic")}
             tabIndex={isOpen ? 0 : -1}
           >
             Faire un diagnostic

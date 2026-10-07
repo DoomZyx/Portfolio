@@ -12,7 +12,7 @@ const HUB_OPTIONS = [
     to: "/diagnostic/mvp",
     title: "Produit / MVP",
     description:
-      "Conception d'un MVP avec projet mature, business model et plan établis — ou cadrage si besoin.",
+      "Conception d'un MVP avec projet mature, business model et plan établis, ou cadrage si besoin.",
   },
   {
     to: "/diagnostic/visibility",

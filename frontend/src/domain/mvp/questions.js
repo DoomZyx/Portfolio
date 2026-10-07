@@ -76,9 +76,9 @@ export const DIAGNOSTIC_STEPS = [
     type: "single",
     options: [
       { value: "UNDER_2K", label: "Moins de 2 000 €" },
-      { value: "FROM_2K_TO_5K", label: "2–5 k€" },
-      { value: "FROM_5K_TO_10K", label: "5–10 k€" },
-      { value: "FROM_10K_TO_20K", label: "10–20 k€" },
+      { value: "FROM_2K_TO_5K", label: "2 à 5 k€" },
+      { value: "FROM_5K_TO_10K", label: "5 à 10 k€" },
+      { value: "FROM_10K_TO_20K", label: "10 à 20 k€" },
       { value: "OVER_20K", label: "20 k€+" },
     ],
   },
@@ -89,8 +89,8 @@ export const DIAGNOSTIC_STEPS = [
     type: "single",
     options: [
       { value: "UNDER_1_MONTH", label: "Moins d'1 mois" },
-      { value: "FROM_1_TO_3_MONTHS", label: "1–3 mois" },
-      { value: "FROM_3_TO_6_MONTHS", label: "3–6 mois" },
+      { value: "FROM_1_TO_3_MONTHS", label: "1 à 3 mois" },
+      { value: "FROM_3_TO_6_MONTHS", label: "3 à 6 mois" },
       { value: "OVER_6_MONTHS", label: "6 mois+" },
     ],
   },
